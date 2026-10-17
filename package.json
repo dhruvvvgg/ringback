@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^2.1.5",
+    "@huggingface/transformers": "^4.3.1",
     "@mastra/core": "^1.78.0",
     "@sentry/node": "^11.8.0",
     "@temporalio/activity": "^1.24.0",
@@ -65,5 +66,8 @@
     "typescript-eslint": "^8.71.2",
     "vite": "^8.3.4",
     "vitest": "^5.0.5"
+  },
+  "overrides": {
+    "@swc/core": "1.11.24"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "timeSkipping": true,
+  "events": [
+    "ok:confirmation",
+    "ok:reminder",
+    "fail:owner_attention",
+    "no-show:confirmation",
+    "no-show:reminder",
+    "no-show:follow_up"
+  ],
+  "confirmationFailureAttempts": 4
+}

@@ -1,0 +1,5 @@
+import * as Sentry from '@sentry/node';
+const allowed=new Set(['stt_ms','retrieval_ms','llm_ttft_ms','llm_total_ms','tts_ttfa_ms','tokens_in','tokens_out','tts_chars','total_ms']);
+export function scrubAttributes(input:Record<string,unknown>){return Object.fromEntries(Object.entries(input).filter(([k,v])=>allowed.has(k)&&typeof v==='number'&&Number.isFinite(v))) as Record<string,number>;}
+export function initTelemetry(){if(process.env.SENTRY_DSN)Sentry.init({dsn:process.env.SENTRY_DSN,tracesSampleRate:1,defaultIntegrations:false,beforeSend:()=>null,beforeSendTransaction:event=>({ ...event,request:undefined,user:undefined,contexts:undefined,tags:undefined,extra:undefined,transaction:'receptionist.turn',spans:event.spans?.map(s=>({...s,description:s.op,data:scrubAttributes(s.data||{})}))})});}
+export function recordTelemetry(metrics:Record<string,unknown>){const safe=scrubAttributes(metrics);if(process.env.SENTRY_DSN)Sentry.startSpan({name:'receptionist.turn',op:'ai.turn',attributes:safe},()=>{for(const stage of ['stt','retrieval','llm','tts'])Sentry.startSpan({name:stage,op:`ai.${stage}`,attributes:safe},()=>{});});return safe;}

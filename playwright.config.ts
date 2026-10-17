@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';import {config} from 'dotenv';config({path:'.env.local',quiet:true});
+export default defineConfig({testDir:'tests/e2e',workers:1,timeout:60000,reporter:[['list'],['json',{outputFile:'artifacts/e2e/results.json'}]],use:{baseURL:'http://localhost:3000',launchOptions:{executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']},video:'on',trace:'retain-on-failure'},webServer:{command:'npm run dev',url:'http://localhost:3000/healthz',reuseExistingServer:true,timeout:60000}});

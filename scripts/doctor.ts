@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import {config} from 'dotenv';config({path:'.env.local',quiet:true});
 import { mkdir,writeFile } from 'node:fs/promises';
 import { MongoClient } from 'mongodb';
 import { Connection } from '@temporalio/client';

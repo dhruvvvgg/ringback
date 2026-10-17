@@ -1,11 +1,11 @@
 # Ringback progress
 
-- [ ] Phase 0: Bootstrap
-- [ ] Phase 1: Core domain
-- [ ] Phase 2: LLM layer
-- [ ] Phase 3: Agent and retrieval
-- [ ] Phase 4: Voice
-- [ ] Phase 5: Temporal durability
+- [x] Phase 0: Bootstrap
+- [x] Phase 1: Core domain
+- [x] Phase 2: LLM layer
+- [x] Phase 3: Agent and retrieval
+- [x] Phase 4: Voice
+- [x] Phase 5: Temporal durability
 - [ ] Phase 6: Web UI
 - [ ] Phase 7: Observability
 - [ ] Phase 8: Evaluation
@@ -23,3 +23,5 @@
 - [ ] Truthful complete documentation
 - [ ] Secret and history audit
 - [ ] Final STATUS.md written and committed
+
+Phase notes: live Gemma/ElevenLabs and Atlas checks use documented credential/network fallbacks; see final STATUS for unmet live criteria. Temporal tests are real (time-skipping server).
