@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-17T17:31:55.058Z",
+  "checks": [
+    {
+      "service": "Gemma",
+      "status": "MISSING",
+      "detail": "LLM_API_KEY"
+    },
+    {
+      "service": "ElevenLabs",
+      "status": "MISSING",
+      "detail": "ELEVENLABS_API_KEY"
+    },
+    {
+      "service": "MongoDB",
+      "status": "MISSING",
+      "detail": "MONGODB_URI"
+    },
+    {
+      "service": "Temporal",
+      "status": "UNREACHABLE",
+      "detail": "Start local Temporal server or configure TEMPORAL_ADDRESS"
+    },
+    {
+      "service": "Sentry",
+      "status": "MISSING",
+      "detail": "SENTRY_DSN"
+    },
+    {
+      "service": "Owner webhook",
+      "status": "MISSING",
+      "detail": "OWNER_WEBHOOK_URL"
+    },
+    {
+      "service": "DigitalOcean",
+      "status": "MISSING",
+      "detail": "DO_INFERENCE_KEY"
+    },
+    {
+      "service": "Owner access",
+      "status": "MISSING",
+      "detail": "ADMIN_TOKEN"
+    }
+  ]
+}
