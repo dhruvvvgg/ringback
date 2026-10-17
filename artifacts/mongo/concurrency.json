@@ -1,0 +1,8 @@
+{
+  "mode": "real-mongodb-memory-server",
+  "version": "7.0.45",
+  "attempts": 40,
+  "winners": 1,
+  "idempotencyReplay": true,
+  "atlasVectorSearch": false
+}

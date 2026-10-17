@@ -12,10 +12,10 @@
   },
   "scripts": {
     "dev": "tsx apps/server/src/index.ts",
-    "build": "vite build --config apps/web/vite.config.ts",
+    "build": "vite build --config apps/web/vite.config.ts && tsx scripts/bundle-workflows.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run",
+    "test": "vitest run --reporter=default --reporter=json --outputFile=artifacts/tests/results.json",
     "verify": "npm run typecheck && npm run lint && npm test && npm run build",
     "doctor": "tsx scripts/doctor.ts",
     "seed": "tsx scripts/seed.ts",
@@ -25,7 +25,11 @@
     "demo:chaos": "tsx scripts/chaos.ts",
     "live:verify": "tsx scripts/live-verify.ts",
     "e2e": "playwright test",
-    "start": "tsx scripts/supervisor.ts"
+    "start": "tsx scripts/supervisor.ts",
+    "setup": "tsx scripts/setup.ts",
+    "format": "prettier --write apps packages scripts eval tests *.ts *.json render.yaml",
+    "cost": "tsx scripts/cost-model.ts",
+    "setup:mongo": "tsx scripts/setup-mongo.ts"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.5",

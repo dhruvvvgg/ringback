@@ -10,17 +10,7 @@
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "types": [
-      "node",
-      "vite/client"
-    ]
+    "types": ["node", "vite/client"]
   },
-  "include": [
-    "apps",
-    "packages",
-    "scripts",
-    "eval",
-    "tests",
-    "*.ts"
-  ]
+  "include": ["apps", "packages", "scripts", "eval", "tests", "*.ts"]
 }

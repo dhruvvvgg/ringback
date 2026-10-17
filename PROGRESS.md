@@ -6,9 +6,9 @@
 - [x] Phase 3: Agent and retrieval
 - [x] Phase 4: Voice
 - [x] Phase 5: Temporal durability
-- [ ] Phase 6: Web UI
-- [ ] Phase 7: Observability
-- [ ] Phase 8: Evaluation
+- [x] Phase 6: Web UI
+- [x] Phase 7: Observability
+- [x] Phase 8: Evaluation
 - [ ] Phase 9: Deployment
 - [ ] Phase 10: Documentation and assets
 - [ ] Phase 11: Final audit

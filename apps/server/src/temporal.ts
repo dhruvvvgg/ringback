@@ -1,7 +1,58 @@
-import {Client,Connection,WorkflowExecutionAlreadyStartedError} from '@temporalio/client';import type {Store} from '../../../packages/core/src/store.js';
-let client:Client|undefined;
-export async function temporal(){if(client)return client;const connection=await Connection.connect({address:process.env.TEMPORAL_ADDRESS||'localhost:7233',connectTimeout:2000,...(process.env.TEMPORAL_API_KEY?{apiKey:process.env.TEMPORAL_API_KEY,tls:true}:{})});return client=new Client({connection,namespace:process.env.TEMPORAL_NAMESPACE||'default'});}
-export async function startBooking(a:any){const c=await temporal();try{await c.workflow.start('BookingLifecycleWorkflow',{workflowId:a.workflowId,taskQueue:process.env.TEMPORAL_TASK_QUEUE||'ringback',args:[a.id,Number(process.env.DEMO_TIME_SCALE||1)]});}catch(e){if(!(e instanceof WorkflowExecutionAlreadyStartedError))throw e;}}
-export async function startLead(call:any){if(!call.followUpNeeded)return;const c=await temporal();try{await c.workflow.start('LeadRecoveryWorkflow',{workflowId:`lead-${call.id}`,taskQueue:process.env.TEMPORAL_TASK_QUEUE||'ringback',args:[call.id,3600000/Number(process.env.DEMO_TIME_SCALE||1)]});}catch(e){if(!(e instanceof WorkflowExecutionAlreadyStartedError))throw e;}}
-export async function reconcile(store:Store){const list=await store.db.collection('appointments').find({status:'booked'}).toArray();for(const a of list)await startBooking(a);return list.length;}
-export async function signalBooking(id:string,action:string){const c=await temporal();await c.workflow.getHandle(`booking-${id}`).signal('bookingAction',action);}
+import {
+  Client,
+  Connection,
+  WorkflowExecutionAlreadyStartedError,
+} from "@temporalio/client";
+import type { Store } from "../../../packages/core/src/store.js";
+let client: Client | undefined;
+export async function temporal() {
+  if (client) return client;
+  const connection = await Connection.connect({
+    address: process.env.TEMPORAL_ADDRESS || "localhost:7233",
+    connectTimeout: 2000,
+    ...(process.env.TEMPORAL_API_KEY
+      ? { apiKey: process.env.TEMPORAL_API_KEY, tls: true }
+      : {}),
+  });
+  return (client = new Client({
+    connection,
+    namespace: process.env.TEMPORAL_NAMESPACE || "default",
+  }));
+}
+export async function startBooking(a: any) {
+  const c = await temporal();
+  try {
+    await c.workflow.start("BookingLifecycleWorkflow", {
+      workflowId: a.workflowId,
+      taskQueue: process.env.TEMPORAL_TASK_QUEUE || "ringback",
+      args: [a.id, Number(process.env.DEMO_TIME_SCALE || 1)],
+    });
+  } catch (e) {
+    if (!(e instanceof WorkflowExecutionAlreadyStartedError)) throw e;
+  }
+}
+export async function startLead(call: any) {
+  if (!call.followUpNeeded) return;
+  const c = await temporal();
+  try {
+    await c.workflow.start("LeadRecoveryWorkflow", {
+      workflowId: `lead-${call.id}`,
+      taskQueue: process.env.TEMPORAL_TASK_QUEUE || "ringback",
+      args: [call.id, 3600000 / Number(process.env.DEMO_TIME_SCALE || 1)],
+    });
+  } catch (e) {
+    if (!(e instanceof WorkflowExecutionAlreadyStartedError)) throw e;
+  }
+}
+export async function reconcile(store: Store) {
+  const list = await store.db
+    .collection("appointments")
+    .find({ status: "booked" })
+    .toArray();
+  for (const a of list) await startBooking(a);
+  return list.length;
+}
+export async function signalBooking(id: string, action: string) {
+  const c = await temporal();
+  await c.workflow.getHandle(`booking-${id}`).signal("bookingAction", action);
+}

@@ -1,0 +1,4188 @@
+{
+  "at": "2026-10-17T20:47:44.226Z",
+  "mode": "mock",
+  "label": "mock-MockLLM-baseline",
+  "total": 96,
+  "completed": 96,
+  "passed": 96,
+  "successRate": 1,
+  "wilson95": [
+    0.9615230525151842,
+    1
+  ],
+  "durationMs": 1897,
+  "blocked": null,
+  "turns": 160,
+  "repairs": 0,
+  "fallbacks": 0,
+  "tokensIn": 0,
+  "tokensOut": 0,
+  "latency": {
+    "p50Ms": 3.225333999999748,
+    "p95Ms": 5.929693999999927
+  },
+  "categories": {
+    "simple-booking": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "constraints": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "fully-booked": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "faq": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "out-of-scope": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "emergency": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "cancel": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "reschedule": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "returning-memory": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "adversarial": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "asr-noise": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    },
+    "hinglish": {
+      "passed": 8,
+      "total": 8,
+      "wilson95": [
+        0.6755843804891231,
+        1
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "simple-booking-1",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.6665790000001834,
+          "llm_ttft_ms": 0.009003000000120664,
+          "llm_total_ms": 0.01375000000007276,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 13.801766999999927
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.036282999999912136,
+          "llm_ttft_ms": 0.005438000000140164,
+          "llm_total_ms": 0.006119000000126107,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 9.87067799999977
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-1",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.04808100000036575,
+          "llm_ttft_ms": 0.006769999999960419,
+          "llm_total_ms": 0.00782100000014907,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 6.699004000000059
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.028922999999849708,
+          "llm_ttft_ms": 0.0037350000002334127,
+          "llm_total_ms": 0.0044060000000172295,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 6.882476000000224
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-1",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.042823999999654916,
+          "llm_ttft_ms": 0.004496000000017375,
+          "llm_total_ms": 0.006669999999758147,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.419636999999966
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-1",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0361840000000484,
+          "llm_ttft_ms": 0.0038749999998799467,
+          "llm_total_ms": 0.004506000000219501,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.7150600000004488
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-1",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.029693999999835796,
+          "llm_ttft_ms": 0.004115999999612541,
+          "llm_total_ms": 0.004756999999699474,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5964439999997921
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-1",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03297900000006848,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.8077079999998205
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-1",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.030084999999871798,
+          "llm_ttft_ms": 0.003335000000333821,
+          "llm_total_ms": 0.003885000000082073,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.044093999999859
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.021752999999989697,
+          "llm_ttft_ms": 0.004606999999850814,
+          "llm_total_ms": 0.0053480000001400185,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.7764909999996235
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019028000000162137,
+          "llm_ttft_ms": 0.0038359999998647254,
+          "llm_total_ms": 0.004417000000103144,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.4642220000000634
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-1",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.05127600000014354,
+          "llm_ttft_ms": 0.003044999999929132,
+          "llm_total_ms": 0.003426000000217755,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.943945999999869
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011246999999912077,
+          "llm_ttft_ms": 0.0007510000000365835,
+          "llm_total_ms": 0.0010320000001229346,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.8871650000000955
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0225839999998243,
+          "llm_ttft_ms": 0.0012520000000222353,
+          "llm_total_ms": 0.0015519999997195555,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.9158980000001975
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.013009000000238302,
+          "llm_ttft_ms": 0.0014020000003256428,
+          "llm_total_ms": 0.0018829999999070424,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.032092999999804
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-1",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.012969000000339292,
+          "llm_ttft_ms": 0.0010710000001381559,
+          "llm_total_ms": 0.0013420000000223808,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.35169100000030085
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-1",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.015393000000130996,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.2031219999998939
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-1",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019389000000046508,
+          "llm_ttft_ms": 0.0011819999999715947,
+          "llm_total_ms": 0.001502000000073167,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.781093999999939
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0111269999997603,
+          "llm_ttft_ms": 0.0017230000003110035,
+          "llm_total_ms": 0.001972999999907188,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.8768199999999524
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-1",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01498200000014549,
+          "llm_ttft_ms": 0.0013920000001235167,
+          "llm_total_ms": 0.0015920000000733125,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4402130000003126
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-2",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.018095999999786727,
+          "llm_ttft_ms": 0.0012419999998201092,
+          "llm_total_ms": 0.0014820000001236622,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.701086000000032
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009594000000106462,
+          "llm_ttft_ms": 0.0010919999999714491,
+          "llm_total_ms": 0.001291999999921245,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.6092419999999947
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-2",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.021821999999701802,
+          "llm_ttft_ms": 0.000931999999920663,
+          "llm_total_ms": 0.0013319999998202547,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.1586339999998927
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011457000000064,
+          "llm_ttft_ms": 0.0017920000000231084,
+          "llm_total_ms": 0.0021530000003622263,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.608651000000009
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-2",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.05637399999977788,
+          "llm_ttft_ms": 0.00156299999980547,
+          "llm_total_ms": 0.001783000000159518,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.870282999999745
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-2",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.017515999999886844,
+          "llm_ttft_ms": 0.0015220000000226719,
+          "llm_total_ms": 0.0018119999999726133,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5884829999999965
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-2",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016494999999849824,
+          "llm_ttft_ms": 0.0013120000003254972,
+          "llm_total_ms": 0.0016220000002249435,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5375169999997524
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-2",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01534300000002986,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5746319999998377
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-2",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.018426999999974214,
+          "llm_ttft_ms": 0.0013819999999213906,
+          "llm_total_ms": 0.0016630000000077416,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.0973039999998946
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010646000000178901,
+          "llm_ttft_ms": 0.0013719999997192645,
+          "llm_total_ms": 0.0017229999998562562,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.842718999999761
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.013599999999769352,
+          "llm_ttft_ms": 0.0017319999997198465,
+          "llm_total_ms": 0.002003000000058819,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.824636000000282
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-2",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.033449000000018714,
+          "llm_ttft_ms": 0.0022330000001602457,
+          "llm_total_ms": 0.002594000000044616,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.5142540000001645
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019488999999794032,
+          "llm_ttft_ms": 0.0020829999998568383,
+          "llm_total_ms": 0.002423999999791704,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.785349000000224
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0324479999999312,
+          "llm_ttft_ms": 0.0024229999999079155,
+          "llm_total_ms": 0.002834000000348169,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.765249999999924
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.020160000000032596,
+          "llm_ttft_ms": 0.0021530000003622263,
+          "llm_total_ms": 0.002613999999994121,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 8.163346999999703
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-2",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.041150999999899796,
+          "llm_ttft_ms": 0.0021430000001601,
+          "llm_total_ms": 0.0027640000002975285,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.6349420000001373
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-2",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.020280000000184373,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.33570800000006784
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-2",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03129699999999502,
+          "llm_ttft_ms": 0.0023429999996551487,
+          "llm_total_ms": 0.002783999999792286,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.754210000000057
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01669499999979962,
+          "llm_ttft_ms": 0.0018430000000080327,
+          "llm_total_ms": 0.0025640000003477326,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.779601000000184
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-2",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02069000000028609,
+          "llm_ttft_ms": 0.002132999999957974,
+          "llm_total_ms": 0.002613999999994121,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5087349999998878
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-3",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.029393000000254688,
+          "llm_ttft_ms": 0.0017320000001745939,
+          "llm_total_ms": 0.002213000000210741,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.299285999999938
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01621400000021822,
+          "llm_ttft_ms": 0.002132999999957974,
+          "llm_total_ms": 0.0025439999999434804,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.536891000000196
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-3",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03199800000038522,
+          "llm_ttft_ms": 0.002633999999943626,
+          "llm_total_ms": 0.0030639999999948486,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.106232000000091
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.018348000000059983,
+          "llm_ttft_ms": 0.0018319999999221181,
+          "llm_total_ms": 0.002363000000059401,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.929693999999927
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-3",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0401200000001154,
+          "llm_ttft_ms": 0.0024839999996402184,
+          "llm_total_ms": 0.0029540000000451982,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 8.205939000000399
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-3",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03394000000025699,
+          "llm_ttft_ms": 0.0030839999999443535,
+          "llm_total_ms": 0.003654999999980646,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.9318720000001122
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-3",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02919300000030489,
+          "llm_ttft_ms": 0.0021929999998064886,
+          "llm_total_ms": 0.0027239999999437714,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.6613110000002962
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-3",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.025176999999985128,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.8078989999999067
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-3",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.030535999999756314,
+          "llm_ttft_ms": 0.0022630000003118766,
+          "llm_total_ms": 0.0027640000002975285,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.669425000000047
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019939000000249507,
+          "llm_ttft_ms": 0.0017530000000078871,
+          "llm_total_ms": 0.0022229999999581196,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.47701300000017
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019909999999981665,
+          "llm_ttft_ms": 0.002163000000109605,
+          "llm_total_ms": 0.002633999999943626,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.512593000000379
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-3",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.026979999999639404,
+          "llm_ttft_ms": 0.0016630000000077416,
+          "llm_total_ms": 0.0020429999999578285,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.295020000000022
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01567300000033356,
+          "llm_ttft_ms": 0.001592999999957101,
+          "llm_total_ms": 0.0020329999997557024,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.489892000000054
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02462699999978213,
+          "llm_ttft_ms": 0.0020730000001094595,
+          "llm_total_ms": 0.00243399999999383,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.720534000000043
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01651499999979933,
+          "llm_ttft_ms": 0.001983000000109314,
+          "llm_total_ms": 0.002323000000160391,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 6.981082999999671
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-3",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01982899999984511,
+          "llm_ttft_ms": 0.001291999999921245,
+          "llm_total_ms": 0.0018329999998059066,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.542884999999842
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-3",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.020680999999967753,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.3075659999999516
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-3",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.028601999999864347,
+          "llm_ttft_ms": 0.001332000000275002,
+          "llm_total_ms": 0.001712000000225089,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.550717999999961
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016314999999849533,
+          "llm_ttft_ms": 0.0012220000003253517,
+          "llm_total_ms": 0.0016420000001744484,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.680393999999978
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-3",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02927300000010291,
+          "llm_ttft_ms": 0.0021530000003622263,
+          "llm_total_ms": 0.002633999999943626,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.7094520000000557
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-4",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03170700000009674,
+          "llm_ttft_ms": 0.0016120000000228174,
+          "llm_total_ms": 0.002132999999957974,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.978592999999819
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.020349999999780266,
+          "llm_ttft_ms": 0.0018230000000585278,
+          "llm_total_ms": 0.0023439999999936845,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.765990999999758
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-4",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03535199999987526,
+          "llm_ttft_ms": 0.0022030000000086147,
+          "llm_total_ms": 0.0025829999999587017,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.863232000000153
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01719600000024002,
+          "llm_ttft_ms": 0.0018530000002101588,
+          "llm_total_ms": 0.002163000000109605,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.752900999999838
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-4",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02574800000002142,
+          "llm_ttft_ms": 0.0017730000004121393,
+          "llm_total_ms": 0.0020230000000083237,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.065141999999923
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-4",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.025427999999919848,
+          "llm_ttft_ms": 0.001471999999921536,
+          "llm_total_ms": 0.0016919999998208368,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.094712999999956
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-4",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.017144999999800348,
+          "llm_ttft_ms": 0.0010709999996834085,
+          "llm_total_ms": 0.0015619999999216816,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4287550000003648
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-4",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016213999999763473,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4354160000002594
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-4",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019738999999844964,
+          "llm_ttft_ms": 0.0012420000002748566,
+          "llm_total_ms": 0.0014820000001236622,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.235670999999911
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011597999999594322,
+          "llm_ttft_ms": 0.0008210000000872242,
+          "llm_total_ms": 0.0010410000004412723,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.805793999999878
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01199799999994866,
+          "llm_ttft_ms": 0.0007110000001375738,
+          "llm_total_ms": 0.0009210000002894958,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.0195619999999508
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-4",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01763600000003862,
+          "llm_ttft_ms": 0.0009110000000873697,
+          "llm_total_ms": 0.0011309999999866704,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.774355000000014
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010606000000279892,
+          "llm_ttft_ms": 0.000559999999950378,
+          "llm_total_ms": 0.0007209999998849526,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.5391380000000936
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01727600000003804,
+          "llm_ttft_ms": 0.0006709999997838167,
+          "llm_total_ms": 0.0008920000000216532,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.5316569999999956
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.00926400000025751,
+          "llm_ttft_ms": 0.0008910000001378648,
+          "llm_total_ms": 0.0011920000001737208,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.039770999999746
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-4",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011156999999911932,
+          "llm_ttft_ms": 0.0007409999998344574,
+          "llm_total_ms": 0.0009609999997337582,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.43226099999992584
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-4",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01788699999997334,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.41724900000008347
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-4",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03113600000006045,
+          "llm_ttft_ms": 0.0017319999997198465,
+          "llm_total_ms": 0.0019130000000586733,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.0583590000001095
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01724500000000262,
+          "llm_ttft_ms": 0.0016620000001239532,
+          "llm_total_ms": 0.0019430000002103043,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.928608999999597
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-4",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01839700000027733,
+          "llm_ttft_ms": 0.0017130000001088774,
+          "llm_total_ms": 0.001972999999907188,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4210640000001149
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-5",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02442700000028708,
+          "llm_ttft_ms": 0.0010919999999714491,
+          "llm_total_ms": 0.0013519999997697596,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.7078819999996995
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.012959000000137166,
+          "llm_ttft_ms": 0.0012219999998706044,
+          "llm_total_ms": 0.0014320000000225264,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.758303000000069
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-5",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.022603999999773805,
+          "llm_ttft_ms": 0.001532000000224798,
+          "llm_total_ms": 0.0016829999999572465,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.3268729999999778
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.012197999999898457,
+          "llm_ttft_ms": 0.0010420000003250607,
+          "llm_total_ms": 0.0011819999999715947,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.7839709999998377
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-5",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.026119000000107917,
+          "llm_ttft_ms": 0.001803000000109023,
+          "llm_total_ms": 0.0020230000000083237,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.7347319999998945
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-5",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.015413000000080501,
+          "llm_ttft_ms": 0.0017530000000078871,
+          "llm_total_ms": 0.0020230000000083237,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.3739749999999731
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-5",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.014200999999957276,
+          "llm_ttft_ms": 0.0006510000002890592,
+          "llm_total_ms": 0.0009410000002390007,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.3087180000002263
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-5",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01396100000010847,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4049399999998968
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-5",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016965999999683845,
+          "llm_ttft_ms": 0.0012320000000727305,
+          "llm_total_ms": 0.0014320000000225264,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.5832909999999174
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.00938399999995454,
+          "llm_ttft_ms": 0.0006909999997333216,
+          "llm_total_ms": 0.0008720000000721484,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.1015489999999772
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011066000000027998,
+          "llm_ttft_ms": 0.0007409999998344574,
+          "llm_total_ms": 0.0009509999999863794,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.0343139999999948
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-5",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.018998999999894295,
+          "llm_ttft_ms": 0.000661000000036438,
+          "llm_total_ms": 0.0009709999999358843,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.524593999999979
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008812999999918247,
+          "llm_ttft_ms": 0.0005510000000867876,
+          "llm_total_ms": 0.0007510000000365835,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.2630189999999857
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.014892000000145345,
+          "llm_ttft_ms": 0.000661000000036438,
+          "llm_total_ms": 0.0008520000001226435,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.3566180000002532
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008652999999867461,
+          "llm_ttft_ms": 0.0006210000001374283,
+          "llm_total_ms": 0.0008110000003398454,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.811653000000206
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-5",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010896000000229833,
+          "llm_ttft_ms": 0.0005300000002534944,
+          "llm_total_ms": 0.0007210000003396999,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.2649029999997765
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-5",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.014983000000029278,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.17131400000016583
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-5",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.06142099999988204,
+          "llm_ttft_ms": 0.000841000000036729,
+          "llm_total_ms": 0.0010619999998198182,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.9354229999999006
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008041999999932159,
+          "llm_ttft_ms": 0.0008010000001377193,
+          "llm_total_ms": 0.0009909999998853891,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.5504550000000563
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-5",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010965999999825726,
+          "llm_ttft_ms": 0.0007509999995818362,
+          "llm_total_ms": 0.0009509999999863794,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.29960499999970125
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-6",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.015973999999914668,
+          "llm_ttft_ms": 0.0005810000002384186,
+          "llm_total_ms": 0.0009209999998347485,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.6392640000003667
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.007971999999881518,
+          "llm_ttft_ms": 0.0005900000001020089,
+          "llm_total_ms": 0.0007709999999860884,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.671143999999913
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-6",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02207300000009127,
+          "llm_ttft_ms": 0.00146199999971941,
+          "llm_total_ms": 0.001732999999603635,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.1848939999999857
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009113999999954103,
+          "llm_ttft_ms": 0.0011410000001887965,
+          "llm_total_ms": 0.0013420000000223808,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.225333999999748
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-6",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02600799999981973,
+          "llm_ttft_ms": 0.0017330000000583823,
+          "llm_total_ms": 0.001942999999755557,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.635685000000194
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-6",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.017976999999973486,
+          "llm_ttft_ms": 0.0013819999999213906,
+          "llm_total_ms": 0.0016819999996187107,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.41721800000004805
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-6",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.023805000000265863,
+          "llm_ttft_ms": 0.0015330000001085864,
+          "llm_total_ms": 0.0018530000002101588,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.474203000000216
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-6",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.013619999999718857,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4379399999997986
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-6",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016775000000052387,
+          "llm_ttft_ms": 0.0006010000001879234,
+          "llm_total_ms": 0.00087100000018836,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.751890999999887
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.007891999999628752,
+          "llm_ttft_ms": 0.0005710000000362925,
+          "llm_total_ms": 0.0007510000000365835,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.4318090000001575
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010224999999991269,
+          "llm_ttft_ms": 0.000661000000036438,
+          "llm_total_ms": 0.0008520000001226435,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.9543360000002394
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-6",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0174259999998867,
+          "llm_ttft_ms": 0.0006010000001879234,
+          "llm_total_ms": 0.0007910000003903406,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.563842999999906
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.00843299999996816,
+          "llm_ttft_ms": 0.0007809999997334671,
+          "llm_total_ms": 0.000980999999683263,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.9978860000001077
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.015632999999979802,
+          "llm_ttft_ms": 0.0011510000003909227,
+          "llm_total_ms": 0.0014120000000730215,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.2161300000002484
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008632999999917956,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.0008809999999357387,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.0055999999999585
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-6",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010346000000026834,
+          "llm_ttft_ms": 0.0005809999997836712,
+          "llm_total_ms": 0.0007909999999355932,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.28126700000029814
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-6",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.012678999999934604,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.2889479999998912
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-6",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.022964000000229134,
+          "llm_ttft_ms": 0.0008809999999357387,
+          "llm_total_ms": 0.0011409999997340492,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.5859580000001188
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01433099999985643,
+          "llm_ttft_ms": 0.0014029999997546838,
+          "llm_total_ms": 0.0016829999999572465,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.24622700000009
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-6",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.014261000000260537,
+          "llm_ttft_ms": 0.0011020000001735752,
+          "llm_total_ms": 0.0013020000001233711,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.35158099999989645
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-7",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.021902999999838357,
+          "llm_ttft_ms": 0.000901000000339991,
+          "llm_total_ms": 0.00112200000012308,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.441897000000154
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010886000000027707,
+          "llm_ttft_ms": 0.001190999999835185,
+          "llm_total_ms": 0.0014219999998204003,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.220078000000285
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-7",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.021370999999817286,
+          "llm_ttft_ms": 0.0010620000002745655,
+          "llm_total_ms": 0.001573000000007596,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.9654279999999744
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009665000000040891,
+          "llm_ttft_ms": 0.0009609999997337582,
+          "llm_total_ms": 0.0012609999998858257,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.435214999999971
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-7",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.03706499999998414,
+          "llm_ttft_ms": 0.0023139999998420535,
+          "llm_total_ms": 0.002803999999741791,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.674990999999864
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-7",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01963900000009744,
+          "llm_ttft_ms": 0.001573000000007596,
+          "llm_total_ms": 0.0018230000000585278,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5709259999998721
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-7",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02233299999988958,
+          "llm_ttft_ms": 0.0017530000000078871,
+          "llm_total_ms": 0.0021230000002105953,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.5291940000001887
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-7",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016083999999864318,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.45698799999991024
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-7",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02891300000010233,
+          "llm_ttft_ms": 0.002824000000146043,
+          "llm_total_ms": 0.0033450000000811997,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.312115000000176
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010365999999976339,
+          "llm_ttft_ms": 0.0016120000000228174,
+          "llm_total_ms": 0.001772999999957392,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.8064650000001166
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.018027000000074622,
+          "llm_ttft_ms": 0.0016620000001239532,
+          "llm_total_ms": 0.0019330000000081782,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.2915049999996882
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-7",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019209000000046217,
+          "llm_ttft_ms": 0.0006009999997331761,
+          "llm_total_ms": 0.0007609999997839623,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.5169529999998304
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009223000000019965,
+          "llm_ttft_ms": 0.0010809999998855346,
+          "llm_total_ms": 0.0013619999999718857,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.4419550000002346
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.021291999999903055,
+          "llm_ttft_ms": 0.0009209999998347485,
+          "llm_total_ms": 0.001142000000072585,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.3270769999999175
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.013330000000223663,
+          "llm_ttft_ms": 0.0010619999998198182,
+          "llm_total_ms": 0.001281999999719119,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.734821999999895
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-7",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.013410000000021682,
+          "llm_ttft_ms": 0.0010119999997186824,
+          "llm_total_ms": 0.0012019999999210995,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.45616700000027777
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-7",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011266999999861582,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.18287099999997736
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-7",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.017294999999649008,
+          "llm_ttft_ms": 0.0006109999999353022,
+          "llm_total_ms": 0.0007719999998698768,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.9165750000001935
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008392000000185362,
+          "llm_ttft_ms": 0.0005409999998846615,
+          "llm_total_ms": 0.0007310000000870787,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.138394000000062
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-7",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.011806999999862455,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.0009210000002894958,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.37777100000039354
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "simple-booking-8",
+      "category": "simple-booking",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01726600000029066,
+          "llm_ttft_ms": 0.0005710000000362925,
+          "llm_total_ms": 0.0007510000000365835,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.0507440000001225
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009544000000005326,
+          "llm_ttft_ms": 0.0009719999998196727,
+          "llm_total_ms": 0.0011620000000220898,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.239563999999973
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "constraints-8",
+      "category": "constraints",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01839800000016112,
+          "llm_ttft_ms": 0.0007420000001729932,
+          "llm_total_ms": 0.000931999999920663,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.0885809999999765
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.00938399999995454,
+          "llm_ttft_ms": 0.0007709999999860884,
+          "llm_total_ms": 0.0011719999997694686,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.1129329999998845
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "fully-booked-8",
+      "category": "fully-booked",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.02511699999922712,
+          "llm_ttft_ms": 0.0015919999996185652,
+          "llm_total_ms": 0.0018129999998564017,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.030580999999984
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "faq-8",
+      "category": "faq",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.014911999999640102,
+          "llm_ttft_ms": 0.001421999999365653,
+          "llm_total_ms": 0.0016519999999218271,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.37350399999922956
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "out-of-scope-8",
+      "category": "out-of-scope",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019378999999389634,
+          "llm_ttft_ms": 0.0009820000004765461,
+          "llm_total_ms": 0.001382000000376138,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4449799999993047
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "emergency-8",
+      "category": "emergency",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.06214200000067649,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.64539700000023
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "cancel-8",
+      "category": "cancel",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 3,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.024877000000742555,
+          "llm_ttft_ms": 0.001142000000072585,
+          "llm_total_ms": 0.001421999999365653,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.0423519999994824
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.05022499999995489,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.0009819999995670514,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.488654000000679
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009914999999637075,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.0009209999998347485,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 1.0372980000001917
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "reschedule-8",
+      "category": "reschedule",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 4,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.016705000000001746,
+          "llm_ttft_ms": 0.0006510000002890592,
+          "llm_total_ms": 0.0008310000002893503,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.243729999999232
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.009023000000524917,
+          "llm_ttft_ms": 0.0011819999999715947,
+          "llm_total_ms": 0.0013819999994666432,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.6624710000005507
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.015574000000015076,
+          "llm_ttft_ms": 0.0006510000002890592,
+          "llm_total_ms": 0.0008310000002893503,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.490907000000334
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.013199999999415013,
+          "llm_ttft_ms": 0.0010220000003755558,
+          "llm_total_ms": 0.0013120000003254972,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 4.3906510000006165
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "returning-memory-8",
+      "category": "returning-memory",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.01712500000030559,
+          "llm_ttft_ms": 0.0009710000003906316,
+          "llm_total_ms": 0.0012420000002748566,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.412612000000081
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "adversarial-8",
+      "category": "adversarial",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.015702999999120948,
+          "llm_ttft_ms": 0,
+          "llm_total_ms": 0,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.21932600000036473
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "asr-noise-8",
+      "category": "asr-noise",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 2,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.0178860000005443,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.0009320000008301577,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 2.5734659999998257
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008633000000372704,
+          "llm_ttft_ms": 0.0005809999993289239,
+          "llm_total_ms": 0.0007809999997334671,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.801237000000583
+        }
+      ],
+      "failureExample": null
+    },
+    {
+      "id": "hinglish-8",
+      "category": "hinglish",
+      "mode": "mock",
+      "passed": true,
+      "checks": {
+        "bookingCount": true,
+        "urgent": true,
+        "answer": true,
+        "slot": true,
+        "cancelled": true,
+        "memory": true
+      },
+      "error": false,
+      "groundingViolations": 0,
+      "turns": 1,
+      "repairs": 0,
+      "fallbacks": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "latency": [
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.019668999999339576,
+          "llm_ttft_ms": 0.0019130000000586733,
+          "llm_total_ms": 0.002142999999705353,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 0.4328320000004169
+        }
+      ],
+      "failureExample": null
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "mode": "mock",
+  "source": "artifacts/eval/mock-MockLLM-baseline.json",
+  "tokensIn": 0,
+  "tokensOut": 0,
+  "voice": "See artifacts/latency/live-voice.json when available"
+}

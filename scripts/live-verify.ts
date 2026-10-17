@@ -1,19 +1,198 @@
-import {config} from 'dotenv';config({path:'.env.local',quiet:true});
-import {mkdir,writeFile} from 'node:fs/promises';import {GemmaClient,assertGemma} from '../packages/llm/src/index.js';import {runEval,evalStore} from '../eval/run.js';import {Voice} from '../apps/server/src/voice.js';import {costModel} from './cost-model.js';
-export async function liveVerify(){
- await mkdir('artifacts',{recursive:true});const status:any={at:new Date().toISOString(),mode:'live-requested',status:'running',steps:[],missing:[]};const save=()=>writeFile('artifacts/live-verify.json',JSON.stringify(status,null,2));await save();
- if(!process.env.LLM_API_KEY&&!process.env.DO_INFERENCE_KEY){status.status='blocked';status.missing=['LLM_API_KEY'];status.reason='Valid Gemma access needed. No live results produced.';await save();return status;}
- try{const discovery=new GemmaClient();const ids=await discovery.discover();status.steps.push({step:'model-discovery',status:'passed',gemmaModels:ids});await save();const candidates=ids.slice(0,2),measurements:any[]=[];
-  for(const id of candidates){assertGemma(id);const client=new GemmaClient(undefined,id);const sample=await client.complete('Reply in one short sentence: disclose that you are an automated assistant.');measurements.push({model:id,ttftMs:sample.ttftMs,totalMs:sample.totalMs,tokensIn:sample.tokensIn,tokensOut:sample.tokensOut,response:sample.text});}
-  const maxMs=Number(process.env.LLM_MAX_TTFT_MS||4000);const size=(id:string)=>Number(id.match(/(\d+)b/i)?.[1]||0);const acceptable=measurements.filter(m=>m.ttftMs<=maxMs).sort((a,b)=>size(b.model)-size(a.model));const chosen=acceptable[0]||[...measurements].sort((a,b)=>a.ttftMs-b.ttftMs)[0];process.env.LLM_MODEL=chosen.model;
-  await writeFile('artifacts/model-selection.json',JSON.stringify({mode:'live',provider:discovery.base,chosen:chosen.model,maxTtftMs:maxMs,acceptable:!!acceptable.length,measurements,systemRole:'instructions folded into first user message'},null,2));
-  const client=new GemmaClient(undefined,chosen.model);const smoke=await runEval({smoke:true,llm:client,model:chosen.model,resume:true});status.steps.push({step:'text-smoke',artifact:smoke.path,passed:smoke.passed,total:smoke.total});await save();
-  if(process.env.ELEVENLABS_API_KEY){const store=await evalStore();try{const voice=new Voice(store);const catalog=await voice.discover();const start=performance.now();const chunks:Uint8Array[]=[];let first=0;for await(const chunk of voice.speak('This is an automated assistant. I can help book a fictional haircut.')){if(!first)first=performance.now()-start;chunks.push(chunk);}const audio=Buffer.concat(chunks);const stt=await voice.transcribe(new Blob([audio],{type:'audio/mpeg'}),0);await mkdir('artifacts/latency',{recursive:true});await writeFile('artifacts/latency/live-voice.json',JSON.stringify({mode:'live',catalog,ttsFirstAudioMs:first,roundTripMs:performance.now()-start,sttMs:stt.ms,transcript:stt.text,audioStored:false,sampleCalls:1,transcribedSeconds:'duration not measured'},null,2));status.steps.push({step:'voice',status:'passed'});}catch{status.steps.push({step:'voice',status:'unreachable',reason:'Check ElevenLabs key, models and quota'});}finally{await store.close();}}else status.missing.push('ELEVENLABS_API_KEY');
-  const report=await runEval({llm:client,model:chosen.model,resume:true});status.steps.push({step:'full-eval',artifact:report.path,completed:report.completed,total:report.total,passed:report.passed});await costModel(report);await save();
-  for(const variant of [{retrieval:false},{repair:false}]){const r=await runEval({llm:client,model:chosen.model,resume:true,...variant});status.steps.push({step:'ablation',artifact:r.path,completed:r.completed});await save();}
-  if(process.env.LLM_MODEL_ALT){assertGemma(process.env.LLM_MODEL_ALT);const r=await runEval({llm:new GemmaClient(undefined,process.env.LLM_MODEL_ALT),model:process.env.LLM_MODEL_ALT,resume:true});status.steps.push({step:'alternate',artifact:r.path});}
-  status.status=report.completed===report.total?'completed':'checkpointed';await writeFile('docs/EVAL.md',`# Evaluation\n\nLive verification ran at ${status.at}. Model: ${chosen.model}; provider: ${discovery.base}.\n\n${report.passed}/${report.completed} completed scenarios passed out of ${report.total} planned. Wilson 95% interval: ${JSON.stringify(report.wilson95)}. Full details and failure examples: \`${report.path}\`.\n\nModel selection: \`artifacts/model-selection.json\`. Voice: ${status.missing.includes('ELEVENLABS_API_KEY')?'not measured (key missing)':'see live-verify report for actual voice outcome'}.\n\nCost: \`artifacts/cost/cost-model.json\`; closed-API prices are hypothetical. Voice costs are identical under either model and may dominate. Local SQLite evaluates application behavior; this is not an Atlas benchmark.\n`);
- }catch{status.status='blocked';status.reason='Provider request failed; inspect doctor and saved checkpoints. Secrets and provider error bodies suppressed.';}
- await save();console.log(JSON.stringify({status:status.status,report:'artifacts/live-verify.json',missing:status.missing}));return status;
+import { config } from "dotenv";
+config({ path: ".env.local", quiet: true });
+import { mkdir, writeFile } from "node:fs/promises";
+import { GemmaClient, assertGemma } from "../packages/llm/src/index.js";
+import { runEval, evalStore } from "../eval/run.js";
+import { Voice } from "../apps/server/src/voice.js";
+import { costModel } from "./cost-model.js";
+export async function liveVerify() {
+  await mkdir("artifacts", { recursive: true });
+  const status: any = {
+    at: new Date().toISOString(),
+    mode: "live-requested",
+    status: "running",
+    steps: [],
+    missing: [],
+  };
+  const save = () =>
+    writeFile("artifacts/live-verify.json", JSON.stringify(status, null, 2));
+  await save();
+  if (!process.env.LLM_API_KEY && !process.env.DO_INFERENCE_KEY) {
+    status.status = "blocked";
+    status.missing = ["LLM_API_KEY"];
+    status.reason = "Valid Gemma access needed. No live results produced.";
+    await save();
+    return status;
+  }
+  try {
+    const discovery = new GemmaClient();
+    const ids = await discovery.discover();
+    status.steps.push({
+      step: "model-discovery",
+      status: "passed",
+      gemmaModels: ids,
+    });
+    await save();
+    const candidates = ids.slice(0, 2),
+      measurements: any[] = [];
+    for (const id of candidates) {
+      assertGemma(id);
+      const client = new GemmaClient(undefined, id);
+      const sample = await client.complete(
+        "Reply in one short sentence: disclose that you are an automated assistant.",
+      );
+      measurements.push({
+        model: id,
+        ttftMs: sample.ttftMs,
+        totalMs: sample.totalMs,
+        tokensIn: sample.tokensIn,
+        tokensOut: sample.tokensOut,
+        response: sample.text,
+      });
+    }
+    const maxMs = Number(process.env.LLM_MAX_TTFT_MS || 4000);
+    const size = (id: string) => Number(id.match(/(\d+)b/i)?.[1] || 0);
+    const acceptable = measurements
+      .filter((m) => m.ttftMs <= maxMs)
+      .sort((a, b) => size(b.model) - size(a.model));
+    const chosen =
+      acceptable[0] || [...measurements].sort((a, b) => a.ttftMs - b.ttftMs)[0];
+    process.env.LLM_MODEL = chosen.model;
+    await writeFile(
+      "artifacts/model-selection.json",
+      JSON.stringify(
+        {
+          mode: "live",
+          provider: discovery.base,
+          chosen: chosen.model,
+          maxTtftMs: maxMs,
+          acceptable: !!acceptable.length,
+          measurements,
+          systemRole: "instructions folded into first user message",
+        },
+        null,
+        2,
+      ),
+    );
+    const client = new GemmaClient(undefined, chosen.model);
+    const smoke = await runEval({
+      smoke: true,
+      llm: client,
+      model: chosen.model,
+      resume: true,
+    });
+    status.steps.push({
+      step: "text-smoke",
+      artifact: smoke.path,
+      passed: smoke.passed,
+      total: smoke.total,
+    });
+    await save();
+    if (process.env.ELEVENLABS_API_KEY) {
+      const store = await evalStore();
+      try {
+        const voice = new Voice(store);
+        const catalog = await voice.discover();
+        const start = performance.now();
+        const chunks: Uint8Array[] = [];
+        let first = 0;
+        for await (const chunk of voice.speak(
+          "This is an automated assistant. I can help book a fictional haircut.",
+        )) {
+          if (!first) first = performance.now() - start;
+          chunks.push(chunk);
+        }
+        const audio = Buffer.concat(chunks);
+        const stt = await voice.transcribe(
+          new Blob([audio], { type: "audio/mpeg" }),
+          0,
+        );
+        await mkdir("artifacts/latency", { recursive: true });
+        await writeFile(
+          "artifacts/latency/live-voice.json",
+          JSON.stringify(
+            {
+              mode: "live",
+              catalog,
+              ttsFirstAudioMs: first,
+              roundTripMs: performance.now() - start,
+              sttMs: stt.ms,
+              transcript: stt.text,
+              audioStored: false,
+              sampleCalls: 1,
+              transcribedSeconds: "duration not measured",
+            },
+            null,
+            2,
+          ),
+        );
+        status.steps.push({ step: "voice", status: "passed" });
+      } catch {
+        status.steps.push({
+          step: "voice",
+          status: "unreachable",
+          reason: "Check ElevenLabs key, models and quota",
+        });
+      } finally {
+        await store.close();
+      }
+    } else status.missing.push("ELEVENLABS_API_KEY");
+    const report = await runEval({
+      llm: client,
+      model: chosen.model,
+      resume: true,
+    });
+    status.steps.push({
+      step: "full-eval",
+      artifact: report.path,
+      completed: report.completed,
+      total: report.total,
+      passed: report.passed,
+    });
+    await costModel(report);
+    await save();
+    for (const variant of [{ retrieval: false }, { repair: false }]) {
+      const r = await runEval({
+        llm: client,
+        model: chosen.model,
+        resume: true,
+        ...variant,
+      });
+      status.steps.push({
+        step: "ablation",
+        artifact: r.path,
+        completed: r.completed,
+      });
+      await save();
+    }
+    if (process.env.LLM_MODEL_ALT) {
+      assertGemma(process.env.LLM_MODEL_ALT);
+      const r = await runEval({
+        llm: new GemmaClient(undefined, process.env.LLM_MODEL_ALT),
+        model: process.env.LLM_MODEL_ALT,
+        resume: true,
+      });
+      status.steps.push({ step: "alternate", artifact: r.path });
+    }
+    status.status =
+      report.completed === report.total ? "completed" : "checkpointed";
+    await writeFile(
+      "docs/EVAL.md",
+      `# Evaluation\n\nLive verification ran at ${status.at}. Model: ${chosen.model}; provider: ${discovery.base}.\n\n${report.passed}/${report.completed} completed scenarios passed out of ${report.total} planned. Wilson 95% interval: ${JSON.stringify(report.wilson95)}. Full details and failure examples: \`${report.path}\`.\n\nModel selection: \`artifacts/model-selection.json\`. Voice: ${status.missing.includes("ELEVENLABS_API_KEY") ? "not measured (key missing)" : "see live-verify report for actual voice outcome"}.\n\nCost: \`artifacts/cost/cost-model.json\`; closed-API prices are hypothetical. Voice costs are identical under either model and may dominate. Local SQLite evaluates application behavior; this is not an Atlas benchmark.\n`,
+    );
+  } catch {
+    status.status = "blocked";
+    status.reason =
+      "Provider request failed; inspect doctor and saved checkpoints. Secrets and provider error bodies suppressed.";
+  }
+  await save();
+  console.log(
+    JSON.stringify({
+      status: status.status,
+      report: "artifacts/live-verify.json",
+      missing: status.missing,
+    }),
+  );
+  return status;
 }
-if(process.argv[1]?.endsWith('live-verify.ts'))await liveVerify();
+if (process.argv[1]?.endsWith("live-verify.ts")) await liveVerify();
