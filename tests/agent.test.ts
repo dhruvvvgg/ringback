@@ -37,3 +37,30 @@ test("emergency creates urgent record; injection never books", async () => {
   expect(r.text).toContain("cannot");
   expect(c.pending).toBeUndefined();
 });
+
+test("address can be supplied after a proposed plumbing slot; caller history is retained", async () => {
+  const a = new Receptionist(s);
+  const c = await a.start(
+    "copper-pipe",
+    "synthetic-address",
+    "Robin Demo",
+    "demo-address",
+  );
+  const date = DateTime.now().plus({ weeks: 4 }).startOf("week").toISODate();
+  await a.turn(c, `Book a plumbing visit on ${date} at 12:00`);
+  expect(c.pending?.address).toBeUndefined();
+  await a.turn(c, "address: Fictional Northbank Street");
+  const result = await a.turn(c, "yes");
+  expect(result.outcome).toBe("booked");
+  const booking = await s.db
+    .collection("appointments")
+    .findOne({ callerId: c.callerId, businessId: c.businessId });
+  expect(booking?.address).toBe("Fictional Northbank Street");
+  const memory = await s.db
+    .collection("callers")
+    .findOne({ callerId: c.callerId, businessId: c.businessId });
+  expect(memory?.pastServices).toContain("repair");
+  expect((await a.start("copper-pipe", c.callerId)).turns[0].text).toContain(
+    "Welcome back",
+  );
+});

@@ -425,7 +425,7 @@ export class Receptionist {
         }
       } else if (
         ["book", "availability", "reschedule"].includes(intent.intent) ||
-        (call.pending && (intent.name || intent.phone))
+        (call.pending && (intent.name || intent.phone || intent.address))
       ) {
         const service =
           b.services.find(
@@ -471,7 +471,7 @@ export class Receptionist {
         });
         if (
           call.pending &&
-          (intent.name || intent.phone) &&
+          (intent.name || intent.phone || intent.address) &&
           !intent.date &&
           !intent.time
         ) {
