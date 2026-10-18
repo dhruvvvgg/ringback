@@ -1,10 +1,26 @@
-# STATUS — valid Gemma access needed
+# STATUS — local demo verified; live access blocked
 
-## Owner procedure: three steps
+## What is still left for the owner
 
-1. Deploy the reviewed repository with the **free** `render.yaml` blueprint using [DEPLOY.md](docs/DEPLOY.md). This run could not create a Render service. Add `LLM_API_KEY` (Google AI Studio, Gemma access only), optionally `ELEVENLABS_API_KEY`, and a valid `MONGODB_URI` for persistent appointments in Render settings. Keep generated `ADMIN_TOKEN` private. No secret belongs in Git or chat.
-2. Open the owner workspace on your actual Render URL using that private token. In **Durability & evidence**, click **Run live verification** after the keys are applied. The protected `POST /admin/live-verify` runs the same implementation as `npm run live:verify`; no local setup or code change is required. Without ElevenLabs, the product stays text-chat only and the voice category remains unclaimed.
-3. Use **Refresh run status**, then **Download evidence**. Review actual completed counts, failures, model selection, voice outcome and cost assumptions. Re-run to resume checkpoints after quota recovery. Save the evidence outside Render before an ephemeral restart, then update the post with only verified live claims.
+1. Make the Render, MongoDB Atlas, ElevenLabs and DigitalOcean connector tools available to this execution session. Account signup/connection was reported by the owner, but none of their tools are callable here. No live resources were provisioned.
+2. Deploy the reviewed free Render blueprint after Atlas provisioning, and add missing runtime bindings through Render settings: `MONGODB_URI`, generated private `ADMIN_TOKEN`, Gemma-capable `LLM_API_KEY`, and optional `ELEVENLABS_API_KEY`. No Render URL exists yet. Run deployed health/booking/workflow smoke and live verification; save evidence outside ephemeral storage.
+3. Record and publicly host a real demo video using verified behavior.
+4. Run a consented first-user trial and record only the participant's actual feedback.
+5. Add the real agent-session embed, review claims/evidence, and publish the post with `devchallenge, hf26challenge`.
+
+## Latest unattended continuation — 18 October 2026 (IST)
+
+GitHub read/write access works. Existing work is published in [PR #1](https://github.com/dhruvvvgg/ringback/pull/1), branch `feat/ringback-implementation`; `main` contains the original brief. The refreshed secret/history/client-bundle audit passed before this continuation's first push.
+
+The tool registry exposes no Render, MongoDB Atlas, ElevenLabs or DigitalOcean tools and no connector-search tool. `codex mcp list` also reports no configured servers. A harmless connector call therefore cannot be issued for any of the four; this is **unavailable**, not an API response or an authentication failure. [Connector discovery evidence](artifacts/connectors/availability.json) records each requested read operation and its unexecuted status. The owner-reported connections may exist outside this session; their capabilities are not exposed to this run.
+
+Process bindings, `.env.local`, and `.env` were checked by presence only. No `LLM_API_KEY`, `ELEVENLABS_API_KEY`, `MONGODB_URI`, Render API key, Atlas management keys, or DigitalOcean inference/management key was available. The existing local owner token was present and never printed. Connector authorization would not itself establish runtime API-key availability.
+
+The earlier final audit below remains historical evidence; its local services, test counts and timings are not newly measured deployment results.
+
+### Step 2 — Atlas and embeddings: blocked
+
+No Atlas tools or management/runtime credentials were exposed. M0 cluster creation, dedicated database user/password generation, access-list changes, Atlas application/concurrency testing, and vector index creation could not be executed. No password or access-list entry was created without a destination. The refreshed in-process embedding attempt returned no vector (zero dimensions); [embedding retry evidence](artifacts/connectors/embedding-retry.json). DigitalOcean embedding discovery is also blocked by absent tools/key. Retrieval remains keyword-only. The prior one-winner/40-attempt result is **local MongoDB**, not Atlas.
 
 ## Outcome
 
