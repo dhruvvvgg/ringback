@@ -8,7 +8,7 @@ tags: devchallenge, hf26challenge
 
 A small-business owner cannot answer every call while cutting hair, fixing a leak or teaching a lesson. Ringback is a receptionist console for that gap: answer from the business's own information, find a real slot, repeat the details, and book only after the caller confirms. The owner gets a diary, conversation feed, messages and the workflow status behind each appointment.
 
-This version is a working **text demonstration with MockLLM**. I built the Gemma and ElevenLabs adapters, but the provider keys were scheduled to arrive after the build. I cannot honestly show a live spoken Gemma booking yet. The demo keeps that limitation visible instead of disguising scripted responses as model output.
+This version is a working **text demonstration with MockLLM**. I built the Gemma and ElevenLabs adapters, but their runtime keys are still absent from the execution environment. The owner reported connecting the service accounts; their connector tools are not exposed to this session. I cannot honestly show a live spoken Gemma booking yet. The demo keeps that limitation visible instead of disguising scripted responses as model output.
 
 ## Demo
 
@@ -26,7 +26,7 @@ The demonstration script is in `docs/DEMO_SCRIPT.md`. Start with the fictional s
 
 Repository: https://github.com/dhruvvvgg/ringback
 
-The source is MIT licensed. The prepared checkout contains the application and commits; the owner must push/review the repository before this link can be treated as a published release. `README.md` has the quickstart, environment bindings and exact verification commands. `STATUS.md` is the final list of what actually ran and what did not.
+The source is MIT licensed. The implementation, artifacts and documentation are pushed in [PR #1](https://github.com/dhruvvvgg/ringback/pull/1). The owner still needs to review and merge the PR; `main` currently contains the original brief. `README.md` has the quickstart, environment bindings and exact verification commands. `STATUS.md` is the final list of what actually ran and what did not.
 
 ## How I Built It
 
@@ -46,7 +46,7 @@ Here is the evidence available today. The model-related row is deliberately labe
 | Concurrent MongoDB booking attempts | 1/40 reservation accepted | `artifacts/mongo/concurrency.json` |
 | Worker-kill confirmation count | 1 | `artifacts/chaos/run-1792295915458.json` |
 | Capped-container observation | Passed; sampled peak 338.2 MiB under the configured cap | `artifacts/deploy/container-memory.json` |
-| Live Gemma / spoken booking | **Not measured — keys missing** | `artifacts/live-verify.json` |
+| Live Gemma / spoken booking | **Not measured — keys missing; zero live scenarios completed** | `artifacts/live-verify.json` |
 | Live cost per call | **Not measured** | `artifacts/cost/cost-model.json` |
 
 The synthetic scenario interval is reported in `docs/EVAL.md`, with the caveat that template variants are correlated. It is not a real-world accuracy estimate. The no-retrieval and no-repair ablations are also mock; identical passing results do not establish a model improvement.
@@ -63,7 +63,7 @@ The open-weight model is the intended conversational brain, and the client refus
 
 The privacy claim needs precision. Hosted inference receives caller text. Hosted ElevenLabs receives audio/text. Self-hosting is **designed into the interface**, but I did not demonstrate it because the official Gemma weight request required authenticated license access. I cannot claim that the deployed demo keeps all data on one machine.
 
-The cost harness compares measured LLM tokens with an explicitly hypothetical closed-API rate. Today its result is null because no live tokens were measured. Eligible free-tier inference is an assumption to verify, not a permanent pricing guarantee. **Voice cost is identical under either LLM and may dominate the total.** Any open-model saving applies to the LLM portion, not the whole call. `npm run live:verify` will produce the missing catalog, evaluation, latency and cost evidence once the owner supplies working keys.
+The cost harness can compare reported live LLM tokens with an explicitly hypothetical closed-API rate. Today its cost fields are null because no live tokens were measured: 96 evaluated mock scenarios correspond to **zero measured live calls**, and no provider billing was measured. Eligible free-tier inference is an assumption to verify, not a permanent pricing guarantee. **Voice cost is identical under either LLM and may dominate the total.** Any open-model saving applies to the LLM portion, not the whole call. `npm run live:verify` will produce the missing catalog, evaluation, latency and cost evidence once the owner supplies working keys.
 
 ## My Agent Session
 

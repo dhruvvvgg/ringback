@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-18T04:52:07.704Z",
+  "at": "2026-10-18T04:55:28.879Z",
   "passed": true,
-  "filesScanned": 120,
-  "commitsScanned": 10,
+  "filesScanned": 127,
+  "commitsScanned": 16,
   "clientBundleScanned": true,
   "envIgnored": true,
   "knownSecretValuesNeverPrinted": true,

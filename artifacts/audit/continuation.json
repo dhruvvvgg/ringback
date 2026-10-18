@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-18T04:55:28.414495+00:00",
+  "status": "independent-work-complete-live-steps-blocked",
+  "pullRequest": "https://github.com/dhruvvvgg/ringback/pull/1",
+  "branch": "feat/ringback-implementation",
+  "connectors": "artifacts/connectors/availability.json",
+  "atlas": {
+    "status": "blocked",
+    "created": false,
+    "concurrencyAgainstAtlas": "not-run",
+    "vectorIndex": "not-created"
+  },
+  "render": {
+    "status": "blocked",
+    "url": null,
+    "deployedSmoke": "not-run"
+  },
+  "gemma": {
+    "status": "blocked-missing-key",
+    "liveScenariosCompleted": 0,
+    "source": "artifacts/live-verify.json"
+  },
+  "voice": {
+    "status": "blocked-missing-key",
+    "liveRoundTrips": 0,
+    "firstAudioMs": null
+  },
+  "digitalOcean": {
+    "status": "does-not-apply",
+    "claimRemoved": true
+  },
+  "retrieval": {
+    "mode": "keyword",
+    "embeddingRetryDimensions": 0
+  },
+  "cost": {
+    "evaluatedMockScenarios": 96,
+    "measuredLiveCalls": 0,
+    "billingMeasured": false,
+    "liveCost": null
+  },
+  "continuationVerification": {
+    "targetedCostTests": {
+      "passed": 3,
+      "failed": 0,
+      "fixtureMode": "synthetic; not live provider evidence",
+      "source": "artifacts/tests/continuation-cost.json"
+    },
+    "typecheck": "passed",
+    "lint": "passed",
+    "historicalFullSuiteRerun": false
+  },
+  "ownerWork": [
+    "Expose connector tools to the execution session",
+    "Deploy free Render blueprint after Atlas provisioning; supply missing runtime bindings",
+    "Run deployed smoke and live verification",
+    "Record a real demo video",
+    "Run a consented first-user trial",
+    "Add real agent-session embed and publish reviewed post"
+  ]
+}

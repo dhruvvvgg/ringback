@@ -1,6 +1,10 @@
 {
   "mode": "mock",
-  "measuredCalls": 96,
+  "evaluatedScenarios": 96,
+  "measuredCalls": 0,
+  "liveTokenSampleAvailable": false,
+  "callBasis": "One completed evaluation scenario, not a production phone call",
+  "billingMeasured": false,
   "source": "artifacts/eval/mock-MockLLM-baseline.json",
   "averageTokensIn": null,
   "averageTokensOut": null,
@@ -28,5 +32,5 @@
       "basis": "Enter your actual ElevenLabs plan rates; identical under either LLM"
     }
   },
-  "caveat": "Voice cost is identical for either LLM and may dominate. Mock token usage is not live cost evidence. No live estimate without measured tokens."
+  "caveat": "Voice cost is identical for either LLM and may dominate. Mock scenarios are not measured live calls. No live estimate without measured tokens. Prices are assumptions, not measured provider billing."
 }

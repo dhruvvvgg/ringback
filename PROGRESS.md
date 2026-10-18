@@ -27,3 +27,18 @@
 Phase notes: live Gemma/ElevenLabs and Atlas checks use documented credential/network fallbacks; see final STATUS for unmet live criteria. Temporal tests are real (time-skipping server).
 
 Final audit evidence: README quickstart passed in a fresh clone; real Mongo concurrency, time-skipping and worker-kill tests passed. Live-provider and external-deployment acceptance remains explicitly unmet in STATUS.md.
+
+## Connector/deployment continuation — 18 October 2026 (IST)
+
+- [x] Enumerate current tools and local MCP registry; document that all four service connector toolsets are unavailable (harmless calls cannot be issued).
+- [x] Recheck binding presence without printing values; runtime/provider and management credentials absent except the existing local owner token.
+- [x] Audit source/history/client bundle and push work to the existing PR.
+- [x] Assess Atlas M0/user/access-list/vector work; blocked by absent connector and credentials. Retry local embeddings; no vector produced.
+- [x] Assess free Render deployment and deployed smoke; blocked, no service/URL.
+- [x] Run live verification missing-key guard; zero live scenarios completed.
+- [x] Assess real ElevenLabs STT/TTS; key and connector absent, latency unmeasured.
+- [x] Assess DigitalOcean inference; unavailable, does not apply; remove README/post integration references.
+- [x] Correct cost sample attribution and verify with three targeted regression tests, typecheck and lint.
+- [x] Update current evidence, owner checklist, evaluation, post, decisions and work report.
+
+External provisioning, live model/voice tests and deployed smoke are **blocked**, not passed. Final STATUS lists the precise owner prerequisites; the preceding phase checklist remains the original fallback-based local build record.

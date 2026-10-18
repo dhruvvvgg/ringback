@@ -38,6 +38,12 @@ Re-ran `npm run live:verify`; it completed its missing-binding guard and wrote a
 
 No DigitalOcean connector tools, inference key, or management token were exposed. A catalog/account call, Gemma inference and open-embedding inference could not be issued. No resource or access key was created. **DigitalOcean does not apply to this submission's verified integrations.** Removed its integration/binding entry from README and its inference/category references from POST_DRAFT. [Attempt status](artifacts/connectors/digitalocean.json).
 
+### Step 7 — evidence and publication
+
+README, EVAL, POST_DRAFT, this STATUS and the cost model now reflect the access check. The 96/96 score remains labeled **mock application regression**, never model quality. Cost output separates 96 evaluated mock scenarios from **zero measured live calls**; live token, voice and cost measurements remain unavailable. Assumed prices are not provider billing. Three targeted cost-reporting regression tests passed; typecheck and lint passed. [Test artifact](artifacts/tests/continuation-cost.json). Earlier full application/browser/MongoDB/Temporal/container tests were not rerun for this continuation.
+
+Each priority step was committed and pushed to the existing PR. No merge, public post, real demo/trial or paid resource action occurred. The exact blocked operations and current evidence are summarized in [continuation audit](artifacts/audit/continuation.json). The historical local-build audit follows.
+
 ## Outcome
 
 The local development/demo workflow is implemented and verified. The live spoken-booking criterion is **unmet** because provider keys were absent. Atlas/DO/Render management tools were not exposed, so no external deployment or data service was provisioned. This is a deploy-ready, honestly labeled mock/text demonstration, not a claim of production or live-model readiness.
@@ -66,7 +72,7 @@ Actual model serving calls: **MockLLM**, deterministic local scripts, no hosted 
 
 `artifacts/audit/final.json` is the consolidated audit ledger. Mock scenario success and mock turn timings are **not headline Gemma or voice benchmarks**. Every measured claim in EVAL/post traces to artifacts. Live token/cost and voice-latency values remain null/unmeasured; the cost model labels closed-API rates as hypothetical and states that voice cost is identical under either LLM and may dominate.
 
-## Final doctor report
+## Final doctor report (original local audit)
 
 `npm run doctor` completed after local services were restored:
 
@@ -103,6 +109,6 @@ README, EVAL, DEMO_SCRIPT, FIRST_USER_KIT, POST_DRAFT, deployment/self-hosting/T
 
 Owner tasks: review/push the committed source; deploy the free blueprint and supply missing runtime bindings; run/download live verification; conduct and record a first-user trial with consent; optionally claim/attach a `.tech` domain; save/embed the real agent session; review or replace and publicly host the demo video; review/finalize the post and verified prize categories; publish with `devchallenge, hf26challenge`. Record any post-deadline commits in the README section. These public submission actions have not been performed.
 
-## Final repository state
+## Final repository state (original local audit)
 
 All phases are checked in `PROGRESS.md` with external unmet criteria documented here. Source and artifacts were scanned for secrets; commit authors/messages contain no AI attribution, session URL or Co-Authored-By trailer. This final STATUS is written after the audit and included in the final commit. Use `git log -1` for that commit identifier.

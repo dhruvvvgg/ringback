@@ -4,6 +4,8 @@ A small-business receptionist for the calls you cannot take. Ringback answers fr
 
 **Current state:** working text demo with **MockLLM**, keyword retrieval and a labeled SQLite fallback. Real local Temporal and MongoDB integration tests run here. Live Gemma, ElevenLabs, Atlas Vector Search and a Render deployment have not been verified. Do not treat mock timings or scenario results as model benchmarks. [STATUS.md](STATUS.md) is the final evidence and limitations ledger.
 
+**Latest connector recheck (18 October 2026, IST):** the owner reported connecting the services, but this session exposes none of their callable tools and no runtime Gemma, ElevenLabs or MongoDB credentials. No external resource or deployed URL was created. See [connector evidence](artifacts/connectors/availability.json) and the owner checklist at the top of STATUS. The source and all work are pushed in [PR #1](https://github.com/dhruvvvgg/ringback/pull/1); the comprehensive [work report](WORK_REPORT.md) records the build.
+
 ![Owner dashboard](docs/img/dashboard.png)
 
 ## Quickstart
@@ -105,7 +107,7 @@ Render's free instance can sleep and its filesystem is ephemeral. Local Temporal
 
 ## MCP setup and development sources
 
-The requested Render, MongoDB and ElevenLabs MCP servers were not available in the execution session. `codex mcp list` returned none. Mastra's standard registration was blocked by read-only platform config; `scripts/read-mastra-docs.ts` successfully calls its installed stdio server instead. The code follows current package docs and official Temporal, Google and ElevenLabs sources, listed in [DECISIONS.md](docs/DECISIONS.md). MCP access never implies possession of raw runtime API keys.
+On both the original build and the latest recheck, the requested Render, MongoDB and ElevenLabs connector tools were not exposed in the execution session. This does not disprove the owner's account connections; it prevents this run from invoking them. `codex mcp list` returned none. Mastra's standard registration was blocked by read-only platform config; `scripts/read-mastra-docs.ts` successfully calls its installed stdio server instead. The code follows current package docs and official Temporal, Google and ElevenLabs sources, listed in [DECISIONS.md](docs/DECISIONS.md). MCP access never implies possession of raw runtime API keys.
 
 ## Demo, trial and publication
 

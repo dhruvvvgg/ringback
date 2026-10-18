@@ -14,3 +14,8 @@
 - 2026-10-18: Embedding config/tokenizer files downloaded from pinned Xenova revision 751bff37182d3f1213fa05d7196b954e230abad9, but ONNX weights were unavailable through the network path. Native fetch also failed DNS. No embedding result or vector benchmark is claimed.
 - 2026-10-18: Official Google Gemma local-weight request returned HTTP 401 without license authentication. Self-hosting remains designed-to, not demonstrated. No paid GPU or substitute Gemini model was used.
 - 2026-10-18: Skip ElevenLabs hosted-agent-platform stretch evaluation because core live voice credentials are absent. The primary architecture remains our own Gemma turn loop.
+
+- 2026-10-18: Owner-reported new account connections do not expose callable connector tools in this session. Registry discovery and `codex mcp list` found none for the four requested services. Record unexecuted harmless calls as unavailable, never as successful authentication or service responses; do not provision resources through guessed credentials.
+- 2026-10-18: Continue publishing all authorized changes through existing PR #1 instead of merging to main. Each requested service step gets a separate commit recording its actual outcome.
+- 2026-10-18: Keep keyword retrieval after a fresh embedding attempt produced no vector; Atlas and DigitalOcean inference remain blocked. Remove unverified DigitalOcean references from README and submission draft.
+- 2026-10-18: Distinguish evaluated mock scenarios from measured live calls in cost output. Missing live token samples mean zero measured calls and null cost estimates; rates remain explicitly assumed, never measured billing.

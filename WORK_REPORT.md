@@ -273,3 +273,13 @@ These limitations were documented rather than hidden behind passing deterministi
 | `8dcc189` | Record final verification evidence and project status |
 
 This report was added afterward as requested. It does not change the implementation or the historical final-audit results. Its relative file links were checked against the repository; application tests were not rerun for this documentation-only addition.
+
+## 12. Publication and later connector follow-up
+
+After this report was created, pushed all implementation/report commits and opened [PR #1](https://github.com/dhruvvvgg/ringback/pull/1). Because the remote was empty, published the original brief as `main` and the implementation as `feat/ringback-implementation`. The PR is unmerged.
+
+On 18 October 2026 (IST), the owner requested Atlas provisioning, free Render deployment, real Gemma/ElevenLabs testing, and DigitalOcean inference discovery after reporting newly connected accounts. Enumerated the actual tool registry and local MCP servers: none of the four requested service connector toolsets is exposed here, so harmless connector calls cannot be issued. Checked process and local dotenv binding presence without printing values; no provider, Atlas, Render or DigitalOcean credentials were available. Refreshed the secret/history/client-bundle audit before pushing and committed each requested step's recorded outcome.
+
+Retried in-process embeddings; no vector was returned. Atlas creation/user/access-list/concurrency/vector work and Render deployment/health/booking/workflow smoke are blocked. No cloud resource, database password, new platform token, or real URL was created. Re-ran `npm run live:verify`; it stopped at the missing-key guard with zero live scenarios. Real STT/TTS is unrun and first-audio latency remains null. DigitalOcean does not apply, and its README/post integration references were removed.
+
+Corrected cost attribution so the 96 mock scenarios are `evaluatedScenarios`, with zero `measuredCalls`, no live token sample, unmeasured billing and null live cost fields. Three synthetic-fixture regression tests, typecheck and lint passed. Updated README, STATUS, EVAL, POST_DRAFT, decisions, build log and progress; added per-service evidence under `artifacts/connectors/`. These follow-up checks do not rerun or supersede the original application/browser/Mongo/Temporal/container audit. STATUS now begins with the exact outstanding owner work and links to current access evidence.

@@ -26,3 +26,11 @@
 - Caller memory now preserves service history, preferences and notes and supplies only the authenticated caller's memory to the intent run. Emergency wording requests a callback identifier when absent, without delaying urgent escalation.
 - A browser test initially used an exact label match for a textarea whose label text included its controlled content; matched the label prefix. An overlapping browser-run attempt conflicted on its fixture port and traces; the complete suite was rerun serially and passed.
 - The final plumbing-flow test found that an address-only reply did not update the pending reservation. Included address updates in the pending-detail branch, preserving the already-proposed slot. The new test supplies the address in a later turn, confirms the booking and verifies returning-caller service history; the full suite now includes this path.
+
+## Connector/deployment continuation — 18 October 2026 (IST)
+
+Rechecked all callable tool metadata and local MCP configuration. No Render, Atlas, ElevenLabs or DigitalOcean tools were exposed, no connector-search tool was available, and the local registry was empty. Checked process and local dotenv binding presence without outputting values; provider/management bindings were absent. Refreshed the secret/history/client-bundle scan successfully before pushing. Existing PR #1 receives the new per-step commits.
+
+Atlas provisioning and deployed Render smoke cannot run without access. Retried the existing in-process embedding function; it returned no vector, so keyword mode remains. Re-ran live verification: missing-key guard recorded a blocked outcome before any model request. ElevenLabs round trip is unrun, audio latency null. DigitalOcean inference does not apply; its README/post references were removed.
+
+Found that the cost artifact called 96 mock scenarios `measuredCalls`. Split evaluated scenarios from live measured samples and explicitly mark billing as unmeasured. Three targeted tests exercise mock token rejection, a live report lacking usage, and synthetic token extrapolation. Typecheck and lint passed. Previous end-to-end, real local MongoDB, Temporal, container and fresh-clone artifacts remain historical; no new live results were fabricated.

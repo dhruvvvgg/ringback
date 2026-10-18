@@ -2,6 +2,12 @@
 
 No live model or voice benchmark exists yet. The current receptionist uses **MockLLM**. These results test deterministic application behavior, not Gemma quality, natural conversation or voice latency.
 
+## Latest access check — 18 October 2026 (IST)
+
+Re-ran `npm run live:verify`: blocked at the missing `LLM_API_KEY` guard, with **zero live scenarios completed** and no provider request issued. ElevenLabs credentials and all four requested service connector toolsets are also unavailable to this session. No new Atlas, deployed, inference, or voice benchmark was produced. The in-process embedding retry yielded no vector; retrieval remains keyword-only. Sources: [connector discovery](../artifacts/connectors/availability.json), [embedding retry](../artifacts/connectors/embedding-retry.json), [live status](../artifacts/live-verify.json), and [voice status](../artifacts/latency/status.json).
+
+The cost artifact now separates `evaluatedScenarios: 96` from `measuredCalls: 0` and marks `liveTokenSampleAvailable: false` and `billingMeasured: false`. All live cost fields remain null. Three new cost-reporting regression tests passed using synthetic fixtures; those tests are not live usage evidence. Typecheck and lint also passed. [Targeted test results](../artifacts/tests/continuation-cost.json). The earlier application, browser, MongoDB, container and durability results below were not rerun during this access check.
+
 ## Measured application tests (mock model)
 
 Source: [baseline](../artifacts/eval/mock-MockLLM-baseline.json), recorded 2026-10-18T03:58:15.140Z. 96/96 scenarios executed, 96 passed. Overall Wilson 95% interval: 96.15%–100.00%. Template variants are correlated; this interval is descriptive and is not evidence of real-world model accuracy.

@@ -14,7 +14,11 @@ export async function costModel(report: any) {
       : (input * p.inputPerMillion + output * p.outputPerMillion) / 1000;
   const result = {
     mode: report.mode,
-    measuredCalls: calls,
+    evaluatedScenarios: calls,
+    measuredCalls: live ? calls : 0,
+    liveTokenSampleAvailable: live,
+    callBasis: "One completed evaluation scenario, not a production phone call",
+    billingMeasured: false,
     source: report.path,
     averageTokensIn: input,
     averageTokensOut: output,
@@ -25,7 +29,7 @@ export async function costModel(report: any) {
     voicePerThousandCalls: null,
     prices,
     caveat:
-      "Voice cost is identical for either LLM and may dominate. Mock token usage is not live cost evidence. No live estimate without measured tokens.",
+      "Voice cost is identical for either LLM and may dominate. Mock scenarios are not measured live calls. No live estimate without measured tokens. Prices are assumptions, not measured provider billing.",
   };
   await mkdir("artifacts/cost", { recursive: true });
   await writeFile(
