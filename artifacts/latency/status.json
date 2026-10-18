@@ -1,0 +1,5 @@
+{
+  "mode": "not-measured",
+  "reason": "LLM_API_KEY and ELEVENLABS_API_KEY absent. Mock adapter contract tests do not establish live speech latency.",
+  "liveVoiceCalls": 0
+}

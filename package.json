@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "tsx apps/server/src/index.ts",
-    "build": "vite build --config apps/web/vite.config.ts && tsx scripts/bundle-workflows.ts",
+    "build": "vite build --config apps/web/vite.config.ts && tsx scripts/bundle-workflows.ts && tsx scripts/build-runtime.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run --reporter=default --reporter=json --outputFile=artifacts/tests/results.json",
@@ -29,7 +29,10 @@
     "setup": "tsx scripts/setup.ts",
     "format": "prettier --write apps packages scripts eval tests *.ts *.json render.yaml",
     "cost": "tsx scripts/cost-model.ts",
-    "setup:mongo": "tsx scripts/setup-mongo.ts"
+    "setup:mongo": "tsx scripts/setup-mongo.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "eval:report": "tsx scripts/report-eval.ts",
+    "audit:security": "tsx scripts/security-audit.ts"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.5",
@@ -62,6 +65,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "esbuild": "^0.28.2",
     "eslint": "^10.13.0",
     "prettier": "^3.9.10",
     "tailwindcss": "^4.3.3",

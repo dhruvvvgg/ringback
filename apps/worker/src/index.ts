@@ -19,8 +19,22 @@ const worker = await Worker.create({
   connection,
   namespace: process.env.TEMPORAL_NAMESPACE || "default",
   taskQueue: process.env.TEMPORAL_TASK_QUEUE || "ringback",
-  ...(process.env.NODE_ENV === "production" ? { workflowBundle: { codePath: fileURLToPath(new URL("../dist/workflows.cjs", import.meta.url)) } } : { workflowsPath: fileURLToPath(new URL("./workflows.ts", import.meta.url)) }),
+  ...(process.env.NODE_ENV === "production"
+    ? {
+        workflowBundle: {
+          codePath: process.cwd() + "/apps/worker/dist/workflows.cjs",
+        },
+      }
+    : {
+        workflowsPath: fileURLToPath(
+          new URL("./workflows.ts", import.meta.url),
+        ),
+      }),
   activities,
+  maxCachedWorkflows: 20,
+  workflowThreadPoolSize: 1,
+  maxConcurrentWorkflowTaskExecutions: 4,
+  maxConcurrentActivityTaskExecutions: 4,
   bundlerOptions: {
     webpackConfigHook: (config) => ({ ...config, stats: "errors-only" }),
   },

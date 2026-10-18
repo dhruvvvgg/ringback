@@ -24,6 +24,7 @@ export async function startBooking(a: any) {
   try {
     await c.workflow.start("BookingLifecycleWorkflow", {
       workflowId: a.workflowId,
+      workflowIdReusePolicy: "REJECT_DUPLICATE",
       taskQueue: process.env.TEMPORAL_TASK_QUEUE || "ringback",
       args: [a.id, Number(process.env.DEMO_TIME_SCALE || 1)],
     });
@@ -37,6 +38,7 @@ export async function startLead(call: any) {
   try {
     await c.workflow.start("LeadRecoveryWorkflow", {
       workflowId: `lead-${call.id}`,
+      workflowIdReusePolicy: "REJECT_DUPLICATE",
       taskQueue: process.env.TEMPORAL_TASK_QUEUE || "ringback",
       args: [call.id, 3600000 / Number(process.env.DEMO_TIME_SCALE || 1)],
     });
@@ -49,10 +51,57 @@ export async function reconcile(store: Store) {
     .collection("appointments")
     .find({ status: "booked" })
     .toArray();
-  for (const a of list) await startBooking(a);
+  for (const a of list) {
+    if (
+      !["completed", "no_show", "cancelled", "rescheduled"].includes(
+        a.workflowStatus,
+      )
+    )
+      await startBooking(a);
+  }
+  const calls = await store.db
+    .collection("calls")
+    .find({ followUpNeeded: true })
+    .toArray();
+  for (const call of calls) await startLead(call);
+  const cancelled = await store.db
+    .collection("appointments")
+    .find({ status: "cancelled" })
+    .toArray();
+  for (const a of cancelled) {
+    try {
+      await signalBooking(a.id, "cancel");
+    } catch {
+      /* Closed or absent workflows require no signal. */
+    }
+  }
   return list.length;
 }
 export async function signalBooking(id: string, action: string) {
   const c = await temporal();
   await c.workflow.getHandle(`booking-${id}`).signal("bookingAction", action);
+}
+
+export async function stopCallerLeads(
+  store: Store,
+  businessId: string,
+  callerId: string,
+  exceptId?: string,
+) {
+  const calls = await store.db
+    .collection("calls")
+    .find({ businessId, callerId, followUpNeeded: true })
+    .toArray();
+  const c = await temporal();
+  for (const call of calls) {
+    if (call.id === exceptId) continue;
+    await store.db
+      .collection("calls")
+      .updateOne({ id: call.id }, { $set: { followUpNeeded: false } });
+    try {
+      await c.workflow.getHandle(`lead-${call.id}`).signal("stopLead");
+    } catch {
+      /* No running workflow; persisted eligibility still cleared. */
+    }
+  }
 }

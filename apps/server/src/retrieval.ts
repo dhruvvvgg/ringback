@@ -42,21 +42,19 @@ export async function indexKnowledge(store: Store, b: Business) {
   const sources = chunks(b);
   for (const source of sources) {
     const vector = await embed(source.text);
-    await store.db
-      .collection("knowledge")
-      .updateOne(
-        { businessId: b.id, sourceId: source.sourceId },
-        {
-          $set: {
-            ...source,
-            businessId: b.id,
-            vector,
-            model: vector ? "Xenova/all-MiniLM-L6-v2" : "keyword",
-            dimensions: vector?.length || 0,
-          },
+    await store.db.collection("knowledge").updateOne(
+      { businessId: b.id, sourceId: source.sourceId },
+      {
+        $set: {
+          ...source,
+          businessId: b.id,
+          vector,
+          model: vector ? "Xenova/all-MiniLM-L6-v2" : "keyword",
+          dimensions: vector?.length || 0,
         },
-        { upsert: true },
-      );
+      },
+      { upsert: true },
+    );
   }
   if (store.mode === "atlas" && sources.length) {
     const vector = await embed(sources[0].text);

@@ -134,14 +134,12 @@ export async function reschedule(
   id: string,
   input: BookingInput,
 ) {
-  const old = await store.db
-    .collection("appointments")
-    .findOne({
-      id,
-      callerId: input.callerId,
-      businessId: input.businessId,
-      status: "booked",
-    });
+  const old = await store.db.collection("appointments").findOne({
+    id,
+    callerId: input.callerId,
+    businessId: input.businessId,
+    status: "booked",
+  });
   if (!old) throw new Error("Appointment not found");
   const next = await book(store, input);
   await cancel(store, id, input.callerId);

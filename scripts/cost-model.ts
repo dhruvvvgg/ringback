@@ -1,7 +1,10 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import prices from "../eval/prices.json";
 export async function costModel(report: any) {
-  const live = report.mode === "live" && report.completed > 0 && report.tokensIn + report.tokensOut > 0;
+  const live =
+    report.mode === "live" &&
+    report.completed > 0 &&
+    report.tokensIn + report.tokensOut > 0;
   const calls = report.completed;
   const input = live ? report.tokensIn / calls : null,
     output = live ? report.tokensOut / calls : null;

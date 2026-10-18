@@ -17,10 +17,12 @@ import {
   reconcile,
   temporal,
   signalBooking,
+  stopCallerLeads,
 } from "./temporal.js";
 import {
   MockLLM,
   runtimeClient,
+  runtimeDegradedReason,
   structured,
 } from "../../../packages/llm/src/index.js";
 import { indexKnowledge } from "./retrieval.js";
@@ -40,6 +42,7 @@ export function createApp(store: Store) {
     onBooking: async (a) => {
       try {
         await startBooking(a);
+        await stopCallerLeads(store, a.businessId, a.callerId);
         temporalReady = true;
       } catch {
         await store.db
@@ -126,7 +129,7 @@ export function createApp(store: Store) {
     return c.json({
       status: "ok",
       llm:
-        runtimeClient() instanceof MockLLM
+        runtimeClient() instanceof MockLLM || runtimeDegradedReason
           ? "mock"
           : "live-configured-unverified",
       voice: voice.enabled
@@ -182,6 +185,11 @@ export function createApp(store: Store) {
         id = data.callerId;
     }
     const call = await agent.start(data.businessId, id, data.name, data.phone);
+    try {
+      await stopCallerLeads(store, call.businessId, call.callerId, call.id);
+    } catch {
+      /* Activity rechecks caller state before follow-up. */
+    }
     const token = randomBytes(32).toString("hex");
     await store.db
       .collection("calls")
@@ -190,13 +198,11 @@ export function createApp(store: Store) {
       ? data.callerToken!
       : randomBytes(32).toString("hex");
     if (!id)
-      await store.db
-        .collection("identities")
-        .insertOne({
-          callerId: call.callerId,
-          businessId: data.businessId,
-          tokenHash: hash(callerToken),
-        });
+      await store.db.collection("identities").insertOne({
+        callerId: call.callerId,
+        businessId: data.businessId,
+        tokenHash: hash(callerToken),
+      });
     notify();
     return c.json({
       id: call.id,
@@ -283,6 +289,10 @@ export function createApp(store: Store) {
               const last = call.turns.at(-1);
               last.metrics.tts_ttfa_ms = performance.now() - start;
               last.metrics.tts_chars = text.length;
+              last.metrics.time_to_first_audio_ms =
+                last.metrics.total_ms +
+                last.metrics.stt_ms +
+                last.metrics.tts_ttfa_ms;
               await store.db
                 .collection("calls")
                 .updateOne({ id: call.id }, { $set: { turns: call.turns } });
@@ -321,6 +331,38 @@ export function createApp(store: Store) {
       ),
     );
     let chaos: any = null;
+    let evaluation: any = null,
+      cost: any = null;
+    try {
+      const names = (await readdir("artifacts/eval"))
+        .filter((n) => n.endsWith("baseline.json"))
+        .sort();
+      const chosen =
+        names.find((n) => n.startsWith("live-")) ||
+        names.find((n) => n.startsWith("mock-"));
+      if (chosen) {
+        const r = JSON.parse(
+          await readFile(`artifacts/eval/${chosen}`, "utf8"),
+        );
+        evaluation = {
+          mode: r.mode,
+          completed: r.completed,
+          total: r.total,
+          passed: r.passed,
+          wilson95: r.wilson95,
+          source: `artifacts/eval/${chosen}`,
+        };
+      }
+    } catch {
+      /* No evaluation yet. */
+    }
+    try {
+      cost = JSON.parse(
+        await readFile("artifacts/cost/cost-model.json", "utf8"),
+      );
+    } catch {
+      /* No cost sample yet. */
+    }
     try {
       const files = (await readdir("artifacts/chaos"))
         .filter((x) => x.endsWith(".json"))
@@ -332,7 +374,16 @@ export function createApp(store: Store) {
     } catch {
       /* No measured chaos result yet. */
     }
-    return c.json({ calls, appointments, messages, outbox, callers, chaos });
+    return c.json({
+      calls,
+      appointments,
+      messages,
+      outbox,
+      callers,
+      chaos,
+      evaluation,
+      cost,
+    });
   });
   app.get("/api/owner/:id/events", (c) =>
     streamSSE(c, async (stream) => {
@@ -461,6 +512,33 @@ export function createApp(store: Store) {
     } catch {
       return c.json({ status: liveRun ? "running" : "not-run" });
     }
+  });
+  app.get("/admin/artifacts", async (c) => {
+    const files: Record<string, unknown> = {};
+    for (const dir of ["eval", "latency", "cost", "chaos"]) {
+      try {
+        for (const name of await readdir(`artifacts/${dir}`)) {
+          if (name.endsWith(".json"))
+            files[`${dir}/${name}`] = JSON.parse(
+              await readFile(`artifacts/${dir}/${name}`, "utf8"),
+            );
+        }
+      } catch {
+        /* Optional evidence category. */
+      }
+    }
+    for (const name of [
+      "live-verify.json",
+      "model-selection.json",
+      "usage.json",
+      "doctor.json",
+    ])
+      try {
+        files[name] = JSON.parse(await readFile(`artifacts/${name}`, "utf8"));
+      } catch {
+        /* Not generated. */
+      }
+    return c.json({ exportedAt: new Date().toISOString(), files });
   });
   app.onError((e, c) =>
     c.json(

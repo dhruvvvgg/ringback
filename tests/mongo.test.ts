@@ -1,5 +1,66 @@
-import {test,expect} from 'vitest';import {existsSync} from 'node:fs';import {resolve} from 'node:path';import {mkdir,writeFile} from 'node:fs/promises';import {MongoMemoryServer} from 'mongodb-memory-server';import {MongoClient} from 'mongodb';import {Store} from '../packages/core/src/store.js';import {demos} from '../packages/core/src/config.js';import {book,availability} from '../packages/core/src/booking.js';import {DateTime} from 'luxon';
-test.skipIf(!existsSync('.data/bin/mongod'))('official MongoDB unique index prevents concurrent overlapping bookings',async()=>{
- const memory=await MongoMemoryServer.create({binary:{systemBinary:resolve('.data/bin/mongod'),version:'7.0.45'},instance:{ip:'127.0.0.1'}});const client=await new MongoClient(memory.getUri()).connect();const store=new Store(client,client.db('ringback_test'),'degraded');await store.init();
- try{const b=demos[1],date=DateTime.now().plus({weeks:2}).startOf('week').toISODate()!;const slot=(await availability(store,b,'cut',date))[0];const results=await Promise.allSettled(Array.from({length:40},(_,i)=>book(store,{...slot,businessId:b.id,serviceId:'cut',callerId:'synthetic-mongo',name:'Mongo Demo',phone:'demo-mongo',key:`mongo-${i}`})));const winners=results.filter(r=>r.status==='fulfilled');expect(winners).toHaveLength(1);expect(await store.db.collection('appointments').countDocuments()).toBe(1);const a=(winners[0] as PromiseFulfilledResult<any>).value;expect((await book(store,a)).id).toBe(a.id);await mkdir('artifacts/mongo',{recursive:true});await writeFile('artifacts/mongo/concurrency.json',JSON.stringify({mode:'real-mongodb-memory-server',version:'7.0.45',attempts:40,winners:winners.length,idempotencyReplay:true,atlasVectorSearch:false},null,2));}finally{await client.close();await memory.stop();}
-});
+import { test, expect } from "vitest";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
+import { mkdir, writeFile } from "node:fs/promises";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { MongoClient } from "mongodb";
+import { Store } from "../packages/core/src/store.js";
+import { demos } from "../packages/core/src/config.js";
+import { book, availability } from "../packages/core/src/booking.js";
+import { DateTime } from "luxon";
+test.skipIf(!existsSync(".data/bin/mongod"))(
+  "official MongoDB unique index prevents concurrent overlapping bookings",
+  async () => {
+    const memory = await MongoMemoryServer.create({
+      binary: { systemBinary: resolve(".data/bin/mongod"), version: "7.0.45" },
+      instance: { ip: "127.0.0.1" },
+    });
+    const client = await new MongoClient(memory.getUri()).connect();
+    const store = new Store(client, client.db("ringback_test"), "degraded");
+    await store.init();
+    try {
+      const b = demos[1],
+        date = DateTime.now().plus({ weeks: 2 }).startOf("week").toISODate()!;
+      const slot = (await availability(store, b, "cut", date))[0];
+      const results = await Promise.allSettled(
+        Array.from({ length: 40 }, (_, i) =>
+          book(store, {
+            ...slot,
+            businessId: b.id,
+            serviceId: "cut",
+            callerId: "synthetic-mongo",
+            name: "Mongo Demo",
+            phone: "demo-mongo",
+            key: `mongo-${i}`,
+          }),
+        ),
+      );
+      const winners = results.filter((r) => r.status === "fulfilled");
+      expect(winners).toHaveLength(1);
+      expect(await store.db.collection("appointments").countDocuments()).toBe(
+        1,
+      );
+      const a = (winners[0] as PromiseFulfilledResult<any>).value;
+      expect((await book(store, a)).id).toBe(a.id);
+      await mkdir("artifacts/mongo", { recursive: true });
+      await writeFile(
+        "artifacts/mongo/concurrency.json",
+        JSON.stringify(
+          {
+            mode: "real-mongodb-memory-server",
+            version: "7.0.45",
+            attempts: 40,
+            winners: winners.length,
+            idempotencyReplay: true,
+            atlasVectorSearch: false,
+          },
+          null,
+          2,
+        ),
+      );
+    } finally {
+      await client.close();
+      await memory.stop();
+    }
+  },
+);

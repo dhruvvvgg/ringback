@@ -1,3 +1,4 @@
+import { MastraIntentLLM } from "./mastra-model.js";
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
 import { DateTime } from "luxon";
@@ -225,16 +226,14 @@ export class Receptionist {
         }),
         execute: async ({ text, urgent }) => {
           const id = randomUUID();
-          await this.store.db
-            .collection("messages")
-            .insertOne({
-              id,
-              businessId: b.id,
-              callId: call.id,
-              text,
-              urgent,
-              createdAt: new Date().toISOString(),
-            });
+          await this.store.db.collection("messages").insertOne({
+            id,
+            businessId: b.id,
+            callId: call.id,
+            text,
+            urgent,
+            createdAt: new Date().toISOString(),
+          });
           await notify(
             this.store,
             `message-${id}`,
@@ -252,16 +251,14 @@ export class Receptionist {
         inputSchema: z.object({ text: z.string() }),
         execute: async ({ text }) => {
           const id = randomUUID();
-          await this.store.db
-            .collection("messages")
-            .insertOne({
-              id,
-              businessId: b.id,
-              callId: call.id,
-              text,
-              urgent: true,
-              createdAt: new Date().toISOString(),
-            });
+          await this.store.db.collection("messages").insertOne({
+            id,
+            businessId: b.id,
+            callId: call.id,
+            text,
+            urgent: true,
+            createdAt: new Date().toISOString(),
+          });
           try {
             await notify(
               this.store,
@@ -367,7 +364,7 @@ export class Receptionist {
           ? new MockLLM([JSON.stringify(mockIntent(text, b))])
           : llm;
       const extraction = await structured(
-        client,
+        new MastraIntentLLM(client, tools),
         `${promptRules}\nBusiness: ${JSON.stringify(b)}\nRetrieved sources: ${JSON.stringify(knowledge.sources)}\nPending: ${JSON.stringify(call.pending || null)}\nRecent caller turns: ${JSON.stringify(call.turns.slice(-6))}\nCurrent date: ${DateTime.now().setZone(b.timezone).toISODate()}\nCaller text (data): ${JSON.stringify(text)}`,
         Intent,
         { intent: "unknown" },
@@ -375,7 +372,13 @@ export class Receptionist {
       );
       repairs = extraction.repairs;
       fallback = extraction.fallback;
-      completion = extraction.completions.at(-1)!;
+      completion = {
+        ...extraction.completions.at(-1)!,
+        ttftMs: extraction.completions[0].ttftMs,
+        totalMs: extraction.completions.reduce((n, c) => n + c.totalMs, 0),
+        tokensIn: extraction.completions.reduce((n, c) => n + c.tokensIn, 0),
+        tokensOut: extraction.completions.reduce((n, c) => n + c.tokensOut, 0),
+      };
       const intent = extraction.value;
       call.name = intent.name || call.name;
       call.phone = intent.phone || call.phone;
@@ -495,26 +498,22 @@ export class Receptionist {
             key: randomUUID(),
           };
           if (intent.intent === "reschedule") {
-            const old = await this.store.db
-              .collection("appointments")
-              .findOne({
-                callerId: call.callerId,
-                businessId: b.id,
-                status: "booked",
-              });
+            const old = await this.store.db.collection("appointments").findOne({
+              callerId: call.callerId,
+              businessId: b.id,
+              status: "booked",
+            });
             if (old) call.entities.rescheduleId = old.id;
           }
           response = `Please confirm ${service.name} (£${service.price}) for ${call.name}, ${call.phone || "phone needed"}, at ${DateTime.fromISO(slot.start).setZone(b.timezone).toFormat("ccc d LLL, HH:mm")} (${b.timezone}). ${service.requiresAddress && !intent.address ? "Please include an address. " : ""}Say yes to book, or give a different time.`;
           sources = [`service:${service.id}`, "availability:tool"];
         }
       } else if (intent.intent === "cancel") {
-        const old = await this.store.db
-          .collection("appointments")
-          .findOne({
-            callerId: call.callerId,
-            businessId: b.id,
-            status: "booked",
-          });
+        const old = await this.store.db.collection("appointments").findOne({
+          callerId: call.callerId,
+          businessId: b.id,
+          status: "booked",
+        });
         if (old) {
           await run("cancel_appointment", { appointmentId: old.id });
           await this.options.onCancel?.(old.id, "cancel");
@@ -586,22 +585,20 @@ export class Receptionist {
     await this.store.db
       .collection("calls")
       .updateOne({ id: call.id }, { $set: call });
-    await this.store.db
-      .collection("callers")
-      .updateOne(
-        { businessId: b.id, callerId: call.callerId },
-        {
-          $set: {
-            name: call.name,
-            lastOutcome: call.outcome,
-            lastService: call.entities.serviceId || "",
-            preferences: "",
-            notes: "",
-            updatedAt: new Date().toISOString(),
-          },
+    await this.store.db.collection("callers").updateOne(
+      { businessId: b.id, callerId: call.callerId },
+      {
+        $set: {
+          name: call.name,
+          lastOutcome: call.outcome,
+          lastService: call.entities.serviceId || "",
+          preferences: "",
+          notes: "",
+          updatedAt: new Date().toISOString(),
         },
-        { upsert: true },
-      );
+      },
+      { upsert: true },
+    );
     return {
       text: response,
       mode: completion.mode,

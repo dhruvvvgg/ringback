@@ -48,6 +48,9 @@ export class RateQueue {
   }
 }
 const globalQueue = new RateQueue();
+let runtimeSignature = "";
+let cachedRuntime: LLM | undefined;
+export let runtimeDegradedReason: string | null = null;
 export class GemmaClient {
   public model: string;
   public base: string;
@@ -222,22 +225,54 @@ export async function structured<T>(
         fallback: false,
         completions,
       };
-    } catch {
+    } catch (error) {
       if (attempt === 0 && repair) {
         repairs++;
         prompt +=
-          "\nPrevious response failed JSON/schema validation. Return a valid object matching the schema. Previous: " +
+          "\nValidation error: " +
+          (error instanceof z.ZodError
+            ? error.issues
+                .map((i) => `${i.path.join(".")}: ${i.message}`)
+                .join("; ")
+            : "Invalid JSON object") +
+          ". Return a valid object matching the schema. Previous: " +
           c.text.slice(0, 1500);
       }
     }
   }
   return { value: fallback, repairs, fallback: true, completions };
 }
+class FailSafeLLM implements LLM {
+  constructor(private live: GemmaClient) {}
+  async complete(
+    prompt: string,
+    onToken?: (s: string) => void,
+  ): Promise<Completion> {
+    try {
+      const result = await this.live.complete(prompt, onToken);
+      runtimeDegradedReason = null;
+      return result;
+    } catch {
+      runtimeDegradedReason = "Gemma unavailable; safe mock fallback";
+      return new MockLLM().complete(prompt, onToken);
+    }
+  }
+}
 export function runtimeClient(): LLM {
   if (process.env.LLM_MODEL) assertGemma(process.env.LLM_MODEL);
-  return process.env.LLM_API_KEY ||
+  const signature = [
+    process.env.LLM_BASE_URL,
+    process.env.LLM_MODEL,
+    process.env.LLM_API_KEY,
+    process.env.DO_INFERENCE_KEY,
+  ].join("|");
+  if (cachedRuntime && signature === runtimeSignature) return cachedRuntime;
+  runtimeSignature = signature;
+  runtimeDegradedReason = null;
+  return (cachedRuntime =
+    process.env.LLM_API_KEY ||
     process.env.DO_INFERENCE_KEY ||
-    process.env.LLM_BASE_URL?.includes("localhost")
-    ? new GemmaClient()
-    : new MockLLM();
+    process.env.LLM_BASE_URL
+      ? new FailSafeLLM(new GemmaClient())
+      : new MockLLM());
 }

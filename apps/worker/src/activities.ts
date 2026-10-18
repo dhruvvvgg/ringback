@@ -33,13 +33,11 @@ export async function recoverLead(callId: string) {
   const s = await db();
   const c = await s.db.collection("calls").findOne({ id: callId });
   if (!c || !c.phone) return "no_contact";
-  const booked = await s.db
-    .collection("appointments")
-    .findOne({
-      callerId: c.callerId,
-      businessId: c.businessId,
-      status: "booked",
-    });
+  const booked = await s.db.collection("appointments").findOne({
+    callerId: c.callerId,
+    businessId: c.businessId,
+    status: "booked",
+  });
   const later = await s.db
     .collection("calls")
     .find({

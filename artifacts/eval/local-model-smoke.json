@@ -1,0 +1,6 @@
+{
+  "status": "blocked",
+  "mode": "not-run",
+  "reason": "Official Google Gemma weights require authenticated license access (HTTP 401). No model downloaded or substituted.",
+  "designedFor": "OpenAI-compatible self-hosted Gemma via LLM_BASE_URL and LLM_MODEL"
+}

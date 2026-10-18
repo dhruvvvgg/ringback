@@ -1,0 +1,9 @@
+{
+  "mode": "mock",
+  "transport": "stubbed provider, not playable or live audio",
+  "sentenceRequests": 2,
+  "bytes": 6,
+  "characters": 15,
+  "budgetEnforced": true,
+  "liveLatencyMs": null
+}

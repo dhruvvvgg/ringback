@@ -100,8 +100,8 @@
       "env": {
         "PORT": "3100",
         "TEMPORAL_ADDRESS": "localhost:7233",
-        "TEMPORAL_TASK_QUEUE": "e2e-19594",
-        "LOCAL_DB_PATH": ".data/e2e-19594.sqlite",
+        "TEMPORAL_TASK_QUEUE": "e2e-40607",
+        "LOCAL_DB_PATH": ".data/e2e-40607.sqlite",
         "EMBEDDING_PROVIDER": "keyword"
       },
       "timeout": 60000
@@ -130,14 +130,19 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2671,
+                  "duration": 3492,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-17T20:52:45.503Z",
+                  "startTime": "2026-10-18T03:43:28.418Z",
                   "annotations": [],
                   "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video.webm"
+                    },
                     {
                       "name": "video",
                       "contentType": "video/webm",
@@ -147,11 +152,6 @@
                       "name": "video",
                       "contentType": "video/webm",
                       "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video-2.webm"
-                    },
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video.webm"
                     }
                   ]
                 }
@@ -180,12 +180,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1326,
+                  "duration": 1472,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-17T20:52:48.380Z",
+                  "startTime": "2026-10-18T03:43:32.218Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -225,12 +225,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1308,
+                  "duration": 1560,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-17T20:52:49.715Z",
+                  "startTime": "2026-10-18T03:43:33.705Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -259,8 +259,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-17T20:52:41.100Z",
-    "duration": 10016.972,
+    "startTime": "2026-10-18T03:43:23.930Z",
+    "duration": 11470.612000000001,
     "expected": 3,
     "skipped": 0,
     "unexpected": 0,

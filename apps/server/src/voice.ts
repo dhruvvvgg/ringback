@@ -43,9 +43,10 @@ export class Voice {
     const model = this.models.find(
       (m) => m.can_do_speech_to_text || /scribe/.test(m.model_id),
     );
-    if (!model) throw Error("No speech-to-text model advertised");
+    const sttModel =
+      model?.model_id || process.env.ELEVENLABS_STT_MODEL || "scribe_v2"; // Sourced from ElevenLabs official SDK reference, 2026-10-17.
     const form = new FormData();
-    form.append("model_id", model.model_id);
+    form.append("model_id", sttModel);
     form.append("file", audio, "turn.webm");
     const start = performance.now();
     const body = (await (
@@ -85,16 +86,19 @@ export class Voice {
     } finally {
       release();
     }
-    const response = await this.request(
-      `text-to-speech/${encodeURIComponent(this.voiceId)}/stream`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, model_id: model.model_id }),
-      },
-    );
-    if (!response.body) throw Error("No audio");
-    for await (const chunk of response.body as any as AsyncIterable<Uint8Array>)
-      yield chunk;
+    const sentences = text.match(/[^.!?]+[.!?]*\s*/g) || [text];
+    for (const sentence of sentences) {
+      const response = await this.request(
+        `text-to-speech/${encodeURIComponent(this.voiceId)}/stream`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: sentence, model_id: model.model_id }),
+        },
+      );
+      if (!response.body) throw Error("No audio");
+      for await (const chunk of response.body as any as AsyncIterable<Uint8Array>)
+        yield chunk;
+    }
   }
 }

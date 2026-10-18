@@ -7,21 +7,19 @@ export async function notify(
 ) {
   if (process.env.NOTIFIER_CHAOS === "1" && Math.random() < 0.5)
     throw new Error("Synthetic notifier failure");
-  await store.db
-    .collection("outbox")
-    .updateOne(
-      { key },
-      {
-        $setOnInsert: {
-          key,
-          message,
-          urgent,
-          status: "preview",
-          createdAt: new Date().toISOString(),
-        },
+  await store.db.collection("outbox").updateOne(
+    { key },
+    {
+      $setOnInsert: {
+        key,
+        message,
+        urgent,
+        status: "preview",
+        createdAt: new Date().toISOString(),
       },
-      { upsert: true },
-    );
+    },
+    { upsert: true },
+  );
   const prior = await store.db.collection("outbox").findOne({ key });
   if (process.env.OWNER_WEBHOOK_URL && prior?.status !== "sent") {
     // At-least-once webhook transport; receivers should honor this idempotency key.

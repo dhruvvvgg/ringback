@@ -32,17 +32,15 @@ export async function chaos() {
     event("worker_started");
   };
   try {
-    await store.db
-      .collection("appointments")
-      .insertOne({
-        id,
-        workflowId,
-        businessId: "juniper",
-        key: id,
-        callerId: "synthetic-chaos",
-        status: "booked",
-        start: new Date(Date.now() + 86400000 + 1000).toISOString(),
-      });
+    await store.db.collection("appointments").insertOne({
+      id,
+      workflowId,
+      businessId: "juniper",
+      key: id,
+      callerId: "synthetic-chaos",
+      status: "booked",
+      start: new Date(Date.now() + 86400000 + 1000).toISOString(),
+    });
     launch();
     const handle = await client.workflow.start("BookingLifecycleWorkflow", {
       workflowId,

@@ -57,5 +57,15 @@ if (!ready) {
   shutdown();
   throw Error("Temporal unavailable after startup deadline");
 }
-launch(process.execPath, ["--import", "tsx", "apps/worker/src/index.ts"]);
-launch(process.execPath, ["--import", "tsx", "apps/server/src/index.ts"]);
+launch(
+  process.execPath,
+  process.env.NODE_ENV === "production"
+    ? ["dist/worker.js"]
+    : ["--import", "tsx", "apps/worker/src/index.ts"],
+);
+launch(
+  process.execPath,
+  process.env.NODE_ENV === "production"
+    ? ["dist/server.js"]
+    : ["--import", "tsx", "apps/server/src/index.ts"],
+);

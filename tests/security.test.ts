@@ -1,4 +1,4 @@
-import { test, expect } from "vitest";
+import { test, expect, vi } from "vitest";
 import { evalStore } from "../eval/run.js";
 import { createApp, safeToken } from "../apps/server/src/app.js";
 import {
@@ -59,9 +59,12 @@ test("PII canary removed from telemetry and numeric allowlist only", () => {
   expect(safeToken("a", "a")).toBe(true);
 });
 
-test('actual Sentry envelope and application logs exclude planted caller canary',async()=>{
- const Sentry=await import('@sentry/node');const {initTelemetry}=await import('../apps/server/src/telemetry.js');const envelopes:unknown[]=[];const canary='PRIVATE_CALLER_CANARY_2026';
- initTelemetry({dsn:'https://public@example.invalid/1',transport:()=>({send:async e=>{envelopes.push(e);return {};},flush:async()=>true})});
- Sentry.setUser({id:canary,email:canary});Sentry.addBreadcrumb({message:canary});recordTelemetry({total_ms:4,transcript:canary,callerId:canary});await Sentry.flush(2000);
- expect(envelopes.length).toBeGreaterThan(0);expect(JSON.stringify(envelopes)).not.toContain(canary);await Sentry.close(2000);
+test("actual call, Sentry envelope and application logs exclude planted caller canary",async()=>{
+ const Sentry=await import('@sentry/node');const {initTelemetry}=await import('../apps/server/src/telemetry.js');const envelopes:unknown[]=[];const canary='PRIVATE_CALLER_CANARY_2026';const logs:unknown[]=[];
+ const spies=[vi.spyOn(console,'log').mockImplementation((...args)=>{logs.push(args);}),vi.spyOn(console,'warn').mockImplementation((...args)=>{logs.push(args);}),vi.spyOn(console,'error').mockImplementation((...args)=>{logs.push(args);})];
+ const store=await evalStore();
+ try{
+ initTelemetry({dsn:'https://public@example.invalid/1',transport:()=>({send:async e=>{envelopes.push(e);return {};},flush:async()=>true})});Sentry.setUser({id:canary,email:canary});Sentry.addBreadcrumb({message:canary});
+ const {app}=createApp(store);const start=await app.request('/api/calls',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({businessId:'juniper',name:canary})});const call=await start.json();const turn=await app.request(`/api/calls/${call.id}/turn`,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${call.token}`},body:JSON.stringify({text:`Please take a message: ${canary}`})});expect(turn.status).toBe(200);await Sentry.flush(2000);expect(envelopes.length).toBeGreaterThan(0);expect(JSON.stringify(envelopes)).not.toContain(canary);expect(JSON.stringify(logs)).not.toContain(canary);
+ }finally{await store.close();await Sentry.close(2000);for(const spy of spies)spy.mockRestore();}
 });

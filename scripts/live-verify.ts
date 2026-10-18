@@ -17,7 +17,11 @@ export async function liveVerify() {
   const save = () =>
     writeFile("artifacts/live-verify.json", JSON.stringify(status, null, 2));
   await save();
-  if (!process.env.LLM_API_KEY && !process.env.DO_INFERENCE_KEY) {
+  if (
+    !process.env.LLM_API_KEY &&
+    !process.env.DO_INFERENCE_KEY &&
+    !process.env.LLM_BASE_URL
+  ) {
     status.status = "blocked";
     status.missing = ["LLM_API_KEY"];
     status.reason = "Valid Gemma access needed. No live results produced.";
@@ -33,7 +37,12 @@ export async function liveVerify() {
       gemmaModels: ids,
     });
     await save();
-    const candidates = ids.slice(0, 2),
+    const sorted = [...ids].sort(
+      (a, b) =>
+        Number(b.match(/(\d+)b/i)?.[1] || 0) -
+        Number(a.match(/(\d+)b/i)?.[1] || 0),
+    );
+    const candidates = [...new Set([sorted[0], sorted.at(-1)!])],
       measurements: any[] = [];
     for (const id of candidates) {
       assertGemma(id);
@@ -151,6 +160,7 @@ export async function liveVerify() {
     });
     await costModel(report);
     await save();
+    const comparisons: any[] = [report];
     for (const variant of [{ retrieval: false }, { repair: false }]) {
       const r = await runEval({
         llm: client,
@@ -158,6 +168,7 @@ export async function liveVerify() {
         resume: true,
         ...variant,
       });
+      comparisons.push(r);
       status.steps.push({
         step: "ablation",
         artifact: r.path,
@@ -165,20 +176,41 @@ export async function liveVerify() {
       });
       await save();
     }
-    if (process.env.LLM_MODEL_ALT) {
-      assertGemma(process.env.LLM_MODEL_ALT);
+    const alternate =
+      process.env.LLM_MODEL_ALT ||
+      measurements.find((m) => m.model !== chosen.model)?.model;
+    if (alternate) {
+      assertGemma(alternate);
       const r = await runEval({
-        llm: new GemmaClient(undefined, process.env.LLM_MODEL_ALT),
-        model: process.env.LLM_MODEL_ALT,
+        llm: new GemmaClient(undefined, alternate),
+        model: alternate,
         resume: true,
       });
+      comparisons.push(r);
       status.steps.push({ step: "alternate", artifact: r.path });
     }
     status.status =
       report.completed === report.total ? "completed" : "checkpointed";
+    const table = comparisons
+      .map(
+        (r) =>
+          `| ${r.label} | ${r.passed}/${r.completed} of ${r.total} | ${JSON.stringify(r.wilson95)} | ${r.path} |`,
+      )
+      .join("\n");
+    const failures = comparisons.flatMap((r) =>
+      r.scenarios
+        .filter((s: any) => !s.passed)
+        .slice(0, 3)
+        .map((s: any) => ({
+          run: r.label,
+          id: s.id,
+          checks: s.checks,
+          example: s.failureExample,
+        })),
+    );
     await writeFile(
       "docs/EVAL.md",
-      `# Evaluation\n\nLive verification ran at ${status.at}. Model: ${chosen.model}; provider: ${discovery.base}.\n\n${report.passed}/${report.completed} completed scenarios passed out of ${report.total} planned. Wilson 95% interval: ${JSON.stringify(report.wilson95)}. Full details and failure examples: \`${report.path}\`.\n\nModel selection: \`artifacts/model-selection.json\`. Voice: ${status.missing.includes("ELEVENLABS_API_KEY") ? "not measured (key missing)" : "see live-verify report for actual voice outcome"}.\n\nCost: \`artifacts/cost/cost-model.json\`; closed-API prices are hypothetical. Voice costs are identical under either model and may dominate. Local SQLite evaluates application behavior; this is not an Atlas benchmark.\n`,
+      `# Evaluation\n\nLive verification ran at ${status.at}. Model: ${chosen.model}; provider: ${discovery.base}. Every completed scenario uses the real Gemma transport; no silent mock substitution occurs in live evaluation.\n\n| Run | Passed / executed / planned | Wilson 95% | Artifact |\n|---|---|---|---|\n${table}\n\nIntervals describe correlated synthetic scenario templates, not independent real-world samples. Scenario JSON contains named booking, slot, information, escalation and injection metrics and per-stage latency percentiles.\n\n## Failures and incomplete work\n\n${JSON.stringify(failures, null, 2)}\n\nBlocked runs retain completed checkpoints; missing scenarios are unrun, not successes. Overall status: ${status.status}.\n\n## Voice and model selection\n\nModel selection: artifacts/model-selection.json. Candidates compare observed TTFT among measured Gemma sizes; the largest acceptable measured candidate is selected. Voice: ${status.missing.includes("ELEVENLABS_API_KEY") ? "not measured (key missing)" : "see the actual voice step status in artifacts/live-verify.json and artifacts/latency/live-voice.json if it succeeded"}. A TTS/STT provider loop alone does not prove an end-to-end spoken booking.\n\n## Cost and durability\n\nCost: artifacts/cost/cost-model.json. No cost number is produced without reported live token usage. Closed-API prices are hypothetical assumptions. Voice costs are identical under either model and may dominate. Real local worker-kill evidence remains in artifacts/chaos/ and time-skipping tests in artifacts/temporal/tests.json. This proves local worker recovery with one outbox confirmation, not exactly-once webhook delivery or Render ephemeral-disk persistence.\n\nEvaluation uses isolated local SQLite, not Atlas Vector Search. Grounding checks cover sourced prices and selected facts, not every semantic claim. Hindi/Hinglish coverage is a limited subset. Hosted inference sends text to its provider. No first-user result is claimed.\n`,
     );
   } catch {
     status.status = "blocked";

@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-17T21:03:06.515Z",
+  "target": "http://localhost:3200",
+  "mode": "mock",
+  "health": {
+    "status": "ok",
+    "llm": "mock",
+    "voice": "degraded-browser-speech",
+    "storage": "sqlite-degraded",
+    "retrieval": "keyword",
+    "temporal": "connected",
+    "missing": [
+      "LLM_API_KEY",
+      "ELEVENLABS_API_KEY",
+      "MONGODB_URI"
+    ]
+  },
+  "passed": true,
+  "checks": {
+    "textCall": true,
+    "explicitConfirmation": true,
+    "booking": true,
+    "workflowVisible": true
+  },
+  "workflowId": "booking-02834075-c70c-4be8-b1fb-2ae64516abe5"
+}

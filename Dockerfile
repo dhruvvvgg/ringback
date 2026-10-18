@@ -14,6 +14,6 @@ RUN --mount=type=secret,id=proxy_ca,required=false \
 COPY . .
 RUN --mount=type=secret,id=proxy_ca,required=false \
     if [ -f /run/secrets/proxy_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/proxy_ca; export CURL_CA_BUNDLE=/run/secrets/proxy_ca; fi; npm run setup && rm -f .env.local && npm run build
-ENV NODE_ENV=production PORT=10000 EMBEDDING_PROVIDER=keyword
+ENV NODE_ENV=production PORT=10000 EMBEDDING_PROVIDER=keyword GOMEMLIMIT=160MiB GOGC=50 NODE_OPTIONS=--max-old-space-size=96
 EXPOSE 10000
-CMD ["npm", "start"]
+CMD ["node", "dist/supervisor.js"]

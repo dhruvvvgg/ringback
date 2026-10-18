@@ -26,3 +26,22 @@ test("repairs malformed output and safe fallback", async () => {
       .fallback,
   ).toBe(true);
 });
+
+test("repair prompt includes validation detail and never calls a proprietary model", async () => {
+  const prompts: string[] = [];
+  const model = new MockLLM(['{"ok":"wrong"}', '{"ok":true}']);
+  const client = {
+    complete: async (p: string) => {
+      prompts.push(p);
+      return model.complete(p);
+    },
+  };
+  const result = await structured(
+    client,
+    "test",
+    z.object({ ok: z.boolean() }),
+    { ok: false },
+  );
+  expect(result.value.ok).toBe(true);
+  expect(prompts[1]).toContain("Validation error: ok:");
+});

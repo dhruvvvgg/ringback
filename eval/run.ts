@@ -44,7 +44,11 @@ export async function runEval(
 ) {
   const llm =
     options.llm ||
-    (process.env.LLM_API_KEY ? new GemmaClient() : new MockLLM());
+    (process.env.LLM_API_KEY ||
+    process.env.DO_INFERENCE_KEY ||
+    process.env.LLM_BASE_URL
+      ? new GemmaClient()
+      : new MockLLM());
   const mode = llm instanceof MockLLM ? "mock" : "live";
   const label = `${mode}-${(options.model || (llm instanceof GemmaClient ? llm.model : "MockLLM") || "discovery").replace(/[^a-z0-9-]/gi, "_")}-${options.retrieval === false ? "no-retrieval" : options.repair === false ? "no-repair" : "baseline"}${options.smoke ? "-smoke" : ""}`;
   await mkdir("artifacts/eval", { recursive: true });
@@ -168,6 +172,9 @@ export async function runEval(
         id: scenario.id,
         category: scenario.category,
         mode,
+        expectedBookings: scenario.expected.bookings,
+        expectedUrgent: scenario.expected.urgent || 0,
+        actualUrgent: urgent,
         passed:
           !error && Object.values(checks).every(Boolean) && violations === 0,
         checks,
@@ -245,7 +252,71 @@ function summarize(
   const passed = rows.filter((r) => r.passed).length,
     turns = rows.reduce((n, r) => n + r.turns, 0),
     latency = rows.flatMap((r) => r.latency.map((m: any) => m.total_ms));
+  const rate = (selected: any[], predicate: (row: any) => boolean) => {
+    const successes = selected.filter(predicate).length;
+    return {
+      successes,
+      total: selected.length,
+      rate: selected.length ? successes / selected.length : null,
+      wilson95: wilson(successes, selected.length),
+    };
+  };
+  const expectedBookings = rows.filter((r) => r.expectedBookings > 0),
+    emergencies = rows.filter((r) => r.expectedUrgent > 0),
+    predictedEmergency = rows.filter((r) => r.actualUrgent > 0);
   return {
+    metrics: {
+      bookingSuccess: rate(expectedBookings, (r) => r.checks.bookingCount),
+      correctSlot: rate(
+        expectedBookings,
+        (r) => r.checks.bookingCount && r.checks.slot,
+      ),
+      informationAccuracy: rate(
+        rows.filter((r) =>
+          ["faq", "hinglish", "out-of-scope"].includes(r.category),
+        ),
+        (r) => r.checks.answer,
+      ),
+      escalationRecall: rate(emergencies, (r) => r.actualUrgent > 0),
+      escalationPrecision: rate(
+        predictedEmergency,
+        (r) => r.expectedUrgent > 0,
+      ),
+      injectionResistance: rate(
+        rows.filter((r) => r.category === "adversarial"),
+        (r) => r.passed,
+      ),
+      groundingViolations: rows.reduce((n, r) => n + r.groundingViolations, 0),
+      repairRate: turns
+        ? rows.reduce((n, r) => n + r.repairs, 0) / turns
+        : null,
+      fallbackRate: turns
+        ? rows.reduce((n, r) => n + r.fallbacks, 0) / turns
+        : null,
+      turnsPerCall: rows.length ? turns / rows.length : null,
+    },
+    stageLatency: Object.fromEntries(
+      [
+        "stt_ms",
+        "retrieval_ms",
+        "llm_ttft_ms",
+        "llm_total_ms",
+        "tts_ttfa_ms",
+      ].map((stage) => {
+        const values = rows.flatMap((r) => r.latency.map((m: any) => m[stage]));
+        return [
+          stage,
+          {
+            p50: quantile(values, 0.5),
+            p95: quantile(values, 0.95),
+            note:
+              stage === "stt_ms" || stage === "tts_ttfa_ms"
+                ? "text suite: voice stages not measured"
+                : undefined,
+          },
+        ];
+      }),
+    ),
     at: new Date().toISOString(),
     mode,
     label,

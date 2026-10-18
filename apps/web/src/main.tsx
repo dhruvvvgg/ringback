@@ -248,16 +248,15 @@ function Caller({ business: b, health }: { business: Business; health: any }) {
     audio = useRef<HTMLAudioElement | null>(null),
     bottom = useRef<HTMLDivElement>(null);
   const recordingStart = useRef(0);
+  const audioAbort = useRef<AbortController | null>(null);
   const [name, setName] = useState(""),
     [phone, setPhone] = useState("");
-  useEffect(
-    () => {
-      bottom.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    },
-    [messages, busy],
-  );
+  useEffect(() => {
+    bottom.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [messages, busy]);
   const stopPlayback = () => {
     speechSynthesis.cancel();
+    audioAbort.current?.abort();
     audio.current?.pause();
   };
   async function begin() {
@@ -290,15 +289,56 @@ function Caller({ business: b, health }: { business: Business; health: any }) {
       return;
     }
     try {
+      audioAbort.current = new AbortController();
       const r = await fetch(`/api/calls/${session.id}/audio`, {
+        signal: audioAbort.current.signal,
         headers: { Authorization: `Bearer ${session.token}` },
       });
       if (!r.ok) throw Error();
-      const blob = await r.blob();
-      const url = URL.createObjectURL(blob);
-      audio.current = new Audio(url);
-      audio.current.onended = () => URL.revokeObjectURL(url);
-      await audio.current.play();
+      if (
+        typeof MediaSource !== "undefined" &&
+        MediaSource.isTypeSupported("audio/mpeg") &&
+        r.body
+      ) {
+        const source = new MediaSource();
+        const url = URL.createObjectURL(source);
+        audio.current = new Audio(url);
+        await new Promise<void>((resolve) =>
+          source.addEventListener("sourceopen", () => resolve(), {
+            once: true,
+          }),
+        );
+        const buffer = source.addSourceBuffer("audio/mpeg");
+        const reader = r.body.getReader();
+        let started = false;
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          await new Promise<void>((resolve, reject) => {
+            buffer.addEventListener("updateend", () => resolve(), {
+              once: true,
+            });
+            buffer.addEventListener(
+              "error",
+              () => reject(Error("Audio decode failed")),
+              { once: true },
+            );
+            buffer.appendBuffer(value);
+          });
+          if (!started) {
+            started = true;
+            await audio.current.play();
+          }
+        }
+        source.endOfStream();
+        audio.current.onended = () => URL.revokeObjectURL(url);
+      } else {
+        const blob = await r.blob();
+        const url = URL.createObjectURL(blob);
+        audio.current = new Audio(url);
+        audio.current.onended = () => URL.revokeObjectURL(url);
+        await audio.current.play();
+      }
     } catch {
       setError("Voice unavailable. Your text conversation is still available.");
     }
@@ -321,6 +361,7 @@ function Caller({ business: b, health }: { business: Business; health: any }) {
           : []),
         { role: "assistant", text: r.text, mode: r.mode },
       ]);
+      setBusy(false);
       await play(r.text);
     } catch (e) {
       setError((e as Error).message);
@@ -439,7 +480,13 @@ function Caller({ business: b, health }: { business: Business; health: any }) {
           </div>
           <span className="pill">AI assistant</span>
         </div>
-        <div className="transcript" aria-live="polite" role="log" aria-label="Conversation transcript" tabIndex={0}>
+        <div
+          className="transcript"
+          aria-live="polite"
+          role="log"
+          aria-label="Conversation transcript"
+          tabIndex={0}
+        >
           {!messages.length ? (
             <div className="conversation-empty">
               <div className="sound-rings">
@@ -497,7 +544,13 @@ function Caller({ business: b, health }: { business: Business; health: any }) {
             <div className="voice-controls">
               <button
                 className={`talk-button ${recording ? "recording" : ""}`}
-                aria-label={recording ? "Listening; release to stop recording" : health.voice === "degraded-browser-speech" ? "Voice key needed" : "Hold to talk"}
+                aria-label={
+                  recording
+                    ? "Listening; release to stop recording"
+                    : health.voice === "degraded-browser-speech"
+                      ? "Voice key needed"
+                      : "Hold to talk"
+                }
                 disabled={busy || health.voice === "degraded-browser-speech"}
                 onPointerDown={() => void startRecording()}
                 onPointerUp={() => {
@@ -664,6 +717,73 @@ function Owner(props: {
     <OwnerGate>
       <Dashboard {...props} />
     </OwnerGate>
+  );
+}
+function LiveEvidence() {
+  const [result, setResult] = useState<any>(null),
+    [error, setError] = useState("");
+  async function refresh() {
+    try {
+      setResult(await api("/admin/live-verify", undefined, ownerToken()));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  }
+  async function start() {
+    try {
+      setResult(await api("/admin/live-verify", {}, ownerToken()));
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  }
+  async function download() {
+    const data = await api("/admin/artifacts", undefined, ownerToken());
+    const url = URL.createObjectURL(
+      new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
+    );
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ringback-evidence.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  return (
+    <section className="panel">
+      <div className="panel-heading">
+        <h2>Ready for a live test?</h2>
+        <span className="pill">Owner only</span>
+      </div>
+      <p>
+        Add your Gemma key in Render settings, then run the live check. Voice is
+        tested only when its key is available. Keep this evidence before an
+        ephemeral restart.
+      </p>
+      <div className="hero-actions" style={{ justifyContent: "flex-start" }}>
+        <button className="button primary" onClick={() => void start()}>
+          Run live verification
+        </button>
+        <button className="button secondary" onClick={() => void refresh()}>
+          Refresh run status
+        </button>
+        <button className="button secondary" onClick={() => void download()}>
+          Download evidence
+        </button>
+      </div>
+      {result && (
+        <p role="status">
+          {result.status}
+          {result.reason ? `: ${result.reason}` : ""}
+          {result.missing?.length
+            ? ` Missing: ${result.missing.join(", ")}`
+            : ""}
+        </p>
+      )}
+      {error && (
+        <p role="alert" className="error">
+          {error}
+        </p>
+      )}
+    </section>
   );
 }
 function Dashboard({
@@ -1051,6 +1171,37 @@ function Dashboard({
               </div>
             ))}
           </section>
+        )}
+        {tab === "evidence" && (
+          <>
+            <section className="panel">
+              <h2>Evaluation record</h2>
+              {data?.evaluation ? (
+                <>
+                  <p>
+                    <strong>{data.evaluation.mode}</strong>:{" "}
+                    {data.evaluation.passed} / {data.evaluation.completed}{" "}
+                    completed scenarios passed; {data.evaluation.total} planned.
+                  </p>
+                  <small>{data.evaluation.source}</small>
+                  <p>
+                    Mock results describe application regression tests, not live
+                    model quality.
+                  </p>
+                </>
+              ) : (
+                <p>No evaluation artifact is available yet.</p>
+              )}
+              <h3 style={{ marginTop: 20 }}>Cost per call</h3>
+              <p>
+                {data?.cost?.llmPerThousandCalls?.open != null
+                  ? `Open LLM: $${(data.cost.llmPerThousandCalls.open / 1000).toFixed(6)}; hypothetical closed LLM: $${(data.cost.llmPerThousandCalls.hypotheticalClosed / 1000).toFixed(6)}.`
+                  : "No live token sample; cost comparison is not measured."}{" "}
+                Voice costs are identical under either LLM and may dominate.
+              </p>
+            </section>
+            <LiveEvidence />
+          </>
         )}
       </main>
     </div>
