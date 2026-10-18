@@ -26,6 +26,10 @@ No Atlas tools or management/runtime credentials were exposed. M0 cluster creati
 
 No Render connector or management credential was available. No service was created, no platform environment variables were set, and there is **no real Render URL**. The committed `render.yaml` still selects `plan: free` and platform-generated `ADMIN_TOKEN`. `/healthz`, a deployed text call, deployed booking and visible deployed workflow are unrun because no deployment exists. The local token was not exported. [Deployment attempt status](artifacts/connectors/render-deployment.json) keeps this separate from the earlier local container smoke.
 
+### Step 4 — live Gemma: blocked before any provider call
+
+Re-ran `npm run live:verify`; it completed its missing-binding guard and wrote a fresh blocked result. `LLM_API_KEY`, a configured alternate endpoint, and an inference key are absent. **Zero live scenarios and zero model comparisons completed** in this continuation. No quota wall, model-id error, streaming behavior or JSON-repair rate was observed because no authenticated provider request could be made. Existing mock checkpoints were not promoted to live results. [Current verification status](artifacts/live-verify.json).
+
 ## Outcome
 
 The local development/demo workflow is implemented and verified. The live spoken-booking criterion is **unmet** because provider keys were absent. Atlas/DO/Render management tools were not exposed, so no external deployment or data service was provisioned. This is a deploy-ready, honestly labeled mock/text demonstration, not a claim of production or live-model readiness.
