@@ -100,8 +100,8 @@
       "env": {
         "PORT": "3100",
         "TEMPORAL_ADDRESS": "localhost:7233",
-        "TEMPORAL_TASK_QUEUE": "e2e-40607",
-        "LOCAL_DB_PATH": ".data/e2e-40607.sqlite",
+        "TEMPORAL_TASK_QUEUE": "e2e-43869",
+        "LOCAL_DB_PATH": ".data/e2e-43869.sqlite",
         "EMBEDDING_PROVIDER": "keyword"
       },
       "timeout": 60000
@@ -130,18 +130,18 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3492,
+                  "duration": 5636,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-18T03:43:28.418Z",
+                  "startTime": "2026-10-18T03:46:59.838Z",
                   "annotations": [],
                   "attachments": [
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video.webm"
+                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video-2.webm"
                     },
                     {
                       "name": "video",
@@ -151,7 +151,7 @@
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video-2.webm"
+                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video.webm"
                     }
                   ]
                 }
@@ -180,12 +180,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1472,
+                  "duration": 1500,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-18T03:43:32.218Z",
+                  "startTime": "2026-10-18T03:47:06.026Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -225,23 +225,23 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1560,
+                  "duration": 1401,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-18T03:43:33.705Z",
+                  "startTime": "2026-10-18T03:47:07.537Z",
                   "annotations": [],
                   "attachments": [
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video.webm"
+                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video-1.webm"
                     },
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video-1.webm"
+                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video.webm"
                     }
                   ]
                 }
@@ -259,8 +259,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-18T03:43:23.930Z",
-    "duration": 11470.612000000001,
+    "startTime": "2026-10-18T03:46:55.174Z",
+    "duration": 13881.518,
     "expected": 3,
     "skipped": 0,
     "unexpected": 0,

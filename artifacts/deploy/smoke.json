@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-17T21:03:06.515Z",
+  "at": "2026-10-18T03:47:24.629Z",
   "target": "http://localhost:3200",
   "mode": "mock",
   "health": {
@@ -22,5 +22,5 @@
     "booking": true,
     "workflowVisible": true
   },
-  "workflowId": "booking-02834075-c70c-4be8-b1fb-2ae64516abe5"
+  "workflowId": "booking-4baf421e-d7ca-4587-8d9b-e37affd53ce0"
 }

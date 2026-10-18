@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-17T17:31:55.058Z",
+  "at": "2026-10-18T03:47:58.945Z",
   "checks": [
     {
       "service": "Gemma",
@@ -18,8 +18,8 @@
     },
     {
       "service": "Temporal",
-      "status": "UNREACHABLE",
-      "detail": "Start local Temporal server or configure TEMPORAL_ADDRESS"
+      "status": "OK",
+      "detail": "Reachable"
     },
     {
       "service": "Sentry",
@@ -38,8 +38,8 @@
     },
     {
       "service": "Owner access",
-      "status": "MISSING",
-      "detail": "ADMIN_TOKEN"
+      "status": "OK",
+      "detail": "Present (not externally verified)"
     }
   ]
 }

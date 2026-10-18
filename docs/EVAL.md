@@ -31,7 +31,7 @@ The no-retrieval and no-repair runs are also mock when keys are absent. Their re
 
 ## Durability
 
-[run-1792259367032.json](../artifacts/chaos/run-1792259367032.json): a real local Temporal workflow survived SIGKILL of its worker and completed after restart. Confirmation outbox count: **1**. History events: 51. This proves local worker recovery and outbox idempotency, not exactly-once external webhook delivery or persistence through Render's ephemeral-disk loss. Time-skipping tests cover retries, compensation, timers and lead cancellation ([artifact](../artifacts/temporal/tests.json)).
+[run-1792295243380.json](../artifacts/chaos/run-1792295243380.json): a real local Temporal workflow survived SIGKILL of its worker and completed after restart. Confirmation outbox count: **1**. History events: 52. This proves local worker recovery and outbox idempotency, not exactly-once external webhook delivery or persistence through Render's ephemeral-disk loss. Time-skipping tests cover retries, compensation, timers and lead cancellation ([artifact](../artifacts/temporal/tests.json)).
 
 ## Concurrency
 

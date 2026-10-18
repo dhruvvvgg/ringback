@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-18T03:45:10.890Z",
+  "passed": true,
+  "sourceCommit": "1c7917860a33276eb934b9939173285286c916bf",
+  "directory": "/tmp/ringback-fresh-uyLkTf",
+  "steps": [
+    {
+      "command": "npm ci",
+      "passed": true,
+      "durationMs": 29988
+    },
+    {
+      "command": "npm run setup",
+      "passed": true,
+      "durationMs": 3120
+    },
+    {
+      "command": "npm run build",
+      "passed": true,
+      "durationMs": 2281
+    },
+    {
+      "command": "npm start",
+      "passed": true
+    },
+    {
+      "command": "npm run smoke -- http://localhost:3000",
+      "passed": true,
+      "durationMs": 1263
+    }
+  ],
+  "smoke": {
+    "at": "2026-10-18T03:45:10.858Z",
+    "target": "http://localhost:3000",
+    "mode": "mock",
+    "health": {
+      "status": "ok",
+      "llm": "mock",
+      "voice": "degraded-browser-speech",
+      "storage": "sqlite-degraded",
+      "retrieval": "keyword",
+      "temporal": "connected",
+      "missing": [
+        "LLM_API_KEY",
+        "ELEVENLABS_API_KEY",
+        "MONGODB_URI"
+      ]
+    },
+    "passed": true,
+    "checks": {
+      "textCall": true,
+      "explicitConfirmation": true,
+      "booking": true,
+      "workflowVisible": true
+    },
+    "workflowId": "booking-1ef70021-3b1a-49a3-be05-fb9f0905d150"
+  },
+  "scope": "README quickstart literally, isolated local clone, no copied node_modules or .env.local"
+}

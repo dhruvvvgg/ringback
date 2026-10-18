@@ -9,8 +9,8 @@
 - [x] Phase 6: Web UI
 - [x] Phase 7: Observability
 - [x] Phase 8: Evaluation
-- [ ] Phase 9: Deployment
-- [ ] Phase 10: Documentation and assets
+- [x] Phase 9: Deployment (local image verified; Render unavailable, exact deploy steps saved)
+- [x] Phase 10: Documentation and assets
 - [ ] Phase 11: Final audit
 
 ## Definition of Done
@@ -25,3 +25,5 @@
 - [ ] Final STATUS.md written and committed
 
 Phase notes: live Gemma/ElevenLabs and Atlas checks use documented credential/network fallbacks; see final STATUS for unmet live criteria. Temporal tests are real (time-skipping server).
+
+Final audit evidence: README quickstart passed in a fresh clone; real Mongo concurrency, time-skipping and worker-kill tests passed. Live-provider and external-deployment acceptance remains explicitly unmet in STATUS.md.
