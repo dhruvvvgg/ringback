@@ -27,7 +27,6 @@ The local worker-kill experiment is real. It proves worker recovery while Tempor
 - Grounding checks detect unlisted prices and selected unsupported facts, not all semantic hallucinations.
 - Owner authorization is one shared admin token; this is not a multi-tenant account/RBAC platform.
 - Voice endpointing and barge-in code have browser/contract coverage only; real-device/provider voice acceptance remains pending keys.
-- Onboarding's form exposes the main business fields. Full advanced config (all FAQ/emergency/resource fields) is accepted through the protected configuration API; the form is not a complete editor for every schema field.
 - No first-user trial, domain claim, public video hosting or final DEV publication was performed. The post marks those placeholders explicitly.
 
 ## Resolved during this run

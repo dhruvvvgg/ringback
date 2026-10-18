@@ -1,0 +1,11 @@
+{
+  "saved": true,
+  "fields": [
+    "install_script",
+    "start_skill"
+  ],
+  "networkAdditionsPreviouslySaved": true,
+  "requiresUserReviewAndPublication": true,
+  "executedBySaving": false,
+  "scriptsExercisedInCurrentInstanceAndFreshClone": true
+}

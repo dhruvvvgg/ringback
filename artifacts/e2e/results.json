@@ -100,8 +100,8 @@
       "env": {
         "PORT": "3100",
         "TEMPORAL_ADDRESS": "localhost:7233",
-        "TEMPORAL_TASK_QUEUE": "e2e-43869",
-        "LOCAL_DB_PATH": ".data/e2e-43869.sqlite",
+        "TEMPORAL_TASK_QUEUE": "e2e-47549",
+        "LOCAL_DB_PATH": ".data/e2e-47549.sqlite",
         "EMBEDDING_PROVIDER": "keyword"
       },
       "timeout": 60000
@@ -130,18 +130,18 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5636,
+                  "duration": 3629,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-18T03:46:59.838Z",
+                  "startTime": "2026-10-18T03:54:01.592Z",
                   "annotations": [],
                   "attachments": [
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video-2.webm"
+                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video.webm"
                     },
                     {
                       "name": "video",
@@ -151,7 +151,7 @@
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video.webm"
+                      "path": "/workspace/ringback/test-results/product-caller-booking-own-b59f2-rd-mobile-and-accessibility/video-2.webm"
                     }
                   ]
                 }
@@ -180,12 +180,16 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1500,
+                  "duration": 2085,
                   "errors": [],
-                  "stdout": [],
+                  "stdout": [
+                    {
+                      "text": "FAQ labels [\n  \u001b[32m'Question 1'\u001b[39m,\n  \u001b[32m'Answer 1A fictional salon with haircuts for £35, Monday to Friday.'\u001b[39m\n]\n"
+                    }
+                  ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-18T03:47:06.026Z",
+                  "startTime": "2026-10-18T03:54:05.440Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -206,7 +210,7 @@
           ],
           "id": "2fa8ab87beca8e7f39ce-095303094817bbd3f190",
           "file": "product.spec.ts",
-          "line": 49,
+          "line": 62,
           "column": 1
         },
         {
@@ -225,23 +229,23 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1401,
+                  "duration": 1534,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-18T03:47:07.537Z",
+                  "startTime": "2026-10-18T03:54:07.537Z",
                   "annotations": [],
                   "attachments": [
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video-1.webm"
+                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video.webm"
                     },
                     {
                       "name": "video",
                       "contentType": "video/webm",
-                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video.webm"
+                      "path": "/workspace/ringback/test-results/product-home-dark-theme-and-keyboard-focus/video-1.webm"
                     }
                   ]
                 }
@@ -251,7 +255,7 @@
           ],
           "id": "2fa8ab87beca8e7f39ce-a2ff5668f102ac5f0218",
           "file": "product.spec.ts",
-          "line": 70,
+          "line": 104,
           "column": 1
         }
       ]
@@ -259,8 +263,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-18T03:46:55.174Z",
-    "duration": 13881.518,
+    "startTime": "2026-10-18T03:53:57.067Z",
+    "duration": 12151.833,
     "expected": 3,
     "skipped": 0,
     "unexpected": 0,

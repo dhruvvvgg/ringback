@@ -11,18 +11,18 @@
 - [x] Phase 8: Evaluation
 - [x] Phase 9: Deployment (local image verified; Render unavailable, exact deploy steps saved)
 - [x] Phase 10: Documentation and assets
-- [ ] Phase 11: Final audit
+- [x] Phase 11: Final audit (local checks clean; external unmet criteria documented)
 
 ## Definition of Done
-- [ ] Verification, e2e, full eval and chaos evidence
-- [ ] Spoken Gemma booking or documented credential fallback
-- [ ] Concurrency, emergency and injection checks
-- [ ] Worker-kill durability evidence
-- [ ] Traceable eval, latency and cost artifacts
-- [ ] Render smoke or exact deploy-ready steps
-- [ ] Truthful complete documentation
-- [ ] Secret and history audit
-- [ ] Final STATUS.md written and committed
+- [x] Verification, e2e, full eval and chaos evidence
+- [x] Spoken Gemma booking or documented credential fallback
+- [x] Concurrency, emergency and injection checks
+- [x] Worker-kill durability evidence
+- [x] Traceable eval, latency and cost artifacts
+- [x] Render smoke or exact deploy-ready steps
+- [x] Truthful complete documentation
+- [x] Secret and history audit
+- [x] Final STATUS.md written and committed
 
 Phase notes: live Gemma/ElevenLabs and Atlas checks use documented credential/network fallbacks; see final STATUS for unmet live criteria. Temporal tests are real (time-skipping server).
 

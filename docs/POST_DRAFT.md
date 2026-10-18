@@ -45,7 +45,7 @@ Here is the evidence available today. The model-related row is deliberately labe
 | Application regression scenarios | 96/96 passed, **MockLLM** | `artifacts/eval/mock-MockLLM-baseline.json` |
 | Concurrent MongoDB booking attempts | 1/40 reservation accepted | `artifacts/mongo/concurrency.json` |
 | Worker-kill confirmation count | 1 | `artifacts/chaos/run-1792295243380.json` |
-| Capped-container observation | Passed; sampled peak 341.4 MiB under the configured cap | `artifacts/deploy/container-memory.json` |
+| Capped-container observation | Passed; sampled peak 331.2 MiB under the configured cap | `artifacts/deploy/container-memory.json` |
 | Live Gemma / spoken booking | **Not measured — keys missing** | `artifacts/live-verify.json` |
 | Live cost per call | **Not measured** | `artifacts/cost/cost-model.json` |
 

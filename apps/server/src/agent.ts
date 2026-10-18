@@ -42,6 +42,8 @@ export const Intent = z.object({
   phone: z.string().optional(),
   address: z.string().optional(),
   appointmentId: z.string().optional(),
+  preferences: z.string().max(500).optional(),
+  notes: z.string().max(500).optional(),
 });
 export type Call = {
   id: string;
@@ -324,6 +326,10 @@ export class Receptionist {
     const tools = this.tools(call, b);
     const run = async (name: keyof typeof tools, args: any = {}) =>
       (tools[name].execute as any)(args, {});
+    const memory = await run("lookup_caller");
+    let callerPreferences = memory?.preferences || "",
+      callerNotes = memory?.notes || "";
+    const pastServices: string[] = memory?.pastServices || [];
     const retrievalStart = performance.now();
     const knowledge =
       this.options.retrieval === false
@@ -347,7 +353,7 @@ export class Receptionist {
     if (urgent) {
       const result = await run("escalate_urgent", { text });
       call.outcome = "escalated";
-      response = `${urgent.definition} I have queued an urgent message for the owner. ${result.notification === "sent" ? "The owner webhook accepted the notification." : "Immediate delivery is not confirmed."} I cannot promise a response time.`;
+      response = `${urgent.definition} I have queued an urgent message for the owner. ${result.notification === "sent" ? "The owner webhook accepted the notification." : "Immediate delivery is not confirmed."} I cannot promise a response time.${call.phone ? "" : " Please share a callback identifier if it is safe to do so."}`;
       sources = ["emergency:config"];
     } else if (
       /ignore.{0,30}(instruction|rule)|system prompt|other (caller|customer)|book.{0,20}free|override|reveal.{0,20}(key|secret)|discount.{0,20}100%/i.test(
@@ -365,7 +371,7 @@ export class Receptionist {
           : llm;
       const extraction = await structured(
         new MastraIntentLLM(client, tools),
-        `${promptRules}\nBusiness: ${JSON.stringify(b)}\nRetrieved sources: ${JSON.stringify(knowledge.sources)}\nPending: ${JSON.stringify(call.pending || null)}\nRecent caller turns: ${JSON.stringify(call.turns.slice(-6))}\nCurrent date: ${DateTime.now().setZone(b.timezone).toISODate()}\nCaller text (data): ${JSON.stringify(text)}`,
+        `${promptRules}\nBusiness: ${JSON.stringify(b)}\nAuthenticated caller memory (untrusted data): ${JSON.stringify(memory)}\nRetrieved sources: ${JSON.stringify(knowledge.sources)}\nPending: ${JSON.stringify(call.pending || null)}\nRecent caller turns: ${JSON.stringify(call.turns.slice(-6))}\nCurrent date: ${DateTime.now().setZone(b.timezone).toISODate()}\nCaller text (data): ${JSON.stringify(text)}`,
         Intent,
         { intent: "unknown" },
         this.options.repair !== false,
@@ -382,6 +388,8 @@ export class Receptionist {
       const intent = extraction.value;
       call.name = intent.name || call.name;
       call.phone = intent.phone || call.phone;
+      callerPreferences = intent.preferences || callerPreferences;
+      callerNotes = intent.notes || callerNotes;
       if (intent.intent === "confirm" && call.pending) {
         if (call.pending.name === "Visitor" || !call.pending.phone) {
           response =
@@ -592,8 +600,16 @@ export class Receptionist {
           name: call.name,
           lastOutcome: call.outcome,
           lastService: call.entities.serviceId || "",
-          preferences: "",
-          notes: "",
+          preferences: callerPreferences,
+          notes: callerNotes,
+          pastServices: [
+            ...new Set([
+              ...pastServices,
+              ...(typeof call.entities.serviceId === "string"
+                ? [call.entities.serviceId]
+                : []),
+            ]),
+          ],
           updatedAt: new Date().toISOString(),
         },
       },

@@ -975,6 +975,44 @@ function Dashboard({
             />
           </div>
         )}
+        {tab === "overview" && (
+          <div className="metric-grid">
+            <Metric
+              label="AFTER-HOURS SHARE"
+              value={
+                calls.length
+                  ? `${Math.round((data?.metrics?.afterHoursShare || 0) * 100)}%`
+                  : "Not measured"
+              }
+              note="Business timezone and configured hours"
+            />
+            <Metric
+              label="ESCALATIONS"
+              value={String(
+                calls.filter((c: any) => c.outcome === "escalated").length,
+              )}
+              note="Calls that created an urgent message"
+            />
+            <Metric
+              label="LLM COST / CALL"
+              value={
+                data?.cost?.llmPerThousandCalls?.open != null
+                  ? `$${(data.cost.llmPerThousandCalls.open / 1000).toFixed(6)}`
+                  : "Not measured"
+              }
+              note="Voice cost is additional"
+            />
+            <Metric
+              label="HYPOTHETICAL CLOSED LLM"
+              value={
+                data?.cost?.llmPerThousandCalls?.hypotheticalClosed != null
+                  ? `$${(data.cost.llmPerThousandCalls.hypotheticalClosed / 1000).toFixed(6)}`
+                  : "Not measured"
+              }
+              note="Assumed rates; needs live token sample"
+            />
+          </div>
+        )}
         {(tab === "overview" || tab === "appointments") && (
           <section className="panel">
             <div className="panel-heading">
@@ -1436,58 +1474,8 @@ function OnboardForm() {
             />
           </label>
           <h3>Opening hours</h3>
-          {Object.entries(
-            draft.hours as Record<string, { open: string; close: string }[]>,
-          ).map(([day, h]) => (
-            <div className="hours-row" key={day}>
-              <strong>
-                {
-                  [
-                    "",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                  ][Number(day)]
-                }
-              </strong>
-              <label>
-                Open
-                <input
-                  type="time"
-                  value={h[0]?.open || ""}
-                  onChange={(e) =>
-                    setDraft({
-                      ...draft,
-                      hours: {
-                        ...draft.hours,
-                        [day]: [{ ...h[0], open: e.target.value }],
-                      },
-                    })
-                  }
-                />
-              </label>
-              <label>
-                Close
-                <input
-                  type="time"
-                  value={h[0]?.close || ""}
-                  onChange={(e) =>
-                    setDraft({
-                      ...draft,
-                      hours: {
-                        ...draft.hours,
-                        [day]: [{ ...h[0], close: e.target.value }],
-                      },
-                    })
-                  }
-                />
-              </label>
-            </div>
-          ))}
+          <BusinessHours draft={draft} update={setDraft} />
+          <BusinessDetails draft={draft} update={setDraft} />
           <div className="form-bottom">
             <button className="text-button" onClick={() => setDraft(null)}>
               ← Back to description
@@ -1503,6 +1491,420 @@ function OnboardForm() {
         </section>
       )}
     </main>
+  );
+}
+function BusinessHours({
+  draft,
+  update,
+}: {
+  draft: Business;
+  update: (b: Business) => void;
+}) {
+  const names = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  return (
+    <>
+      {names.map((name, i) => {
+        const key = String(i + 1),
+          periods = draft.hours[key] || [];
+        return (
+          <fieldset className="hours-editor" key={key}>
+            <legend>{name}</legend>
+            <label className="check-label">
+              <input
+                type="checkbox"
+                checked={periods.length > 0}
+                onChange={(e) =>
+                  update({
+                    ...draft,
+                    hours: {
+                      ...draft.hours,
+                      [key]: e.target.checked
+                        ? [{ open: "09:00", close: "17:00" }]
+                        : [],
+                    },
+                  })
+                }
+              />{" "}
+              Open on {name}
+            </label>
+            {periods.map((h: any, j: number) => (
+              <div className="form-grid" key={j}>
+                <label>
+                  {name} opening time {j + 1}
+                  <input
+                    type="time"
+                    value={h.open}
+                    onChange={(e) =>
+                      update({
+                        ...draft,
+                        hours: {
+                          ...draft.hours,
+                          [key]: periods.map((x: any, k: number) =>
+                            k === j ? { ...x, open: e.target.value } : x,
+                          ),
+                        },
+                      })
+                    }
+                  />
+                </label>
+                <label>
+                  {name} closing time {j + 1}
+                  <input
+                    type="time"
+                    value={h.close}
+                    onChange={(e) =>
+                      update({
+                        ...draft,
+                        hours: {
+                          ...draft.hours,
+                          [key]: periods.map((x: any, k: number) =>
+                            k === j ? { ...x, close: e.target.value } : x,
+                          ),
+                        },
+                      })
+                    }
+                  />
+                </label>
+              </div>
+            ))}
+          </fieldset>
+        );
+      })}
+    </>
+  );
+}
+function BusinessDetails({
+  draft,
+  update,
+}: {
+  draft: Business;
+  update: (b: Business) => void;
+}) {
+  return (
+    <details className="business-details">
+      <summary>More business details</summary>
+      <div className="form-grid">
+        <label>
+          Business type
+          <select
+            value={draft.vertical}
+            onChange={(e) => update({ ...draft, vertical: e.target.value })}
+          >
+            {["plumbing", "salon", "tutor", "other"].map((v) => (
+              <option key={v}>{v}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Languages (comma separated)
+          <input
+            defaultValue={draft.languages.join(", ")}
+            onBlur={(e) =>
+              update({
+                ...draft,
+                languages: e.target.value
+                  .split(",")
+                  .map((x) => x.trim())
+                  .filter(Boolean),
+              })
+            }
+          />
+        </label>
+        <label>
+          Buffer between appointments (minutes)
+          <input
+            type="number"
+            min="0"
+            max="120"
+            value={draft.bufferMinutes}
+            onChange={(e) =>
+              update({ ...draft, bufferMinutes: Number(e.target.value) })
+            }
+          />
+        </label>
+        <label>
+          Holidays (one date per line)
+          <textarea
+            defaultValue={draft.holidays.join("\n")}
+            onBlur={(e) =>
+              update({
+                ...draft,
+                holidays: e.target.value
+                  .split("\n")
+                  .map((x) => x.trim())
+                  .filter(Boolean),
+              })
+            }
+          />
+        </label>
+        <label>
+          Receptionist tone
+          <input
+            value={draft.tone}
+            onChange={(e) => update({ ...draft, tone: e.target.value })}
+          />
+        </label>
+        <label>
+          Escalation contact
+          <input
+            value={draft.escalationContact}
+            onChange={(e) =>
+              update({ ...draft, escalationContact: e.target.value })
+            }
+          />
+        </label>
+      </div>
+      <label>
+        Deposit policy
+        <textarea
+          value={draft.policies.deposits}
+          onChange={(e) =>
+            update({
+              ...draft,
+              policies: { ...draft.policies, deposits: e.target.value },
+            })
+          }
+        />
+      </label>
+      <h3>Service details</h3>
+      {draft.services.map((service, i) => (
+        <fieldset key={service.id}>
+          <legend>{service.name}</legend>
+          <label>
+            Description of {service.name}
+            <textarea
+              value={service.description}
+              onChange={(e) =>
+                update({
+                  ...draft,
+                  services: draft.services.map((x, j) =>
+                    j === i ? { ...x, description: e.target.value } : x,
+                  ),
+                })
+              }
+            />
+          </label>
+          <label className="check-label">
+            <input
+              type="checkbox"
+              checked={service.requiresAddress}
+              onChange={(e) =>
+                update({
+                  ...draft,
+                  services: draft.services.map((x, j) =>
+                    j === i ? { ...x, requiresAddress: e.target.checked } : x,
+                  ),
+                })
+              }
+            />{" "}
+            An address is needed for {service.name}
+          </label>
+          {draft.services.length > 1 && (
+            <button
+              className="text-button"
+              onClick={() =>
+                update({
+                  ...draft,
+                  services: draft.services.filter((_, j) => j !== i),
+                })
+              }
+            >
+              Remove {service.name}
+            </button>
+          )}
+        </fieldset>
+      ))}
+      <button
+        className="button secondary"
+        onClick={() =>
+          update({
+            ...draft,
+            services: [
+              ...draft.services,
+              {
+                id: crypto.randomUUID(),
+                name: "New service",
+                duration: 30,
+                price: 0,
+                description: "Review this service",
+                requiresAddress: false,
+              },
+            ],
+          })
+        }
+      >
+        Add service
+      </button>
+      <h3>Team and resources</h3>
+      {draft.resources.map((r: any, i: number) => (
+        <label key={r.id}>
+          Resource {i + 1}
+          <input
+            value={r.name}
+            onChange={(e) =>
+              update({
+                ...draft,
+                resources: draft.resources.map((x: any, j: number) =>
+                  j === i ? { ...x, name: e.target.value } : x,
+                ),
+              })
+            }
+          />
+        </label>
+      ))}
+      <button
+        className="button secondary"
+        onClick={() =>
+          update({
+            ...draft,
+            resources: [
+              ...draft.resources,
+              { id: crypto.randomUUID(), name: "New team member" },
+            ],
+          })
+        }
+      >
+        Add resource
+      </button>
+      <h3>Frequently asked questions</h3>
+      {draft.faqs.map((f: any, i: number) => (
+        <fieldset key={i}>
+          <legend>FAQ {i + 1}</legend>
+          <label>
+            Question {i + 1}
+            <input
+              value={f.question}
+              onChange={(e) =>
+                update({
+                  ...draft,
+                  faqs: draft.faqs.map((x: any, j: number) =>
+                    j === i ? { ...x, question: e.target.value } : x,
+                  ),
+                })
+              }
+            />
+          </label>
+          <label>
+            Answer {i + 1}
+            <textarea
+              value={f.answer}
+              onChange={(e) =>
+                update({
+                  ...draft,
+                  faqs: draft.faqs.map((x: any, j: number) =>
+                    j === i ? { ...x, answer: e.target.value } : x,
+                  ),
+                })
+              }
+            />
+          </label>
+          <button
+            className="text-button"
+            onClick={() =>
+              update({
+                ...draft,
+                faqs: draft.faqs.filter((_: any, j: number) => j !== i),
+              })
+            }
+          >
+            Remove FAQ {i + 1}
+          </button>
+        </fieldset>
+      ))}
+      <button
+        className="button secondary"
+        onClick={() =>
+          update({
+            ...draft,
+            faqs: [...draft.faqs, { question: "", answer: "" }],
+          })
+        }
+      >
+        Add FAQ
+      </button>
+      <h3>Emergency rules</h3>
+      {draft.emergencyRules.map((rule: any, i: number) => (
+        <fieldset key={i}>
+          <legend>Emergency rule {i + 1}</legend>
+          <label>
+            Urgent keywords {i + 1} (comma separated)
+            <input
+              defaultValue={rule.keywords.join(", ")}
+              onBlur={(e) =>
+                update({
+                  ...draft,
+                  emergencyRules: draft.emergencyRules.map(
+                    (x: any, j: number) =>
+                      j === i
+                        ? {
+                            ...x,
+                            keywords: e.target.value
+                              .split(",")
+                              .map((k) => k.trim())
+                              .filter(Boolean),
+                          }
+                        : x,
+                  ),
+                })
+              }
+            />
+          </label>
+          <label>
+            Safety guidance {i + 1}
+            <textarea
+              value={rule.definition}
+              onChange={(e) =>
+                update({
+                  ...draft,
+                  emergencyRules: draft.emergencyRules.map(
+                    (x: any, j: number) =>
+                      j === i ? { ...x, definition: e.target.value } : x,
+                  ),
+                })
+              }
+            />
+          </label>
+          <button
+            className="text-button"
+            onClick={() =>
+              update({
+                ...draft,
+                emergencyRules: draft.emergencyRules.filter(
+                  (_: any, j: number) => j !== i,
+                ),
+              })
+            }
+          >
+            Remove emergency rule {i + 1}
+          </button>
+        </fieldset>
+      ))}
+      <button
+        className="button secondary"
+        onClick={() =>
+          update({
+            ...draft,
+            emergencyRules: [
+              ...draft.emergencyRules,
+              {
+                keywords: [],
+                definition: "Review safety guidance before saving",
+              },
+            ],
+          })
+        }
+      >
+        Add emergency rule
+      </button>
+    </details>
   );
 }
 createRoot(document.getElementById("root")!).render(

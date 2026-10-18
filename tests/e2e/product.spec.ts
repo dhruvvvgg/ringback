@@ -38,6 +38,19 @@ test("caller booking, owner dashboard, mobile and accessibility", async ({
     page.getByRole("heading", { name: "Good things are calling." }),
   ).toBeVisible();
   await expect(page.getByText("Avery Demo").first()).toBeVisible();
+  const seeded = page.waitForResponse(
+    (r) =>
+      r.url().endsWith("/api/owner/juniper/demo") &&
+      r.request().method() === "POST",
+  );
+  await page.getByRole("button", { name: "Add demo activity" }).click();
+  expect((await seeded).ok()).toBe(true);
+  await expect(
+    page
+      .locator(".metric")
+      .filter({ hasText: "CALLS HANDLED" })
+      .locator("strong"),
+  ).toHaveText("6");
   await page.screenshot({ path: "docs/img/dashboard.png", fullPage: true });
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole("button", { name: "Appointments", exact: true }).click();
@@ -61,11 +74,31 @@ test("owner onboarding review and immediate test call", async ({ page }) => {
     .fill("Demo Birch Studio");
   await page.getByLabel("Service name", { exact: true }).fill("Consultation");
   await page.getByLabel("Price (£)", { exact: true }).fill("35");
+  await page.getByText("More business details", { exact: true }).click();
+  await page.getByLabel("Languages (comma separated)").fill("");
+  await page
+    .getByLabel("Languages (comma separated)")
+    .pressSequentially("en, hi");
+  await expect(page.getByLabel("Languages (comma separated)")).toHaveValue(
+    "en, hi",
+  );
+  await page.getByLabel("Buffer between appointments (minutes)").fill("15");
+  await page
+    .getByLabel("Escalation contact", { exact: true })
+    .fill("Fictional owner inbox");
+  await page.screenshot({ path: "docs/img/onboarding.png", fullPage: true });
+  await page
+    .getByLabel("Answer 1", { exact: false })
+    .fill("This is a fictional studio for testing.");
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   await page.getByRole("button", { name: "Save & try a call" }).click();
   await expect(
     page.getByRole("heading", { name: "Demo Birch Studio" }),
   ).toBeVisible();
+  const configs = await (await page.request.get("/api/businesses")).json();
+  expect(
+    configs.find((b: any) => b.name === "Demo Birch Studio").languages,
+  ).toEqual(["en", "hi"]);
 });
 test("home, dark theme and keyboard focus", async ({ page }) => {
   await page.goto("/");

@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { bodyLimit } from "hono/body-limit";
@@ -374,7 +375,24 @@ export function createApp(store: Store) {
     } catch {
       /* No measured chaos result yet. */
     }
+    const b = await store.business(id);
+    const afterHours = calls.filter((call) => {
+      if (!b) return false;
+      const t = DateTime.fromISO(call.createdAt).setZone(b.timezone),
+        day = t.toISODate()!,
+        time = t.toFormat("HH:mm");
+      return (
+        b.holidays.includes(day) ||
+        !(b.hours[String(t.weekday)] || []).some(
+          (h) => time >= h.open && time < h.close,
+        )
+      );
+    }).length;
     return c.json({
+      metrics: {
+        afterHoursCalls: afterHours,
+        afterHoursShare: calls.length ? afterHours / calls.length : null,
+      },
       calls,
       appointments,
       messages,
@@ -404,17 +422,57 @@ export function createApp(store: Store) {
   );
   app.post("/api/owner/:id/demo", async (c) => {
     const id = c.req.param("id");
-    const call = await agent.start(
-      id,
-      "synthetic-dashboard",
-      "Avery Demo",
-      "demo-010",
-    );
-    await agent.turn(call, "What is the price?");
-    await agent.turn(
-      call,
-      "Please take a message: I would like to arrange a visit.",
-    );
+    const b = await store.business(id);
+    if (!b) return c.json({ error: "Business not found" }, 404);
+    const scripted = new Receptionist(store, {
+      ...agent.options,
+      llm: new MockLLM(),
+    });
+    for (let i = 0; i < 5; i++) {
+      const call = await scripted.start(
+        id,
+        `synthetic-day-${i}`,
+        ["Avery Demo", "Robin Demo", "Sam Demo", "Taylor Demo", "Jordan Demo"][
+          i
+        ],
+        `demo-01${i}`,
+      );
+      await scripted.turn(
+        call,
+        i === 3 && b.emergencyRules[0]?.keywords[0]
+          ? `I need help: ${b.emergencyRules[0].keywords[0]}`
+          : i % 2
+            ? "Please take a message: I would like a callback."
+            : "What is the price?",
+      );
+      if (i === 4) {
+        const date = DateTime.now()
+          .setZone(b.timezone)
+          .plus({ weeks: 1 })
+          .startOf("week")
+          .toISODate()!;
+        const slots = await availability(store, b, b.services[0].id, date);
+        if (slots.length) {
+          const time = DateTime.fromISO(slots[0].start)
+            .setZone(b.timezone)
+            .toFormat("HH:mm");
+          await scripted.turn(
+            call,
+            `Book ${b.services[0].name} on ${date} at ${time}; address: Fictional Demo Street`,
+          );
+          await scripted.turn(call, "yes");
+        }
+      }
+      const createdAt = DateTime.now()
+        .setZone(b.timezone)
+        .startOf("day")
+        .plus({ hours: 8 + i * 2 })
+        .toUTC()
+        .toISO();
+      await store.db
+        .collection("calls")
+        .updateOne({ id: call.id }, { $set: { createdAt, synthetic: true } });
+    }
     notify();
     return c.json({ seeded: true, label: "synthetic demo" });
   });

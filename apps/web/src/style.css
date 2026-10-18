@@ -1372,3 +1372,34 @@ textarea:focus {
     transition: none !important;
   }
 }
+
+.business-details {
+  margin-top: 25px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.business-details summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.business-details h3 {
+  margin: 25px 0 15px;
+}
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 15px 0;
+}
+legend {
+  font-size: 12px;
+  padding: 0 6px;
+}
+.hours-editor .form-grid {
+  margin-top: 12px;
+}
+.hours-editor label {
+  margin-bottom: 7px;
+}
