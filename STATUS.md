@@ -34,6 +34,10 @@ Re-ran `npm run live:verify`; it completed its missing-binding guard and wrote a
 
 `ELEVENLABS_API_KEY` is absent and the ElevenLabs connector is not exposed. Real STT/TTS round trip is unrun; time-to-first-audio remains **null/unmeasured**, with zero live voice calls. Provider voice remains disabled; text entry and optional labeled browser speech remain available. No mock audio/timing was substituted. [Voice status](artifacts/latency/status.json).
 
+### Step 6 — DigitalOcean: does not apply
+
+No DigitalOcean connector tools, inference key, or management token were exposed. A catalog/account call, Gemma inference and open-embedding inference could not be issued. No resource or access key was created. **DigitalOcean does not apply to this submission's verified integrations.** Removed its integration/binding entry from README and its inference/category references from POST_DRAFT. [Attempt status](artifacts/connectors/digitalocean.json).
+
 ## Outcome
 
 The local development/demo workflow is implemented and verified. The live spoken-booking criterion is **unmet** because provider keys were absent. Atlas/DO/Render management tools were not exposed, so no external deployment or data service was provisioned. This is a deploy-ready, honestly labeled mock/text demonstration, not a claim of production or live-model readiness.

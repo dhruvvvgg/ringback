@@ -55,7 +55,6 @@ Models classify caller intent into schema-validated JSON. The application execut
 |---|---|
 | `LLM_API_KEY`, `LLM_BASE_URL`, `LLM_MODEL` | Google AI Studio key for Gemma, compatible provider URL, discovered Gemma ID. No key means mock. A non-Gemma model fails startup. |
 | `LLM_MODEL_ALT`, `LLM_RPM`, `LLM_TPM` | Optional second Gemma and conservative request/token limits. Requests are serialized globally. |
-| `DO_INFERENCE_KEY` | Optional DO inference binding; requires the appropriate `LLM_BASE_URL`. No DO category is claimed. |
 | `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID`, `ELEVENLABS_CHAR_BUDGET` | Optional voice provider, library voice selection and hard character reservation budget. |
 | `MONGODB_URI`, `MONGODB_DB` | Persistent MongoDB/Atlas database. Without URI, clearly labeled local SQLite is used. |
 | `TEMPORAL_ADDRESS`, `TEMPORAL_NAMESPACE`, `TEMPORAL_API_KEY`, `TEMPORAL_TASK_QUEUE` | External Temporal/Cloud configuration; otherwise supervisor starts a local dev server. |
@@ -92,7 +91,6 @@ Real durability evidence is under `artifacts/chaos/`; real MongoDB concurrency e
 | **MongoDB Atlas** | Official driver, business/caller/appointment storage and vector adapter; `packages/core/src/store.ts`, `retrieval.ts` | Real local MongoDB indexes tested; Atlas provisioning and vector index execution unverified. |
 | **ElevenLabs** | Library-voice STT/TTS, sentence streaming and budget; `voice.ts` | Mock transport test verified. Live round trip requires key; no voice category claimed yet. |
 | **Render** | Single free-tier container blueprint, `render.yaml`, `Dockerfile` | Local container smoke is distinct from Render deployment. Exact steps in DEPLOY. |
-| **DigitalOcean** | Compatible inference path can accept a DO binding | No connected catalog/provisioning tools or inference key were exposed. Not a verified category. |
 | **Sentry** | Optional numeric per-turn/stage spans, outbound whitelist; `telemetry.ts` | Captured-envelope canary test passes locally. No external DSN delivery claimed. |
 
 ## Privacy, security and durability limits
@@ -107,7 +105,7 @@ Render's free instance can sleep and its filesystem is ephemeral. Local Temporal
 
 ## MCP setup and development sources
 
-The requested Render, DigitalOcean, MongoDB and ElevenLabs MCP servers were not available in the execution session. `codex mcp list` returned none. Mastra's standard registration was blocked by read-only platform config; `scripts/read-mastra-docs.ts` successfully calls its installed stdio server instead. The code follows current package docs and official Temporal, Google and ElevenLabs sources, listed in [DECISIONS.md](docs/DECISIONS.md). MCP access never implies possession of raw runtime API keys.
+The requested Render, MongoDB and ElevenLabs MCP servers were not available in the execution session. `codex mcp list` returned none. Mastra's standard registration was blocked by read-only platform config; `scripts/read-mastra-docs.ts` successfully calls its installed stdio server instead. The code follows current package docs and official Temporal, Google and ElevenLabs sources, listed in [DECISIONS.md](docs/DECISIONS.md). MCP access never implies possession of raw runtime API keys.
 
 ## Demo, trial and publication
 

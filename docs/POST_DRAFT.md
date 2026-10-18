@@ -61,7 +61,7 @@ The container test also mattered: the first image completed its booking and then
 
 The open-weight model is the intended conversational brain, and the client refuses Gemini rather than silently swapping in a proprietary model. Provider URL and Gemma ID come from environment variables; discovery filters the actual catalog. That is the basis for a business owner being able to change provider or operate their own inference service.
 
-The privacy claim needs precision. Hosted Google or DigitalOcean inference receives caller text. Hosted ElevenLabs receives audio/text. Self-hosting is **designed into the interface**, but I did not demonstrate it because the official Gemma weight request required authenticated license access. I cannot claim that the deployed demo keeps all data on one machine.
+The privacy claim needs precision. Hosted inference receives caller text. Hosted ElevenLabs receives audio/text. Self-hosting is **designed into the interface**, but I did not demonstrate it because the official Gemma weight request required authenticated license access. I cannot claim that the deployed demo keeps all data on one machine.
 
 The cost harness compares measured LLM tokens with an explicitly hypothetical closed-API rate. Today its result is null because no live tokens were measured. Eligible free-tier inference is an assumption to verify, not a permanent pricing guarantee. **Voice cost is identical under either LLM and may dominate the total.** Any open-model saving applies to the LLM portion, not the whole call. `npm run live:verify` will produce the missing catalog, evaluation, latency and cost evidence once the owner supplies working keys.
 
@@ -86,4 +86,4 @@ Only integrations with verified work are listed here:
 - **Mastra:** its agent/model bridge and typed turn workflow execute the tested receptionist path, including the mock booking flow.
 - **Temporal:** real time-skipping lifecycle tests and the worker-kill experiment exercise durable follow-through.
 
-Gemma, ElevenLabs, DigitalOcean, Atlas Vector Search, Render hosting and external Sentry delivery are **not claimed as verified prize categories** in this draft. Local MongoDB concurrency and captured Sentry-envelope scrubbing are useful engineering checks, but do not establish Atlas or external-service delivery. Revisit categories only after the corresponding live evidence exists.
+Gemma, ElevenLabs, Atlas Vector Search, Render hosting and external Sentry delivery are **not claimed as verified prize categories** in this draft. Local MongoDB concurrency and captured Sentry-envelope scrubbing are useful engineering checks, but do not establish Atlas or external-service delivery. Revisit categories only after the corresponding live evidence exists.
