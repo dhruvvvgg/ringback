@@ -1,0 +1,8 @@
+{
+  "imageId": "sha256:ca12cb763b790977109b0f23f4015dc4c7744a71019e96595aac62c2f9eaf2bb",
+  "sourceCommit": "dd8f19728b0843bf7fadba73f7924cdedc847fd7",
+  "localSmokePassed": true,
+  "memoryCap": "512 MiB",
+  "renderDeployment": false,
+  "tlsVerificationPreserved": true
+}

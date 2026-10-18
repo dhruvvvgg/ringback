@@ -1,23 +1,23 @@
 {
-  "at": "2026-10-18T03:45:10.890Z",
+  "at": "2026-10-18T03:57:35.108Z",
   "passed": true,
-  "sourceCommit": "1c7917860a33276eb934b9939173285286c916bf",
-  "directory": "/tmp/ringback-fresh-uyLkTf",
+  "sourceCommit": "dd8f19728b0843bf7fadba73f7924cdedc847fd7",
+  "directory": "/tmp/ringback-fresh-QfBdSi",
   "steps": [
     {
       "command": "npm ci",
       "passed": true,
-      "durationMs": 29988
+      "durationMs": 25718
     },
     {
       "command": "npm run setup",
       "passed": true,
-      "durationMs": 3120
+      "durationMs": 3357
     },
     {
       "command": "npm run build",
       "passed": true,
-      "durationMs": 2281
+      "durationMs": 2325
     },
     {
       "command": "npm start",
@@ -26,11 +26,11 @@
     {
       "command": "npm run smoke -- http://localhost:3000",
       "passed": true,
-      "durationMs": 1263
+      "durationMs": 1161
     }
   ],
   "smoke": {
-    "at": "2026-10-18T03:45:10.858Z",
+    "at": "2026-10-18T03:57:35.090Z",
     "target": "http://localhost:3000",
     "mode": "mock",
     "health": {
@@ -53,7 +53,7 @@
       "booking": true,
       "workflowVisible": true
     },
-    "workflowId": "booking-1ef70021-3b1a-49a3-be05-fb9f0905d150"
+    "workflowId": "booking-83b6555b-1e0e-4353-af5b-bd7e6e9f9931"
   },
   "scope": "README quickstart literally, isolated local clone, no copied node_modules or .env.local"
 }

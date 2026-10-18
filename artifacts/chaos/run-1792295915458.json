@@ -1,0 +1,35 @@
+{
+  "mode": "real-temporal-local",
+  "passed": true,
+  "workflowId": "booking-chaos-4661a012-57e1-4db1-a1ff-cbb4c4b1987e",
+  "result": "completed",
+  "confirmations": 1,
+  "historyEvents": 54,
+  "timeline": [
+    {
+      "event": "worker_started",
+      "at": "2026-10-18T03:58:16.110Z"
+    },
+    {
+      "event": "workflow_started",
+      "at": "2026-10-18T03:58:16.133Z"
+    },
+    {
+      "event": "confirmation_recorded",
+      "at": "2026-10-18T03:58:18.345Z"
+    },
+    {
+      "event": "worker_killed",
+      "at": "2026-10-18T03:58:18.345Z"
+    },
+    {
+      "event": "worker_started",
+      "at": "2026-10-18T03:58:19.348Z"
+    },
+    {
+      "event": "workflow_completed",
+      "at": "2026-10-18T03:58:35.437Z"
+    }
+  ],
+  "scope": "Worker process kill with persistent Temporal server; outbox exactly once. Not proof of exactly-once webhook delivery or Render restart persistence."
+}

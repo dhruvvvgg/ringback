@@ -4,7 +4,7 @@ No live model or voice benchmark exists yet. The current receptionist uses **Moc
 
 ## Measured application tests (mock model)
 
-Source: [baseline](../artifacts/eval/mock-MockLLM-baseline.json), recorded 2026-10-18T03:54:45.731Z. 96/96 scenarios executed, 96 passed. Overall Wilson 95% interval: 96.15%–100.00%. Template variants are correlated; this interval is descriptive and is not evidence of real-world model accuracy.
+Source: [baseline](../artifacts/eval/mock-MockLLM-baseline.json), recorded 2026-10-18T03:58:15.140Z. 96/96 scenarios executed, 96 passed. Overall Wilson 95% interval: 96.15%–100.00%. Template variants are correlated; this interval is descriptive and is not evidence of real-world model accuracy.
 
 | Category | Passed/executed | Wilson 95% |
 |---|---:|---:|
@@ -23,7 +23,7 @@ Source: [baseline](../artifacts/eval/mock-MockLLM-baseline.json), recorded 2026-
 
 End-state assertions inspect appointments, cancellation counts, slot hours, urgent records and returning-caller greetings. Grounding checks detect unlisted prices and selected unsupported factual claims; they are **not a complete semantic grounding proof**. Injection coverage is finite and intentionally adversarial, not a security guarantee. Hindi/Hinglish cases cover price questions only.
 
-Mock per-turn p50/p95: 6.07/12.21 ms; these are local orchestration timings and **must not be used as voice-performance claims**. 0 repairs and 0 structured fallbacks in this run. Unit tests separately force malformed outputs and provider failures.
+Mock per-turn p50/p95: 6.91/23.20 ms; these are local orchestration timings and **must not be used as voice-performance claims**. 0 repairs and 0 structured fallbacks in this run. Unit tests separately force malformed outputs and provider failures.
 
 ## Ablations and live runs
 
@@ -31,7 +31,7 @@ The no-retrieval and no-repair runs are also mock when keys are absent. Their re
 
 ## Durability
 
-[run-1792295243380.json](../artifacts/chaos/run-1792295243380.json): a real local Temporal workflow survived SIGKILL of its worker and completed after restart. Confirmation outbox count: **1**. History events: 52. This proves local worker recovery and outbox idempotency, not exactly-once external webhook delivery or persistence through Render's ephemeral-disk loss. Time-skipping tests cover retries, compensation, timers and lead cancellation ([artifact](../artifacts/temporal/tests.json)).
+[run-1792295915458.json](../artifacts/chaos/run-1792295915458.json): a real local Temporal workflow survived SIGKILL of its worker and completed after restart. Confirmation outbox count: **1**. History events: 54. This proves local worker recovery and outbox idempotency, not exactly-once external webhook delivery or persistence through Render's ephemeral-disk loss. Time-skipping tests cover retries, compensation, timers and lead cancellation ([artifact](../artifacts/temporal/tests.json)).
 
 ## Concurrency
 

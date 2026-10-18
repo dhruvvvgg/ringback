@@ -36,7 +36,7 @@ The most consequential design decision was to make model output an intent propos
 
 A booking is protected by unique per-resource minute locks, including its buffer. The real MongoDB test accepted **1 reservation out of 40 simultaneous attempts**, then replayed its idempotency key without another appointment. That result is in `artifacts/mongo/concurrency.json`. Separate tests exercise DST and business timezones.
 
-Temporal owns the follow-through. The durability experiment waits until a confirmation is recorded, kills the worker with SIGKILL, restarts it and checks completion. The resulting outbox had **1 confirmation**, with **52 history events** in `artifacts/chaos/run-1792295243380.json`. This proves local worker recovery while the Temporal server survives. It does not prove exactly-once webhook delivery or history persistence after Render discards an ephemeral disk.
+Temporal owns the follow-through. The durability experiment waits until a confirmation is recorded, kills the worker with SIGKILL, restarts it and checks completion. The resulting outbox had **1 confirmation**, with **54 history events** in `artifacts/chaos/run-1792295915458.json`. This proves local worker recovery while the Temporal server survives. It does not prove exactly-once webhook delivery or history persistence after Render discards an ephemeral disk.
 
 Here is the evidence available today. The model-related row is deliberately labeled mock:
 
@@ -44,8 +44,8 @@ Here is the evidence available today. The model-related row is deliberately labe
 |---|---|---|
 | Application regression scenarios | 96/96 passed, **MockLLM** | `artifacts/eval/mock-MockLLM-baseline.json` |
 | Concurrent MongoDB booking attempts | 1/40 reservation accepted | `artifacts/mongo/concurrency.json` |
-| Worker-kill confirmation count | 1 | `artifacts/chaos/run-1792295243380.json` |
-| Capped-container observation | Passed; sampled peak 331.2 MiB under the configured cap | `artifacts/deploy/container-memory.json` |
+| Worker-kill confirmation count | 1 | `artifacts/chaos/run-1792295915458.json` |
+| Capped-container observation | Passed; sampled peak 338.2 MiB under the configured cap | `artifacts/deploy/container-memory.json` |
 | Live Gemma / spoken booking | **Not measured — keys missing** | `artifacts/live-verify.json` |
 | Live cost per call | **Not measured** | `artifacts/cost/cost-model.json` |
 

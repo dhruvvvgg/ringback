@@ -1,16 +1,17 @@
 {
-  "at": "2026-10-18T03:49:48.853529+00:00",
+  "at": "2026-10-18T04:00:57.345970+00:00",
   "status": "verified-local-with-documented-external-criteria-unmet",
+  "sourceCommit": "dd8f19728b0843bf7fadba73f7924cdedc847fd7",
   "verify": {
     "typecheck": "passed",
     "lint": "passed",
     "unitIntegration": {
-      "passed": 19,
+      "passed": 20,
       "failed": 0,
       "skipped": 0
     },
     "productionBuild": "passed",
-    "source": "artifacts/tests/results.json; terminal npm run verify exit 0"
+    "source": "artifacts/tests/results.json; npm run verify exit 0"
   },
   "e2e": {
     "passed": 3,
@@ -26,14 +27,16 @@
   "durability": {
     "passed": true,
     "confirmations": 1,
-    "source": "artifacts/chaos/run-1792295243380.json"
+    "source": "artifacts/chaos/run-1792295915458.json"
   },
   "freshClone": {
     "passed": true,
-    "source": "artifacts/audit/fresh-clone.json"
+    "source": "artifacts/audit/fresh-clone.json",
+    "sourceCommit": "dd8f19728b0843bf7fadba73f7924cdedc847fd7"
   },
   "cappedContainer": {
     "passed": true,
+    "sampledPeakMiB": 338.2,
     "source": "artifacts/deploy/container-memory.json"
   },
   "security": {

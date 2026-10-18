@@ -66,16 +66,16 @@
       "note": "text suite: voice stages not measured"
     },
     "retrieval_ms": {
-      "p50": 0.017485999999735213,
-      "p95": 0.04642799999965064
+      "p50": 0.01799699999992299,
+      "p95": 0.11854600000015125
     },
     "llm_ttft_ms": {
-      "p50": 0.000901000000339991,
-      "p95": 0.0036150000000816362
+      "p50": 0.00102100000003702,
+      "p95": 0.004346000000168715
     },
     "llm_total_ms": {
-      "p50": 0.001152000000274711,
-      "p95": 0.004557000000204425
+      "p50": 0.001291999999921245,
+      "p95": 0.005157000000053813
     },
     "tts_ttfa_ms": {
       "p50": 0,
@@ -83,7 +83,7 @@
       "note": "text suite: voice stages not measured"
     }
   },
-  "at": "2026-10-18T03:54:45.731Z",
+  "at": "2026-10-18T03:58:15.140Z",
   "mode": "mock",
   "label": "mock-MockLLM-baseline",
   "total": 96,
@@ -94,7 +94,7 @@
     0.9615230525151842,
     1
   ],
-  "durationMs": 2634,
+  "durationMs": 3623,
   "blocked": null,
   "turns": 160,
   "repairs": 0,
@@ -102,8 +102,8 @@
   "tokensIn": 0,
   "tokensOut": 0,
   "latency": {
-    "p50Ms": 6.070490999999947,
-    "p95Ms": 12.206499999999778
+    "p50Ms": 6.910698000000593,
+    "p95Ms": 23.195776999999907
   },
   "categories": {
     "simple-booking": {
@@ -230,25 +230,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.5938309999996818,
-          "llm_ttft_ms": 0.00777200000038647,
-          "llm_total_ms": 0.012369000000035157,
+          "retrieval_ms": 0.6101250000001528,
+          "llm_ttft_ms": 0.07906699999989542,
+          "llm_total_ms": 0.08345399999984693,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 197.86821499999996
+          "total_ms": 298.859005
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.032788999999866064,
-          "llm_ttft_ms": 0.005058000000190077,
-          "llm_total_ms": 0.005878999999822554,
+          "retrieval_ms": 0.03960899999992762,
+          "llm_ttft_ms": 0.004386000000067725,
+          "llm_total_ms": 0.005157000000053813,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 18.04846499999985
+          "total_ms": 34.231581000000006
         }
       ],
       "failureExample": null
@@ -279,25 +279,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.04131100000040533,
-          "llm_ttft_ms": 0.003975999999966007,
-          "llm_total_ms": 0.004557000000204425,
+          "retrieval_ms": 0.0496539999999186,
+          "llm_ttft_ms": 0.004346000000168715,
+          "llm_total_ms": 0.005016999999952532,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 13.002893000000313
+          "total_ms": 18.735101999999642
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.024987000000237458,
-          "llm_ttft_ms": 0.0035449999995762482,
-          "llm_total_ms": 0.0041359999995620456,
+          "retrieval_ms": 0.10576700000001438,
+          "llm_ttft_ms": 0.004076000000168278,
+          "llm_total_ms": 0.00490799999988667,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 12.021296000000348
+          "total_ms": 19.869464000000335
         }
       ],
       "failureExample": null
@@ -328,14 +328,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.04021999999986292,
-          "llm_ttft_ms": 0.02640900000005786,
-          "llm_total_ms": 0.027370000000246364,
+          "retrieval_ms": 0.09264699999994264,
+          "llm_ttft_ms": 0.004696999999850959,
+          "llm_total_ms": 0.005357999999887397,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 14.011537999999746
+          "total_ms": 26.010060000000067
         }
       ],
       "failureExample": null
@@ -366,14 +366,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.042854000000261294,
-          "llm_ttft_ms": 0.004046000000016647,
-          "llm_total_ms": 0.00461700000005294,
+          "retrieval_ms": 0.04041000000006534,
+          "llm_ttft_ms": 0.0065999999997075065,
+          "llm_total_ms": 0.007441999999628024,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.411143000000266
+          "total_ms": 14.933814999999868
         }
       ],
       "failureExample": null
@@ -404,14 +404,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.031837999999879685,
-          "llm_ttft_ms": 0.0036150000000816362,
-          "llm_total_ms": 0.0042360000002190645,
+          "retrieval_ms": 0.03797599999961676,
+          "llm_ttft_ms": 0.0037160000001676963,
+          "llm_total_ms": 0.004306000000269705,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.00010999999995
+          "total_ms": 14.345252000000073
         }
       ],
       "failureExample": null
@@ -442,14 +442,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.035231999999723485,
+          "retrieval_ms": 0.04982399999971676,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.8228600000002189
+          "total_ms": 2.4975939999999355
         }
       ],
       "failureExample": null
@@ -480,36 +480,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.03414100000009057,
-          "llm_ttft_ms": 0.0034150000001318404,
-          "llm_total_ms": 0.004096000000117783,
+          "retrieval_ms": 0.12088000000039756,
+          "llm_ttft_ms": 0.004145999999764172,
+          "llm_total_ms": 0.0050369999999020365,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.113034000000425
+          "total_ms": 17.97379299999966
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.021151000000372733,
-          "llm_ttft_ms": 0.0033749999997780833,
-          "llm_total_ms": 0.004136000000016793,
+          "retrieval_ms": 0.09515099999998711,
+          "llm_ttft_ms": 0.10154999999986103,
+          "llm_total_ms": 0.10308299999996962,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.449134999999842
+          "total_ms": 26.683998999999858
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.021401999999852706,
-          "llm_ttft_ms": 0.004065999999966152,
-          "llm_total_ms": 0.004586999999901309,
+          "retrieval_ms": 0.027030000000195287,
+          "llm_ttft_ms": 0.00487699999985125,
+          "llm_total_ms": 0.005447999999887543,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.380613999999696
+          "total_ms": 16.457284999999956
         }
       ],
       "failureExample": null
@@ -540,47 +540,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.2807169999996404,
-          "llm_ttft_ms": 0.0032439999999951397,
-          "llm_total_ms": 0.0036150000000816362,
+          "retrieval_ms": 0.06211200000007011,
+          "llm_ttft_ms": 0.0031850000000304135,
+          "llm_total_ms": 0.0034150000001318404,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.314350000000104
+          "total_ms": 15.697247000000061
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013278999999783991,
-          "llm_ttft_ms": 0.000931999999920663,
-          "llm_total_ms": 0.0011920000001737208,
+          "retrieval_ms": 0.02048000000013417,
+          "llm_ttft_ms": 0.001281999999719119,
+          "llm_total_ms": 0.001641999999719701,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.316184000000248
+          "total_ms": 15.762934999999743
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.020650999999816122,
-          "llm_ttft_ms": 0.0008609999999862339,
-          "llm_total_ms": 0.001111999999920954,
+          "retrieval_ms": 0.022613000000092143,
+          "llm_ttft_ms": 0.001573000000007596,
+          "llm_total_ms": 0.0021540000002460147,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.90031799999997
+          "total_ms": 18.41122200000018
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012808999999833759,
-          "llm_ttft_ms": 0.0011619999995673425,
-          "llm_total_ms": 0.0013619999999718857,
+          "retrieval_ms": 0.1345589999996264,
+          "llm_ttft_ms": 0.001160999999683554,
+          "llm_total_ms": 0.0014120000000730215,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 12.073244000000159
+          "total_ms": 21.72002799999973
         }
       ],
       "failureExample": null
@@ -611,14 +611,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.015041999999994005,
-          "llm_ttft_ms": 0.0008310000002893503,
-          "llm_total_ms": 0.0010220000003755558,
+          "retrieval_ms": 0.02701999999999316,
+          "llm_ttft_ms": 0.0013720000001740118,
+          "llm_total_ms": 0.0017029999999067513,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.634573000000273
+          "total_ms": 13.424305999999888
         }
       ],
       "failureExample": null
@@ -649,14 +649,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.021552000000156113,
+          "retrieval_ms": 0.024456000000100175,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.3925420000000486
+          "total_ms": 0.7034129999997276
         }
       ],
       "failureExample": null
@@ -687,25 +687,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.026810000000295986,
-          "llm_ttft_ms": 0.0009909999998853891,
-          "llm_total_ms": 0.0011810000000878063,
+          "retrieval_ms": 0.1558709999999337,
+          "llm_ttft_ms": 0.001261999999769614,
+          "llm_total_ms": 0.0014830000000074506,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.520394000000124
+          "total_ms": 20.007248999999774
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.011947999999847525,
-          "llm_ttft_ms": 0.0008709999997336126,
-          "llm_total_ms": 0.0011009999998350395,
+          "retrieval_ms": 0.017194999999901484,
+          "llm_ttft_ms": 0.0013420000000223808,
+          "llm_total_ms": 0.0016219999997701962,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.532322000000022
+          "total_ms": 33.39975800000002
         }
       ],
       "failureExample": null
@@ -736,14 +736,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02328399999987596,
-          "llm_ttft_ms": 0.0008509999997841078,
-          "llm_total_ms": 0.0010809999998855346,
+          "retrieval_ms": 0.020009000000300148,
+          "llm_ttft_ms": 0.001172000000224216,
+          "llm_total_ms": 0.0016319999999723223,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.05361800000037
+          "total_ms": 9.40623800000003
         }
       ],
       "failureExample": null
@@ -774,25 +774,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02145199999995384,
-          "llm_ttft_ms": 0.001332000000275002,
-          "llm_total_ms": 0.0015820000003259338,
+          "retrieval_ms": 0.02179200000000492,
+          "llm_ttft_ms": 0.0011409999997340492,
+          "llm_total_ms": 0.0014219999998204003,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.712326000000303
+          "total_ms": 10.668950999999652
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016955000000052678,
-          "llm_ttft_ms": 0.0010119999997186824,
-          "llm_total_ms": 0.0011919999997189734,
+          "retrieval_ms": 0.01451199999974051,
+          "llm_ttft_ms": 0.0013920000001235167,
+          "llm_total_ms": 0.0016919999998208368,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.929634000000078
+          "total_ms": 20.663011000000097
         }
       ],
       "failureExample": null
@@ -823,25 +823,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.06456499999967491,
-          "llm_ttft_ms": 0.0014630000000579457,
-          "llm_total_ms": 0.0018230000000585278,
+          "retrieval_ms": 0.08750000000009095,
+          "llm_ttft_ms": 0.0014820000001236622,
+          "llm_total_ms": 0.0017319999997198465,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.470483999999942
+          "total_ms": 18.457570000000032
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.014121000000159256,
-          "llm_ttft_ms": 0.00112200000012308,
-          "llm_total_ms": 0.0016220000002249435,
+          "retrieval_ms": 0.020270999999866035,
+          "llm_ttft_ms": 0.0013720000001740118,
+          "llm_total_ms": 0.0017330000000583823,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.474040999999943
+          "total_ms": 20.323417999999947
         }
       ],
       "failureExample": null
@@ -872,14 +872,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.025047000000085973,
-          "llm_ttft_ms": 0.0012719999999717402,
-          "llm_total_ms": 0.0014630000000579457,
+          "retrieval_ms": 0.15299700000014127,
+          "llm_ttft_ms": 0.0013119999998707499,
+          "llm_total_ms": 0.0016829999999572465,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.388433999999961
+          "total_ms": 36.081619000000046
         }
       ],
       "failureExample": null
@@ -910,14 +910,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.026899999999841384,
-          "llm_ttft_ms": 0.001862000000073749,
-          "llm_total_ms": 0.002343000000109896,
+          "retrieval_ms": 0.05527200000005905,
+          "llm_ttft_ms": 0.001712000000225089,
+          "llm_total_ms": 0.0022830000002613815,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.349635000000035
+          "total_ms": 15.13516299999992
         }
       ],
       "failureExample": null
@@ -948,14 +948,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.026468999999906373,
-          "llm_ttft_ms": 0.0012719999999717402,
-          "llm_total_ms": 0.0015330000001085864,
+          "retrieval_ms": 0.11854600000015125,
+          "llm_ttft_ms": 0.0012520000000222353,
+          "llm_total_ms": 0.0015029999999569554,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.078774000000067
+          "total_ms": 15.675073999999768
         }
       ],
       "failureExample": null
@@ -986,14 +986,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01865799999995943,
+          "retrieval_ms": 0.024526000000150816,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.6520570000002408
+          "total_ms": 1.443550999999843
         }
       ],
       "failureExample": null
@@ -1024,36 +1024,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.023896000000149797,
-          "llm_ttft_ms": 0.0012920000003759924,
-          "llm_total_ms": 0.0016420000001744484,
+          "retrieval_ms": 0.036172999999962485,
+          "llm_ttft_ms": 0.001261999999769614,
+          "llm_total_ms": 0.001742999999805761,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.255427999999938
+          "total_ms": 19.142765999999938
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.018087000000377884,
-          "llm_ttft_ms": 0.0013519999997697596,
-          "llm_total_ms": 0.0017130000001088774,
+          "retrieval_ms": 0.024906000000100903,
+          "llm_ttft_ms": 0.0015419999999721767,
+          "llm_total_ms": 0.002152999999907479,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 11.042245000000094
+          "total_ms": 25.549387000000024
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02146199999970122,
-          "llm_ttft_ms": 0.00146199999971941,
-          "llm_total_ms": 0.0018019999997704872,
+          "retrieval_ms": 0.018808000000262837,
+          "llm_ttft_ms": 0.0015319999997700506,
+          "llm_total_ms": 0.0017629999997552659,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.775900000000092
+          "total_ms": 12.577871000000414
         }
       ],
       "failureExample": null
@@ -1084,47 +1084,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.03109600000016144,
-          "llm_ttft_ms": 0.001332000000275002,
-          "llm_total_ms": 0.0017530000000078871,
+          "retrieval_ms": 0.02719100000012986,
+          "llm_ttft_ms": 0.0013819999999213906,
+          "llm_total_ms": 0.0015720000001238077,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.432267000000138
+          "total_ms": 13.876366999999846
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017585999999937485,
-          "llm_ttft_ms": 0.001281999999719119,
-          "llm_total_ms": 0.00171299999965413,
+          "retrieval_ms": 0.016264000000319356,
+          "llm_ttft_ms": 0.0017819999998209823,
+          "llm_total_ms": 0.002343000000109896,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.55173700000023
+          "total_ms": 17.073887999999897
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.029764999999770225,
-          "llm_ttft_ms": 0.0015319999997700506,
-          "llm_total_ms": 0.0023429999996551487,
+          "retrieval_ms": 0.030254999999669963,
+          "llm_ttft_ms": 0.0014320000000225264,
+          "llm_total_ms": 0.001952999999957683,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.09391800000003
+          "total_ms": 16.18935199999987
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016564999999900465,
-          "llm_ttft_ms": 0.0008419999999205174,
-          "llm_total_ms": 0.0013719999997192645,
+          "retrieval_ms": 0.01719600000024002,
+          "llm_ttft_ms": 0.0010219999999208085,
+          "llm_total_ms": 0.001291999999921245,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 11.64302600000019
+          "total_ms": 23.195776999999907
         }
       ],
       "failureExample": null
@@ -1155,14 +1155,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.03280899999981557,
-          "llm_ttft_ms": 0.0012520000000222353,
-          "llm_total_ms": 0.0017130000001088774,
+          "retrieval_ms": 0.02877200000011726,
+          "llm_ttft_ms": 0.0020730000001094595,
+          "llm_total_ms": 0.0027239999999437714,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.279809000000114
+          "total_ms": 14.232895999999982
         }
       ],
       "failureExample": null
@@ -1193,14 +1193,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.019408999999996013,
+          "retrieval_ms": 0.027470999999877677,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.4058220000001711
+          "total_ms": 0.9679160000000593
         }
       ],
       "failureExample": null
@@ -1231,25 +1231,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.025397999999768217,
-          "llm_ttft_ms": 0.0012219999998706044,
-          "llm_total_ms": 0.0015630000002602173,
+          "retrieval_ms": 0.026648999999906664,
+          "llm_ttft_ms": 0.0017829999997047707,
+          "llm_total_ms": 0.002132999999957974,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.464852000000064
+          "total_ms": 19.949352999999974
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016955000000052678,
-          "llm_ttft_ms": 0.0016319999999723223,
-          "llm_total_ms": 0.0020629999999073334,
+          "retrieval_ms": 0.030394999999771244,
+          "llm_ttft_ms": 0.001471999999921536,
+          "llm_total_ms": 0.0019520000000738946,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.816719999999805
+          "total_ms": 22.88978300000008
         }
       ],
       "failureExample": null
@@ -1280,14 +1280,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.03378999999995358,
-          "llm_ttft_ms": 0.0007610000002387096,
-          "llm_total_ms": 0.0009920000002239249,
+          "retrieval_ms": 0.028533000000152242,
+          "llm_ttft_ms": 0.0011719999997694686,
+          "llm_total_ms": 0.001592999999957101,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.450949999999921
+          "total_ms": 10.631464999999935
         }
       ],
       "failureExample": null
@@ -1318,25 +1318,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01970999999957712,
-          "llm_ttft_ms": 0.0007009999999354477,
-          "llm_total_ms": 0.000901999999769032,
+          "retrieval_ms": 0.08864199999970879,
+          "llm_ttft_ms": 0.0009109999996326223,
+          "llm_total_ms": 0.001111999999920954,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.928379999999834
+          "total_ms": 8.083997000000181
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.011096000000179629,
-          "llm_ttft_ms": 0.0011519999998199637,
-          "llm_total_ms": 0.0013720000001740118,
+          "retrieval_ms": 0.014631999999892287,
+          "llm_ttft_ms": 0.0006710000002385641,
+          "llm_total_ms": 0.0009009999998852436,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.593071000000236
+          "total_ms": 10.40188500000022
         }
       ],
       "failureExample": null
@@ -1367,25 +1367,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.053809999999884894,
-          "llm_ttft_ms": 0.0010720000000219443,
-          "llm_total_ms": 0.0012620000002243614,
+          "retrieval_ms": 0.023434000000179367,
+          "llm_ttft_ms": 0.001502000000073167,
+          "llm_total_ms": 0.0018129999998564017,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.909715999999662
+          "total_ms": 9.081537000000026
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012669000000187225,
-          "llm_ttft_ms": 0.0009820000000217988,
-          "llm_total_ms": 0.0012219999998706044,
+          "retrieval_ms": 0.013680999999905907,
+          "llm_ttft_ms": 0.0012320000000727305,
+          "llm_total_ms": 0.0018029999996542756,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.20764300000019
+          "total_ms": 11.44302800000014
         }
       ],
       "failureExample": null
@@ -1416,14 +1416,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02600799999981973,
-          "llm_ttft_ms": 0.0014219999998204003,
-          "llm_total_ms": 0.001671999999871332,
+          "retrieval_ms": 0.03670400000009977,
+          "llm_ttft_ms": 0.0012520000000222353,
+          "llm_total_ms": 0.0016019999998206913,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 13.809647999999925
+          "total_ms": 13.969564999999875
         }
       ],
       "failureExample": null
@@ -1454,14 +1454,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017014999999901192,
-          "llm_ttft_ms": 0.0010309999997843988,
-          "llm_total_ms": 0.0012109999997846899,
+          "retrieval_ms": 0.14312199999994846,
+          "llm_ttft_ms": 0.0013819999999213906,
+          "llm_total_ms": 0.0017630000002100132,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.789995999999974
+          "total_ms": 5.919918999999936
         }
       ],
       "failureExample": null
@@ -1492,14 +1492,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01542299999982788,
-          "llm_ttft_ms": 0.0006710000002385641,
-          "llm_total_ms": 0.0009210000002894958,
+          "retrieval_ms": 0.030385000000023865,
+          "llm_ttft_ms": 0.001841999999669497,
+          "llm_total_ms": 0.002543000000059692,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.335485999999946
+          "total_ms": 6.173855000000003
         }
       ],
       "failureExample": null
@@ -1530,14 +1530,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.014991999999892869,
+          "retrieval_ms": 0.06158099999993283,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.5029859999999644
+          "total_ms": 0.8335659999997915
         }
       ],
       "failureExample": null
@@ -1568,36 +1568,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.019237999999859312,
-          "llm_ttft_ms": 0.0009709999999358843,
-          "llm_total_ms": 0.0012019999999210995,
+          "retrieval_ms": 0.026749999999992724,
+          "llm_ttft_ms": 0.0014219999998204003,
+          "llm_total_ms": 0.001641999999719701,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.237981000000218
+          "total_ms": 7.500321999999869
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.03184700000019802,
-          "llm_ttft_ms": 0.0009610000001885055,
-          "llm_total_ms": 0.001152000000274711,
+          "retrieval_ms": 0.016094000000066444,
+          "llm_ttft_ms": 0.0010219999999208085,
+          "llm_total_ms": 0.001393000000007305,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 12.206499999999778
+          "total_ms": 7.9066350000002785
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013289999999869906,
-          "llm_ttft_ms": 0.0007909999999355932,
-          "llm_total_ms": 0.0010219999999208085,
+          "retrieval_ms": 0.017225999999936903,
+          "llm_ttft_ms": 0.0011719999997694686,
+          "llm_total_ms": 0.0013720000001740118,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.15371899999991
+          "total_ms": 5.357394000000113
         }
       ],
       "failureExample": null
@@ -1628,47 +1628,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.021300999999766645,
-          "llm_ttft_ms": 0.0031039999998938583,
-          "llm_total_ms": 0.05462100000022474,
+          "retrieval_ms": 0.03789599999981874,
+          "llm_ttft_ms": 0.004737000000204716,
+          "llm_total_ms": 0.10355299999991985,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.396345999999994
+          "total_ms": 11.401026000000002
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01061600000002727,
-          "llm_ttft_ms": 0.0006009999997331761,
-          "llm_total_ms": 0.0008809999999357387,
+          "retrieval_ms": 0.02010999999993146,
+          "llm_ttft_ms": 0.002132999999957974,
+          "llm_total_ms": 0.0025529999998070707,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.821454999999787
+          "total_ms": 11.03667600000017
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017256000000088534,
-          "llm_ttft_ms": 0.0007009999999354477,
-          "llm_total_ms": 0.0009219999997185369,
+          "retrieval_ms": 0.031766999999945256,
+          "llm_ttft_ms": 0.0014220000002751476,
+          "llm_total_ms": 0.0019330000000081782,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.470274000000245
+          "total_ms": 11.082143999999971
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.010405999999875348,
-          "llm_ttft_ms": 0.001010999999834894,
-          "llm_total_ms": 0.001502000000073167,
+          "retrieval_ms": 0.03706499999998414,
+          "llm_ttft_ms": 0.0010910000000876607,
+          "llm_total_ms": 0.001382000000376138,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.528313000000253
+          "total_ms": 15.690252000000328
         }
       ],
       "failureExample": null
@@ -1699,14 +1699,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01204799999959505,
-          "llm_ttft_ms": 0.000800999999682972,
-          "llm_total_ms": 0.0009709999999358843,
+          "retrieval_ms": 0.014711999999690306,
+          "llm_ttft_ms": 0.0010919999999714491,
+          "llm_total_ms": 0.0014120000000730215,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.232132999999976
+          "total_ms": 4.066260000000057
         }
       ],
       "failureExample": null
@@ -1737,14 +1737,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.011797999999998865,
+          "retrieval_ms": 0.014451999999891996,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.34925799999973606
+          "total_ms": 0.39830099999971935
         }
       ],
       "failureExample": null
@@ -1775,25 +1775,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017576000000190106,
-          "llm_ttft_ms": 0.0007510000000365835,
-          "llm_total_ms": 0.0012320000000727305,
+          "retrieval_ms": 0.01799699999992299,
+          "llm_ttft_ms": 0.0010809999998855346,
+          "llm_total_ms": 0.0013719999997192645,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.862055999999939
+          "total_ms": 8.672880999999961
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.009363000000121247,
-          "llm_ttft_ms": 0.0006410000000869331,
-          "llm_total_ms": 0.0008419999999205174,
+          "retrieval_ms": 0.016974999999547435,
+          "llm_ttft_ms": 0.0009309999995821272,
+          "llm_total_ms": 0.0012109999997846899,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.9295429999997395
+          "total_ms": 9.132888999999523
         }
       ],
       "failureExample": null
@@ -1824,14 +1824,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013590000000021973,
-          "llm_ttft_ms": 0.0007209999998849526,
-          "llm_total_ms": 0.0009009999998852436,
+          "retrieval_ms": 0.024416000000201166,
+          "llm_ttft_ms": 0.0012109999997846899,
+          "llm_total_ms": 0.001631999999517575,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.555591999999706
+          "total_ms": 5.336604000000079
         }
       ],
       "failureExample": null
@@ -1862,25 +1862,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017816000000038912,
-          "llm_ttft_ms": 0.0005609999998341664,
-          "llm_total_ms": 0.0007709999999860884,
+          "retrieval_ms": 0.1183550000005198,
+          "llm_ttft_ms": 0.0012320000005274778,
+          "llm_total_ms": 0.0014120000005277689,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.293449999999666
+          "total_ms": 7.228863999999703
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008462000000236003,
-          "llm_ttft_ms": 0.0005610000002889137,
-          "llm_total_ms": 0.0007410000002892048,
+          "retrieval_ms": 0.014191000000209897,
+          "llm_ttft_ms": 0.0012820000001738663,
+          "llm_total_ms": 0.0018220000001747394,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.086354999999912
+          "total_ms": 10.668279999999868
         }
       ],
       "failureExample": null
@@ -1911,25 +1911,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.018027000000074622,
-          "llm_ttft_ms": 0.0006809999999859428,
-          "llm_total_ms": 0.0009009999998852436,
+          "retrieval_ms": 0.03320900000016991,
+          "llm_ttft_ms": 0.0014820000005784095,
+          "llm_total_ms": 0.0018530000006649061,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.596840000000157
+          "total_ms": 9.524875000000065
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.009152999999969325,
-          "llm_ttft_ms": 0.0006909999997333216,
-          "llm_total_ms": 0.0009009999998852436,
+          "retrieval_ms": 0.01565299999947456,
+          "llm_ttft_ms": 0.0013209999997343402,
+          "llm_total_ms": 0.001601999999365944,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.334191999999803
+          "total_ms": 8.68529000000035
         }
       ],
       "failureExample": null
@@ -1960,14 +1960,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.024126000000251224,
-          "llm_ttft_ms": 0.001322000000072876,
-          "llm_total_ms": 0.001682000000073458,
+          "retrieval_ms": 0.026710000000093714,
+          "llm_ttft_ms": 0.0014730000002600718,
+          "llm_total_ms": 0.001623000000108732,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 12.016540000000077
+          "total_ms": 11.798385000000053
         }
       ],
       "failureExample": null
@@ -1998,14 +1998,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02059000000008382,
-          "llm_ttft_ms": 0.0011110000000371656,
-          "llm_total_ms": 0.0014019999998708954,
+          "retrieval_ms": 0.019870000000082655,
+          "llm_ttft_ms": 0.0012219999998706044,
+          "llm_total_ms": 0.001803000000109023,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.833818000000065
+          "total_ms": 6.08324999999968
         }
       ],
       "failureExample": null
@@ -2036,14 +2036,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.021120999999766354,
-          "llm_ttft_ms": 0.001010999999834894,
-          "llm_total_ms": 0.0013519999997697596,
+          "retrieval_ms": 0.026299000000108208,
+          "llm_ttft_ms": 0.0010220000003755558,
+          "llm_total_ms": 0.0012219999998706044,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.440084999999726
+          "total_ms": 6.194815999999264
         }
       ],
       "failureExample": null
@@ -2074,14 +2074,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017947000000276603,
+          "retrieval_ms": 0.022863999999572115,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.5977060000000165
+          "total_ms": 0.7995860000000903
         }
       ],
       "failureExample": null
@@ -2112,36 +2112,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02345500000001266,
-          "llm_ttft_ms": 0.0009709999999358843,
-          "llm_total_ms": 0.0011919999997189734,
+          "retrieval_ms": 0.026198999999905936,
+          "llm_ttft_ms": 0.001382000000376138,
+          "llm_total_ms": 0.0016630000000077416,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.164910999999847
+          "total_ms": 8.899086000000352
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.010205000000041764,
-          "llm_ttft_ms": 0.0007410000002892048,
-          "llm_total_ms": 0.0011410000001887965,
+          "retrieval_ms": 0.04362500000024738,
+          "llm_ttft_ms": 0.0010720000000219443,
+          "llm_total_ms": 0.0015919999996185652,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.321022999999968
+          "total_ms": 7.511177999999745
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01190699999960998,
-          "llm_ttft_ms": 0.0006509999998343119,
-          "llm_total_ms": 0.0008609999999862339,
+          "retrieval_ms": 0.015643000000636675,
+          "llm_ttft_ms": 0.0005810000002384186,
+          "llm_total_ms": 0.0007510000004913309,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.6143990000000485
+          "total_ms": 7.246621000000232
         }
       ],
       "failureExample": null
@@ -2172,47 +2172,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.04912300000023606,
-          "llm_ttft_ms": 0.0010010000000875152,
-          "llm_total_ms": 0.001172000000224216,
+          "retrieval_ms": 0.07374000000072556,
+          "llm_ttft_ms": 0.0008520000001226435,
+          "llm_total_ms": 0.0013719999997192645,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.973851000000195
+          "total_ms": 7.03043499999967
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.014802000000145199,
-          "llm_ttft_ms": 0.001010999999834894,
-          "llm_total_ms": 0.0013019999996686238,
-          "tts_ttfa_ms": 0,
-          "tokens_in": 0,
-          "tokens_out": 0,
-          "tts_chars": 0,
-          "total_ms": 8.731037000000015
-        },
-        {
-          "stt_ms": 0,
-          "retrieval_ms": 0.023905000000013388,
-          "llm_ttft_ms": 0.0009209999998347485,
+          "retrieval_ms": 0.011787000000367698,
+          "llm_ttft_ms": 0.0010910000000876607,
           "llm_total_ms": 0.001322000000072876,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.80487600000015
+          "total_ms": 6.525767000000087
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013150000000223372,
-          "llm_ttft_ms": 0.0009520000003249152,
-          "llm_total_ms": 0.0014820000001236622,
+          "retrieval_ms": 0.015673999999307853,
+          "llm_ttft_ms": 0.0007110000005923212,
+          "llm_total_ms": 0.001012000000628177,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 9.447599000000082
+          "total_ms": 6.625925000000279
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010666000000128406,
+          "llm_ttft_ms": 0.000691000000188069,
+          "llm_total_ms": 0.0008809999999357387,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 7.4619650000004185
         }
       ],
       "failureExample": null
@@ -2243,14 +2243,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013440000000173313,
-          "llm_ttft_ms": 0.0006410000000869331,
-          "llm_total_ms": 0.0008520000001226435,
+          "retrieval_ms": 0.012287999999898602,
+          "llm_ttft_ms": 0.0006709999997838167,
+          "llm_total_ms": 0.0008909999996831175,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.1076379999999517
+          "total_ms": 3.2944049999996423
         }
       ],
       "failureExample": null
@@ -2281,14 +2281,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.015812999999980093,
+          "retrieval_ms": 0.0178169999999227,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.250821999999971
+          "total_ms": 0.2591740000007121
         }
       ],
       "failureExample": null
@@ -2319,25 +2319,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016934999999648426,
-          "llm_ttft_ms": 0.0008109999998850981,
-          "llm_total_ms": 0.0010110000002896413,
+          "retrieval_ms": 0.018407999999908498,
+          "llm_ttft_ms": 0.0007809999997334671,
+          "llm_total_ms": 0.0009609999997337582,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.772750000000087
+          "total_ms": 6.1470250000002125
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008742999999867607,
-          "llm_ttft_ms": 0.0005700000001525041,
-          "llm_total_ms": 0.0008010000001377193,
+          "retrieval_ms": 0.010315000000446162,
+          "llm_ttft_ms": 0.0007809999997334671,
+          "llm_total_ms": 0.0009719999998196727,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.723447000000306
+          "total_ms": 6.944958000000042
         }
       ],
       "failureExample": null
@@ -2368,14 +2368,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016313999999965745,
-          "llm_ttft_ms": 0.0006709999997838167,
-          "llm_total_ms": 0.0008709999997336126,
+          "retrieval_ms": 0.017225999999936903,
+          "llm_ttft_ms": 0.0009920000002239249,
+          "llm_total_ms": 0.001291999999921245,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.106068999999934
+          "total_ms": 4.204826000000139
         }
       ],
       "failureExample": null
@@ -2406,25 +2406,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017335000000002765,
-          "llm_ttft_ms": 0.0005809999997836712,
-          "llm_total_ms": 0.0008010000001377193,
+          "retrieval_ms": 0.16940100000010716,
+          "llm_ttft_ms": 0.0009720000007291674,
+          "llm_total_ms": 0.001142000000072585,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.890392000000247
+          "total_ms": 6.086906000000454
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.04750100000001112,
-          "llm_ttft_ms": 0.0008909999996831175,
-          "llm_total_ms": 0.0010909999996329134,
+          "retrieval_ms": 0.01294899999993504,
+          "llm_ttft_ms": 0.0016030000006139744,
+          "llm_total_ms": 0.0019030000003112946,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.609978999999839
+          "total_ms": 6.863197000000582
         }
       ],
       "failureExample": null
@@ -2455,25 +2455,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017836999999872205,
-          "llm_ttft_ms": 0.0007109999996828265,
-          "llm_total_ms": 0.0008609999999862339,
+          "retrieval_ms": 0.020599999999831198,
+          "llm_ttft_ms": 0.0013720000006287592,
+          "llm_total_ms": 0.0015520000006290502,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.636048000000301
+          "total_ms": 6.104020999999193
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.009243999999853258,
-          "llm_ttft_ms": 0.0007310000000870787,
-          "llm_total_ms": 0.0009210000002894958,
+          "retrieval_ms": 0.011837000000014086,
+          "llm_ttft_ms": 0.0011219999996683327,
+          "llm_total_ms": 0.0013119999994160025,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.411878000000343
+          "total_ms": 8.106015000000298
         }
       ],
       "failureExample": null
@@ -2504,14 +2504,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.032388000000082684,
-          "llm_ttft_ms": 0.0010820000002240704,
-          "llm_total_ms": 0.0013720000001740118,
+          "retrieval_ms": 0.02621900000031019,
+          "llm_ttft_ms": 0.001502000000073167,
+          "llm_total_ms": 0.0017029999999067513,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 12.379397000000154
+          "total_ms": 9.03758199999993
         }
       ],
       "failureExample": null
@@ -2542,14 +2542,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.022894000000178494,
-          "llm_ttft_ms": 0.0013410000001385924,
-          "llm_total_ms": 0.0018020000002252345,
+          "retrieval_ms": 0.01595400000041991,
+          "llm_ttft_ms": 0.0010019999999713036,
+          "llm_total_ms": 0.0011920000006284681,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.855829999999969
+          "total_ms": 3.396165999999539
         }
       ],
       "failureExample": null
@@ -2580,14 +2580,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02378499999986161,
-          "llm_ttft_ms": 0.001332000000275002,
-          "llm_total_ms": 0.0016830000004119938,
+          "retrieval_ms": 0.013869999999769789,
+          "llm_ttft_ms": 0.0006009999997331761,
+          "llm_total_ms": 0.0007909999994808459,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.127681000000393
+          "total_ms": 2.9732789999998204
         }
       ],
       "failureExample": null
@@ -2618,14 +2618,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.023734999999760475,
+          "retrieval_ms": 0.0136000000002241,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.6678200000001198
+          "total_ms": 0.4247190000005503
         }
       ],
       "failureExample": null
@@ -2656,36 +2656,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02498699999978271,
-          "llm_ttft_ms": 0.0008419999999205174,
-          "llm_total_ms": 0.0011319999998704589,
+          "retrieval_ms": 0.016093999999611697,
+          "llm_ttft_ms": 0.0006409999996321858,
+          "llm_total_ms": 0.0008209999996324768,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.043937999999798
+          "total_ms": 6.368593999999575
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.014651999999841792,
-          "llm_ttft_ms": 0.0007210000003396999,
-          "llm_total_ms": 0.00102100000003702,
+          "retrieval_ms": 0.01086600000053295,
+          "llm_ttft_ms": 0.0007510000004913309,
+          "llm_total_ms": 0.0010820000006788177,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.385041000000001
+          "total_ms": 12.311415999999554
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012617999999747553,
-          "llm_ttft_ms": 0.0005409999998846615,
-          "llm_total_ms": 0.0007510000000365835,
+          "retrieval_ms": 0.017566000000442727,
+          "llm_ttft_ms": 0.001471999999921536,
+          "llm_total_ms": 0.02884300000005169,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.5189110000001165
+          "total_ms": 6.971438000000489
         }
       ],
       "failureExample": null
@@ -2716,47 +2716,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.027820999999676133,
-          "llm_ttft_ms": 0.0011319999998704589,
-          "llm_total_ms": 0.0015130000001590815,
+          "retrieval_ms": 0.0254480000003241,
+          "llm_ttft_ms": 0.0011309999999866704,
+          "llm_total_ms": 0.001322000000072876,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.939032000000225
+          "total_ms": 9.94680100000005
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013500000000021828,
-          "llm_ttft_ms": 0.0009820000000217988,
-          "llm_total_ms": 0.0013020000001233711,
+          "retrieval_ms": 0.011837000000014086,
+          "llm_ttft_ms": 0.0008209999996324768,
+          "llm_total_ms": 0.0010009999996327679,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.257645000000139
+          "total_ms": 9.383853999999701
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017906000000039057,
-          "llm_ttft_ms": 0.0008609999999862339,
-          "llm_total_ms": 0.0010720000000219443,
+          "retrieval_ms": 0.02025000000048749,
+          "llm_ttft_ms": 0.0011819999999715947,
+          "llm_total_ms": 0.0014819999996689148,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.070490999999947
+          "total_ms": 8.335942000000614
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012979000000086671,
-          "llm_ttft_ms": 0.0007709999999860884,
-          "llm_total_ms": 0.000980999999683263,
+          "retrieval_ms": 0.016194000000723463,
+          "llm_ttft_ms": 0.0011620000004768372,
+          "llm_total_ms": 0.001532000000224798,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.5999070000002575
+          "total_ms": 9.643651000000318
         }
       ],
       "failureExample": null
@@ -2787,14 +2787,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012087999999948806,
-          "llm_ttft_ms": 0.00102100000003702,
-          "llm_total_ms": 0.0012120000001232256,
+          "retrieval_ms": 0.018858000000363973,
+          "llm_ttft_ms": 0.0009110000000873697,
+          "llm_total_ms": 0.001111000000491913,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.460581999999704
+          "total_ms": 3.462424000000283
         }
       ],
       "failureExample": null
@@ -2825,14 +2825,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016334000000369997,
+          "retrieval_ms": 0.01766700000007404,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.29219300000022486
+          "total_ms": 0.2909319999998843
         }
       ],
       "failureExample": null
@@ -2863,25 +2863,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.057616000000052736,
-          "llm_ttft_ms": 0.0007310000000870787,
-          "llm_total_ms": 0.0009620000000722939,
+          "retrieval_ms": 0.06674899999961781,
+          "llm_ttft_ms": 0.0009509999999863794,
+          "llm_total_ms": 0.001142000000072585,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.1629760000000715
+          "total_ms": 5.700573000000077
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008052000000134285,
-          "llm_ttft_ms": 0.0007709999999860884,
-          "llm_total_ms": 0.0009509999999863794,
+          "retrieval_ms": 0.00930400000015652,
+          "llm_ttft_ms": 0.0005310000005920301,
+          "llm_total_ms": 0.0007210000003396999,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.017722999999933
+          "total_ms": 6.910698000000593
         }
       ],
       "failureExample": null
@@ -2912,14 +2912,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.015172000000347907,
-          "llm_ttft_ms": 0.0007310000000870787,
-          "llm_total_ms": 0.0009310000000368746,
+          "retrieval_ms": 0.01618400000006659,
+          "llm_ttft_ms": 0.0008209999996324768,
+          "llm_total_ms": 0.0010910000000876607,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.197150999999849
+          "total_ms": 4.299520999999913
         }
       ],
       "failureExample": null
@@ -2950,25 +2950,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01756599999998798,
-          "llm_ttft_ms": 0.0006509999998343119,
-          "llm_total_ms": 0.0008609999999862339,
+          "retrieval_ms": 0.019198999999389343,
+          "llm_ttft_ms": 0.000630999999884807,
+          "llm_total_ms": 0.0008309999993798556,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.025172000000111
+          "total_ms": 5.723081999999522
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.0095339999998032,
-          "llm_ttft_ms": 0.000841000000036729,
-          "llm_total_ms": 0.0010110000002896413,
+          "retrieval_ms": 0.011346999999659602,
+          "llm_ttft_ms": 0.0009310000004916219,
+          "llm_total_ms": 0.0011210000002392917,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.546826000000237
+          "total_ms": 6.5347099999999045
         }
       ],
       "failureExample": null
@@ -2999,25 +2999,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017485999999735213,
-          "llm_ttft_ms": 0.0007910000003903406,
-          "llm_total_ms": 0.0009620000000722939,
+          "retrieval_ms": 0.026788999999553198,
+          "llm_ttft_ms": 0.0011210000002392917,
+          "llm_total_ms": 0.0016120000000228174,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.030038999999761
+          "total_ms": 8.348500000000058
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012758999999732623,
-          "llm_ttft_ms": 0.0013020000001233711,
-          "llm_total_ms": 0.0016220000002249435,
+          "retrieval_ms": 0.01538299999992887,
+          "llm_ttft_ms": 0.0008420000003752648,
+          "llm_total_ms": 0.0011320000003252062,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.92824900000005
+          "total_ms": 6.810710000000654
         }
       ],
       "failureExample": null
@@ -3048,14 +3048,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.03348000000005413,
-          "llm_ttft_ms": 0.0013010000002395827,
-          "llm_total_ms": 0.0016620000005787006,
+          "retrieval_ms": 0.024827000000186672,
+          "llm_ttft_ms": 0.0012920000008307397,
+          "llm_total_ms": 0.0014720000008310308,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 12.25938799999949
+          "total_ms": 8.215933000000405
         }
       ],
       "failureExample": null
@@ -3086,14 +3086,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.021181000000069616,
-          "llm_ttft_ms": 0.0009110000000873697,
-          "llm_total_ms": 0.0012010000000373111,
+          "retrieval_ms": 0.015031999999337131,
+          "llm_ttft_ms": 0.0009220000001732842,
+          "llm_total_ms": 0.0010919999995167018,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.291494000000057
+          "total_ms": 3.0516749999997046
         }
       ],
       "failureExample": null
@@ -3124,14 +3124,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01989899999989575,
+          "retrieval_ms": 0.014812000000347325,
           "llm_ttft_ms": 0.0007809999997334671,
-          "llm_total_ms": 0.001081000000340282,
+          "llm_total_ms": 0.0009620000000722939,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.825582999999824
+          "total_ms": 2.797599000000446
         }
       ],
       "failureExample": null
@@ -3162,14 +3162,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013119000000187953,
+          "retrieval_ms": 0.039349000000584056,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.46378699999968376
+          "total_ms": 0.4560970000002271
         }
       ],
       "failureExample": null
@@ -3200,36 +3200,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016694999999344873,
-          "llm_ttft_ms": 0.0008520000001226435,
-          "llm_total_ms": 0.0010620000002745655,
+          "retrieval_ms": 0.016805000000204018,
+          "llm_ttft_ms": 0.0007809999997334671,
+          "llm_total_ms": 0.0009309999995821272,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.440106999999443
+          "total_ms": 5.582838999999694
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.00843299999996816,
-          "llm_ttft_ms": 0.0006409999996321858,
-          "llm_total_ms": 0.0008509999997841078,
+          "retrieval_ms": 0.009003999999549706,
+          "llm_ttft_ms": 0.0007910000003903406,
+          "llm_total_ms": 0.001111999999920954,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.565002000000277
+          "total_ms": 5.785339000000022
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.010906000000431959,
-          "llm_ttft_ms": 0.001042000000779808,
-          "llm_total_ms": 0.001222000000780099,
+          "retrieval_ms": 0.010446000000229105,
+          "llm_ttft_ms": 0.0008309999993798556,
+          "llm_total_ms": 0.0010009999996327679,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.9243999999998778
+          "total_ms": 4.0707970000003115
         }
       ],
       "failureExample": null
@@ -3260,47 +3260,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.018017000000327243,
-          "llm_ttft_ms": 0.0005609999998341664,
+          "retrieval_ms": 0.01766700000007404,
+          "llm_ttft_ms": 0.000691000000188069,
+          "llm_total_ms": 0.00087100000018836,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 5.005452000000332
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.008002000000487897,
+          "llm_ttft_ms": 0.0005909999999857973,
           "llm_total_ms": 0.0007709999999860884,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.865955000000213
+          "total_ms": 5.6731220000001485
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008561999999983527,
-          "llm_ttft_ms": 0.0005400000000008731,
-          "llm_total_ms": 0.0007210000003396999,
+          "retrieval_ms": 0.015253000000484462,
+          "llm_ttft_ms": 0.0007619999996677507,
+          "llm_total_ms": 0.0009619999991627992,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.544992000000093
+          "total_ms": 6.081447999999909
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013490000000274449,
-          "llm_ttft_ms": 0.0007809999997334671,
-          "llm_total_ms": 0.0009719999998196727,
+          "retrieval_ms": 0.009393999999701919,
+          "llm_ttft_ms": 0.0005810000002384186,
+          "llm_total_ms": 0.0007910000003903406,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.478183000000172
-        },
-        {
-          "stt_ms": 0,
-          "retrieval_ms": 0.008783000000221364,
-          "llm_ttft_ms": 0.0012420000002748566,
-          "llm_total_ms": 0.0014420000006793998,
-          "tts_ttfa_ms": 0,
-          "tokens_in": 0,
-          "tokens_out": 0,
-          "tts_chars": 0,
-          "total_ms": 7.608932999999524
+          "total_ms": 7.151824999999917
         }
       ],
       "failureExample": null
@@ -3331,14 +3331,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.010925999999926717,
-          "llm_ttft_ms": 0.0007210000003396999,
-          "llm_total_ms": 0.0008809999999357387,
+          "retrieval_ms": 0.012017999999443418,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.000901000000339991,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 2.5803869999999733
+          "total_ms": 2.8382289999999557
         }
       ],
       "failureExample": null
@@ -3369,14 +3369,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013659999999617867,
+          "retrieval_ms": 0.09465999999974883,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.25763199999983044
+          "total_ms": 0.7351900000003297
         }
       ],
       "failureExample": null
@@ -3407,25 +3407,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01701599999978498,
-          "llm_ttft_ms": 0.00087100000018836,
-          "llm_total_ms": 0.0010710000005929032,
+          "retrieval_ms": 0.016173999999409716,
+          "llm_ttft_ms": 0.0008119999993141391,
+          "llm_total_ms": 0.0010119999997186824,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.530690999999933
+          "total_ms": 5.288722000000234
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008952999999564781,
-          "llm_ttft_ms": 0.0006409999996321858,
-          "llm_total_ms": 0.0008309999993798556,
+          "retrieval_ms": 0.009704000000056112,
+          "llm_ttft_ms": 0.0009110000000873697,
+          "llm_total_ms": 0.0016420000001744484,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.535428000000138
+          "total_ms": 6.212842999999339
         }
       ],
       "failureExample": null
@@ -3456,14 +3456,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01371000000017375,
-          "llm_ttft_ms": 0.000730999999177584,
-          "llm_total_ms": 0.0009519999994154205,
+          "retrieval_ms": 0.01789699999972072,
+          "llm_ttft_ms": 0.0008909999996831175,
+          "llm_total_ms": 0.0010609999999360298,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.7253039999995963
+          "total_ms": 3.3955949999999575
         }
       ],
       "failureExample": null
@@ -3494,25 +3494,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01706500000000233,
-          "llm_ttft_ms": 0.0007610000002387096,
-          "llm_total_ms": 0.0009310000004916219,
+          "retrieval_ms": 0.020461000000068452,
+          "llm_ttft_ms": 0.0009309999995821272,
+          "llm_total_ms": 0.0011910000002899324,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.356912999999622
+          "total_ms": 6.344108000000233
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008401999999477994,
-          "llm_ttft_ms": 0.0006510000002890592,
-          "llm_total_ms": 0.0008310000002893503,
+          "retrieval_ms": 0.017666000000645,
+          "llm_ttft_ms": 0.001291999999921245,
+          "llm_total_ms": 0.0014519999995172839,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.553194000000076
+          "total_ms": 6.79502599999978
         }
       ],
       "failureExample": null
@@ -3543,25 +3543,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.018377999999756867,
-          "llm_ttft_ms": 0.0006810000004406902,
-          "llm_total_ms": 0.000841000000036729,
+          "retrieval_ms": 0.02800200000001496,
+          "llm_ttft_ms": 0.0008909999996831175,
+          "llm_total_ms": 0.0010920000004261965,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.051411000000371
+          "total_ms": 5.9849450000001525
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.009825000000091677,
-          "llm_ttft_ms": 0.000841000000036729,
-          "llm_total_ms": 0.0010110000002896413,
+          "retrieval_ms": 0.011556999999811524,
+          "llm_ttft_ms": 0.0012820000001738663,
+          "llm_total_ms": 0.0017530000004626345,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.997354000000087
+          "total_ms": 7.4059720000004745
         }
       ],
       "failureExample": null
@@ -3592,14 +3592,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.025278000000071188,
-          "llm_ttft_ms": 0.0010710000005929032,
-          "llm_total_ms": 0.0013120000003254972,
+          "retrieval_ms": 0.025437999999667227,
+          "llm_ttft_ms": 0.0009610000006432529,
+          "llm_total_ms": 0.001172000000224216,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.845874000000549
+          "total_ms": 9.310545999999704
         }
       ],
       "failureExample": null
@@ -3630,14 +3630,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.018817999999555468,
-          "llm_ttft_ms": 0.001180999999633059,
-          "llm_total_ms": 0.0014920000003257883,
+          "retrieval_ms": 0.016203999999561347,
+          "llm_ttft_ms": 0.0008010000001377193,
+          "llm_total_ms": 0.0010110000002896413,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.571625999999924
+          "total_ms": 3.379240999999638
         }
       ],
       "failureExample": null
@@ -3668,14 +3668,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016013999999813677,
-          "llm_ttft_ms": 0.004477000000406406,
-          "llm_total_ms": 0.005288000000291504,
+          "retrieval_ms": 0.01371000000017375,
+          "llm_ttft_ms": 0.0010219999994660611,
+          "llm_total_ms": 0.0011819999999715947,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.5592289999995046
+          "total_ms": 2.8767960000004678
         }
       ],
       "failureExample": null
@@ -3706,14 +3706,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.015653999999813095,
+          "retrieval_ms": 0.012808999999833759,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.6060090000000855
+          "total_ms": 0.6648450000002413
         }
       ],
       "failureExample": null
@@ -3744,36 +3744,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016994999999951688,
-          "llm_ttft_ms": 0.0008610000004409812,
-          "llm_total_ms": 0.0010610000008455245,
+          "retrieval_ms": 0.017184999999699357,
+          "llm_ttft_ms": 0.0009120000004259055,
+          "llm_total_ms": 0.0011020000001735752,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.4173030000001745
+          "total_ms": 4.948377000000619
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008563000000322063,
-          "llm_ttft_ms": 0.0011320000003252062,
-          "llm_total_ms": 0.001352000000224507,
-          "tts_ttfa_ms": 0,
-          "tokens_in": 0,
-          "tokens_out": 0,
-          "tts_chars": 0,
-          "total_ms": 6.565566000000217
-        },
-        {
-          "stt_ms": 0,
-          "retrieval_ms": 0.011366999999154359,
-          "llm_ttft_ms": 0.0007910000003903406,
+          "retrieval_ms": 0.009003000000120664,
+          "llm_ttft_ms": 0.0007810000006429618,
           "llm_total_ms": 0.0009720000007291674,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.9668919999994614
+          "total_ms": 6.524986000000354
+        },
+        {
+          "stt_ms": 0,
+          "retrieval_ms": 0.010455999999976484,
+          "llm_ttft_ms": 0.0008510000006936025,
+          "llm_total_ms": 0.0010110000002896413,
+          "tts_ttfa_ms": 0,
+          "tokens_in": 0,
+          "tokens_out": 0,
+          "tts_chars": 0,
+          "total_ms": 3.5865780000003724
         }
       ],
       "failureExample": null
@@ -3804,47 +3804,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.04642799999965064,
-          "llm_ttft_ms": 0.0008009999992282246,
-          "llm_total_ms": 0.0009809999992285157,
+          "retrieval_ms": 0.01731500000005326,
+          "llm_ttft_ms": 0.0009709999994811369,
+          "llm_total_ms": 0.0012219999998706044,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.58707400000003
+          "total_ms": 5.636427999999796
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01032500000019354,
-          "llm_ttft_ms": 0.0007009999999354477,
-          "llm_total_ms": 0.0008619999998700223,
+          "retrieval_ms": 0.014200999999957276,
+          "llm_ttft_ms": 0.0008109999998850981,
+          "llm_total_ms": 0.0011219999996683327,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.627376999999797
+          "total_ms": 6.675078000000212
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.028312000000369153,
-          "llm_ttft_ms": 0.001081999999769323,
-          "llm_total_ms": 0.0014320000000225264,
+          "retrieval_ms": 0.02521699999942939,
+          "llm_ttft_ms": 0.00102100000003702,
+          "llm_total_ms": 0.0013019999996686238,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.474273000000721
+          "total_ms": 6.716830999999729
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.016204000000470842,
-          "llm_ttft_ms": 0.0014019999998708954,
-          "llm_total_ms": 0.0016720000003260793,
+          "retrieval_ms": 0.010194999999839638,
+          "llm_ttft_ms": 0.0011709999998856802,
+          "llm_total_ms": 0.001382000000376138,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.5892359999998
+          "total_ms": 8.531441000000086
         }
       ],
       "failureExample": null
@@ -3875,14 +3875,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.015263000000231841,
-          "llm_ttft_ms": 0.0009110000000873697,
-          "llm_total_ms": 0.0010720000000219443,
+          "retrieval_ms": 0.012098000000150932,
+          "llm_ttft_ms": 0.0008520000001226435,
+          "llm_total_ms": 0.0010520000005271868,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 2.973570000000109
+          "total_ms": 3.363618000000315
         }
       ],
       "failureExample": null
@@ -3913,14 +3913,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012829000000238011,
+          "retrieval_ms": 0.01116699999965931,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.24314999999933207
+          "total_ms": 0.2644719999998415
         }
       ],
       "failureExample": null
@@ -3951,25 +3951,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017104999999901338,
-          "llm_ttft_ms": 0.001142000000072585,
-          "llm_total_ms": 0.0013419999995676335,
+          "retrieval_ms": 0.015662999999221938,
+          "llm_ttft_ms": 0.0009110000000873697,
+          "llm_total_ms": 0.0012210000004415633,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.231466999999611
+          "total_ms": 5.639812999999776
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.009434000000510423,
-          "llm_ttft_ms": 0.0008309999993798556,
-          "llm_total_ms": 0.001051999999617692,
+          "retrieval_ms": 0.009785000000192667,
+          "llm_ttft_ms": 0.0007310000000870787,
+          "llm_total_ms": 0.0009110000000873697,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.719814999999471
+          "total_ms": 5.9993359999998574
         }
       ],
       "failureExample": null
@@ -4000,14 +4000,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.018328000000110478,
-          "llm_ttft_ms": 0.0016420000001744484,
-          "llm_total_ms": 0.0018929999996544211,
+          "retrieval_ms": 0.01698500000020431,
+          "llm_ttft_ms": 0.0011919999997189734,
+          "llm_total_ms": 0.0013519999993150122,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.495895000000019
+          "total_ms": 3.186485000000175
         }
       ],
       "failureExample": null
@@ -4038,25 +4038,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.0322280000000319,
-          "llm_ttft_ms": 0.000931999999920663,
-          "llm_total_ms": 0.0011319999994157115,
+          "retrieval_ms": 0.017396000000189815,
+          "llm_ttft_ms": 0.0007510000004913309,
+          "llm_total_ms": 0.0010710000005929032,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.53850599999987
+          "total_ms": 4.939213999999993
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01097699999991164,
-          "llm_ttft_ms": 0.0012719999995169928,
-          "llm_total_ms": 0.0015919999996185652,
+          "retrieval_ms": 0.008632000000034168,
+          "llm_ttft_ms": 0.0006510000002890592,
+          "llm_total_ms": 0.0008109999998850981,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.4624159999993935
+          "total_ms": 5.453027000000475
         }
       ],
       "failureExample": null
@@ -4087,25 +4087,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02084999999988213,
-          "llm_ttft_ms": 0.0010320000001229346,
-          "llm_total_ms": 0.0012420000002748566,
+          "retrieval_ms": 0.019838999999592488,
+          "llm_ttft_ms": 0.0007009999999354477,
+          "llm_total_ms": 0.000871999999617401,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.349733000000015
+          "total_ms": 5.134333999999399
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.009363999999550288,
-          "llm_ttft_ms": 0.0008210000005419715,
-          "llm_total_ms": 0.00102100000003702,
+          "retrieval_ms": 0.016133999999510706,
+          "llm_ttft_ms": 0.0008809999999357387,
+          "llm_total_ms": 0.001111999999920954,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.457636000000093
+          "total_ms": 6.356847000000016
         }
       ],
       "failureExample": null
@@ -4136,14 +4136,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.024094999999761058,
-          "llm_ttft_ms": 0.0012520000000222353,
-          "llm_total_ms": 0.0014820000005784095,
+          "retrieval_ms": 0.025627999999414897,
+          "llm_ttft_ms": 0.000901000000339991,
+          "llm_total_ms": 0.0011409999997340492,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 10.022697000000335
+          "total_ms": 7.882249000000229
         }
       ],
       "failureExample": null
@@ -4174,14 +4174,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01701500000035594,
-          "llm_ttft_ms": 0.000841000000036729,
-          "llm_total_ms": 0.0010009999996327679,
+          "retrieval_ms": 0.013901000000259955,
+          "llm_ttft_ms": 0.0008210000005419715,
+          "llm_total_ms": 0.001142000000072585,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.53382000000056
+          "total_ms": 2.8756439999997383
         }
       ],
       "failureExample": null
@@ -4212,14 +4212,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.020309999999881256,
-          "llm_ttft_ms": 0.000901000000339991,
-          "llm_total_ms": 0.0012010000000373111,
+          "retrieval_ms": 0.01624400000036985,
+          "llm_ttft_ms": 0.0008609999995314865,
+          "llm_total_ms": 0.0010809999994307873,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 3.9781990000001315
+          "total_ms": 4.1217930000002525
         }
       ],
       "failureExample": null
@@ -4250,14 +4250,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.017906000000039057,
+          "retrieval_ms": 0.01598400000057154,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.6037749999995867
+          "total_ms": 0.49063699999987875
         }
       ],
       "failureExample": null
@@ -4288,36 +4288,36 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.023035000000163564,
-          "llm_ttft_ms": 0.0010410000004412723,
-          "llm_total_ms": 0.0013720000006287592,
+          "retrieval_ms": 0.01655399999981455,
+          "llm_ttft_ms": 0.0008909999996831175,
+          "llm_total_ms": 0.0010620000002745655,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 8.120671000000584
+          "total_ms": 5.656708000000435
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.012458999999580556,
-          "llm_ttft_ms": 0.0010720000000219443,
-          "llm_total_ms": 0.001421999999365653,
+          "retrieval_ms": 0.00888299999951414,
+          "llm_ttft_ms": 0.000691000000188069,
+          "llm_total_ms": 0.0008610000004409812,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.586767000000691
+          "total_ms": 6.6805160000003525
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.01458100000036211,
-          "llm_ttft_ms": 0.0009410000002390007,
-          "llm_total_ms": 0.0012409999999363208,
+          "retrieval_ms": 0.05022400000052585,
+          "llm_ttft_ms": 0.0010910000000876607,
+          "llm_total_ms": 0.001291999999921245,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.761389999999665
+          "total_ms": 7.184098000000631
         }
       ],
       "failureExample": null
@@ -4348,47 +4348,47 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.02472600000055536,
-          "llm_ttft_ms": 0.0008209999996324768,
-          "llm_total_ms": 0.0010109999993801466,
+          "retrieval_ms": 0.021811999999954423,
+          "llm_ttft_ms": 0.0008109999998850981,
+          "llm_total_ms": 0.0009810000001380104,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.210817000000134
+          "total_ms": 6.07161300000007
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.008413000000473403,
-          "llm_ttft_ms": 0.000630999999884807,
-          "llm_total_ms": 0.0008209999996324768,
+          "retrieval_ms": 0.00995500000044558,
+          "llm_ttft_ms": 0.0006510000002890592,
+          "llm_total_ms": 0.0008509999997841078,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 5.5913909999999305
+          "total_ms": 7.24416199999996
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.013919999999416177,
-          "llm_ttft_ms": 0.001051999999617692,
-          "llm_total_ms": 0.0013319999998202547,
+          "retrieval_ms": 0.0486719999998968,
+          "llm_ttft_ms": 0.0007609999993292149,
+          "llm_total_ms": 0.0009809999992285157,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.5678820000002816
+          "total_ms": 5.772759999999835
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.011666999999761174,
-          "llm_ttft_ms": 0.0011210000002392917,
-          "llm_total_ms": 0.001682000000073458,
+          "retrieval_ms": 0.01094699999976001,
+          "llm_ttft_ms": 0.0009920000002239249,
+          "llm_total_ms": 0.0014119999996182742,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 7.361977000000479
+          "total_ms": 8.114142999999785
         }
       ],
       "failureExample": null
@@ -4419,14 +4419,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.011066000000027998,
-          "llm_ttft_ms": 0.0008209999996324768,
-          "llm_total_ms": 0.0010720000000219443,
+          "retrieval_ms": 0.013249999999970896,
+          "llm_ttft_ms": 0.0008509999997841078,
+          "llm_total_ms": 0.0010609999999360298,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 2.8397210000002815
+          "total_ms": 3.498048000000381
         }
       ],
       "failureExample": null
@@ -4457,14 +4457,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.020160000000032596,
+          "retrieval_ms": 0.016534999999748834,
           "llm_ttft_ms": 0,
           "llm_total_ms": 0,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 0.32365000000027067
+          "total_ms": 0.2707009999994625
         }
       ],
       "failureExample": null
@@ -4495,25 +4495,25 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.022753999999622465,
-          "llm_ttft_ms": 0.0010619999993650708,
-          "llm_total_ms": 0.001322000000072876,
+          "retrieval_ms": 0.01615399999991496,
+          "llm_ttft_ms": 0.0011619999995673425,
+          "llm_total_ms": 0.0014819999996689148,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.4209219999993365
+          "total_ms": 5.7974059999996825
         },
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.010645999999724154,
-          "llm_ttft_ms": 0.001322000000072876,
-          "llm_total_ms": 0.0016619999996692059,
+          "retrieval_ms": 0.00998399999934918,
+          "llm_ttft_ms": 0.0009509999999863794,
+          "llm_total_ms": 0.0011709999998856802,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 6.418989000000693
+          "total_ms": 8.325391000000309
         }
       ],
       "failureExample": null
@@ -4544,14 +4544,14 @@
       "latency": [
         {
           "stt_ms": 0,
-          "retrieval_ms": 0.038677999999890744,
-          "llm_ttft_ms": 0.0010720000000219443,
-          "llm_total_ms": 0.0015919999996185652,
+          "retrieval_ms": 0.01667500000075961,
+          "llm_ttft_ms": 0.0010710000005929032,
+          "llm_total_ms": 0.0013619999999718857,
           "tts_ttfa_ms": 0,
           "tokens_in": 0,
           "tokens_out": 0,
           "tts_chars": 0,
-          "total_ms": 4.241339000000153
+          "total_ms": 3.603763999999501
         }
       ],
       "failureExample": null
