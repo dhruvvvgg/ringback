@@ -1,0 +1,82 @@
+import { beforeAll, afterAll, test, expect } from "vitest";
+import { connectStore, type Store } from "../packages/core/src/store.js";
+import {
+  availability,
+  book,
+  cancel,
+  candidateSlots,
+} from "../packages/core/src/booking.js";
+import { demos } from "../packages/core/src/config.js";
+import { DateTime } from "luxon";
+let store: Store;
+beforeAll(async () => {
+  process.env.LOCAL_DB_PATH = ":memory:";
+  store = await connectStore();
+});
+afterAll(async () => {
+  await store.close();
+});
+const future = () =>
+  DateTime.now()
+    .setZone("Europe/London")
+    .plus({ weeks: 2 })
+    .startOf("week")
+    .toISODate()!;
+test("concurrent overlapping reservations exactly one wins; replay is idempotent", async () => {
+  const b = demos[1],
+    slot = (await availability(store, b, "cut", future()))[0];
+  const results = await Promise.allSettled(
+    Array.from({ length: 30 }, (_, i) =>
+      book(store, {
+        businessId: b.id,
+        serviceId: "cut",
+        ...slot,
+        callerId: "synthetic",
+        name: "Demo",
+        phone: "demo-000",
+        key: `race-${i}`,
+      }),
+    ),
+  );
+  expect(results.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+  const winner = results.find(
+    (r) => r.status === "fulfilled",
+  )! as PromiseFulfilledResult<any>;
+  expect((await book(store, winner.value)).id).toBe(winner.value.id);
+  await cancel(store, winner.value.id, "synthetic");
+  expect((await availability(store, b, "cut", future()))[0]).toEqual(slot);
+});
+test("DST fall-back repeated hour produces distinct instants", () => {
+  const b = {
+    ...demos[1],
+    hours: { "7": [{ open: "00:00", close: "04:00" }] },
+  };
+  const slots = candidateSlots(b, "cut", "2027-10-31", 0);
+  expect(new Set(slots.map((s) => s.start)).size).toBe(slots.length);
+  expect(slots.some((s) => s.start.startsWith("2027-10-31T01:"))).toBe(true);
+});
+test("DST spring-forward skips nonexistent local times and respects timezone", () => {
+  const b = {
+    ...demos[1],
+    hours: { "7": [{ open: "00:00", close: "04:00" }] },
+  };
+  const slots = candidateSlots(b, "cut", "2027-03-28", 0);
+  expect(
+    slots.every(
+      (s) => DateTime.fromISO(s.start).setZone(b.timezone).hour !== 1,
+    ),
+  ).toBe(true);
+  expect(
+    candidateSlots(
+      { ...demos[1], timezone: "Asia/Kolkata" },
+      "cut",
+      "2027-01-04",
+      0,
+    )[0].start,
+  ).toContain("03:30:00");
+});
+test("holidays suppress availability", () => {
+  expect(
+    candidateSlots({ ...demos[1], holidays: [future()] }, "cut", future()),
+  ).toEqual([]);
+});

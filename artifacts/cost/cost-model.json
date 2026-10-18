@@ -1,0 +1,36 @@
+{
+  "mode": "mock",
+  "evaluatedScenarios": 96,
+  "measuredCalls": 0,
+  "liveTokenSampleAvailable": false,
+  "callBasis": "One completed evaluation scenario, not a production phone call",
+  "billingMeasured": false,
+  "source": "artifacts/eval/mock-MockLLM-baseline.json",
+  "averageTokensIn": null,
+  "averageTokensOut": null,
+  "llmPerThousandCalls": {
+    "open": null,
+    "hypotheticalClosed": null
+  },
+  "voicePerThousandCalls": null,
+  "prices": {
+    "currency": "USD",
+    "open": {
+      "inputPerMillion": 0,
+      "outputPerMillion": 0,
+      "basis": "Assumption: eligible Google AI Studio free-tier usage; verify current Gemma access and quota, not a paid rate quotation",
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    "closedHypothetical": {
+      "inputPerMillion": 2,
+      "outputPerMillion": 8,
+      "basis": "Hypothetical comparison only, not a vendor quote"
+    },
+    "voice": {
+      "perThousandCharacters": null,
+      "perMinuteTranscribed": null,
+      "basis": "Enter your actual ElevenLabs plan rates; identical under either LLM"
+    }
+  },
+  "caveat": "Voice cost is identical for either LLM and may dominate. Mock scenarios are not measured live calls. No live estimate without measured tokens. Prices are assumptions, not measured provider billing."
+}

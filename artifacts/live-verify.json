@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-18T04:53:27.106Z",
+  "mode": "live-requested",
+  "status": "blocked",
+  "steps": [],
+  "missing": [
+    "LLM_API_KEY"
+  ],
+  "reason": "Valid Gemma access needed. No live results produced."
+}

@@ -1,0 +1,22 @@
+name: Verify
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      ONNXRUNTIME_NODE_INSTALL: skip
+      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/playwright
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm ci
+      - run: npm run setup
+      - run: npm run setup:mongo
+      - run: npm run verify
+      - run: .data/bin/temporal server start-dev --headless --db-filename .data/temporal.db > .data/temporal.log 2>&1 &
+      - run: npm run demo:chaos
+      - run: npx playwright install --with-deps chromium ffmpeg
+      - run: CHROMIUM_PATH="$(find "$PLAYWRIGHT_BROWSERS_PATH" -path '*/chrome-linux64/chrome' | head -1)" npm run e2e
+      - run: npm run eval:full

@@ -1,0 +1,7 @@
+{
+  "mode": "mock",
+  "actualModel": "MockLLM",
+  "provider": "local deterministic scripts",
+  "liveCandidatesMeasured": [],
+  "reason": "No Gemma key. Google endpoint confirmed from official cookbook; catalog requires credentials. DigitalOcean MCP unavailable."
+}

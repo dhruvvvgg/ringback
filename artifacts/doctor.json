@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-18T03:59:05.029Z",
+  "checks": [
+    {
+      "service": "Gemma",
+      "status": "MISSING",
+      "detail": "LLM_API_KEY"
+    },
+    {
+      "service": "ElevenLabs",
+      "status": "MISSING",
+      "detail": "ELEVENLABS_API_KEY"
+    },
+    {
+      "service": "MongoDB",
+      "status": "MISSING",
+      "detail": "MONGODB_URI"
+    },
+    {
+      "service": "Temporal",
+      "status": "OK",
+      "detail": "Reachable"
+    },
+    {
+      "service": "Sentry",
+      "status": "MISSING",
+      "detail": "SENTRY_DSN"
+    },
+    {
+      "service": "Owner webhook",
+      "status": "MISSING",
+      "detail": "OWNER_WEBHOOK_URL"
+    },
+    {
+      "service": "DigitalOcean",
+      "status": "MISSING",
+      "detail": "DO_INFERENCE_KEY"
+    },
+    {
+      "service": "Owner access",
+      "status": "OK",
+      "detail": "Present (not externally verified)"
+    }
+  ]
+}

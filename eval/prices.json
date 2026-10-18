@@ -1,0 +1,19 @@
+{
+  "currency": "USD",
+  "open": {
+    "inputPerMillion": 0,
+    "outputPerMillion": 0,
+    "basis": "Assumption: eligible Google AI Studio free-tier usage; verify current Gemma access and quota, not a paid rate quotation",
+    "source": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  "closedHypothetical": {
+    "inputPerMillion": 2,
+    "outputPerMillion": 8,
+    "basis": "Hypothetical comparison only, not a vendor quote"
+  },
+  "voice": {
+    "perThousandCharacters": null,
+    "perMinuteTranscribed": null,
+    "basis": "Enter your actual ElevenLabs plan rates; identical under either LLM"
+  }
+}

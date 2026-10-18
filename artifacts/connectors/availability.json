@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-18T04:52:50.449922+00:00",
+  "scope": "Current assistant tool registry and local codex mcp list; not an assertion about account signup",
+  "toolSearchAvailable": false,
+  "localMcpServers": [],
+  "checks": [
+    {
+      "connector": "MongoDB Atlas",
+      "toolDiscovery": "not-exposed",
+      "matchingCallableTools": [],
+      "harmlessCall": "List projects",
+      "callStatus": "not-executed-no-callable-tool",
+      "responds": null
+    },
+    {
+      "connector": "Render",
+      "toolDiscovery": "not-exposed",
+      "matchingCallableTools": [],
+      "harmlessCall": "List services",
+      "callStatus": "not-executed-no-callable-tool",
+      "responds": null
+    },
+    {
+      "connector": "ElevenLabs",
+      "toolDiscovery": "not-exposed",
+      "matchingCallableTools": [],
+      "harmlessCall": "List voices",
+      "callStatus": "not-executed-no-callable-tool",
+      "responds": null
+    },
+    {
+      "connector": "DigitalOcean",
+      "toolDiscovery": "not-exposed",
+      "matchingCallableTools": [],
+      "harmlessCall": "Get account or list inference models",
+      "callStatus": "not-executed-no-callable-tool",
+      "responds": null
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-18T04:00:57.345970+00:00",
+  "status": "verified-local-with-documented-external-criteria-unmet",
+  "sourceCommit": "dd8f19728b0843bf7fadba73f7924cdedc847fd7",
+  "verify": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "unitIntegration": {
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0
+    },
+    "productionBuild": "passed",
+    "source": "artifacts/tests/results.json; npm run verify exit 0"
+  },
+  "e2e": {
+    "passed": 3,
+    "unexpected": 0,
+    "source": "artifacts/e2e/results.json"
+  },
+  "mockEvaluation": {
+    "completed": 96,
+    "passed": 96,
+    "source": "artifacts/eval/mock-MockLLM-baseline.json",
+    "noHeadlineLiveClaim": true
+  },
+  "durability": {
+    "passed": true,
+    "confirmations": 1,
+    "source": "artifacts/chaos/run-1792295915458.json"
+  },
+  "freshClone": {
+    "passed": true,
+    "source": "artifacts/audit/fresh-clone.json",
+    "sourceCommit": "dd8f19728b0843bf7fadba73f7924cdedc847fd7"
+  },
+  "cappedContainer": {
+    "passed": true,
+    "sampledPeakMiB": 338.2,
+    "source": "artifacts/deploy/container-memory.json"
+  },
+  "security": {
+    "passed": true,
+    "source": "artifacts/security/audit.json"
+  },
+  "doctor": [
+    {
+      "service": "Gemma",
+      "status": "MISSING",
+      "detail": "LLM_API_KEY"
+    },
+    {
+      "service": "ElevenLabs",
+      "status": "MISSING",
+      "detail": "ELEVENLABS_API_KEY"
+    },
+    {
+      "service": "MongoDB",
+      "status": "MISSING",
+      "detail": "MONGODB_URI"
+    },
+    {
+      "service": "Temporal",
+      "status": "OK",
+      "detail": "Reachable"
+    },
+    {
+      "service": "Sentry",
+      "status": "MISSING",
+      "detail": "SENTRY_DSN"
+    },
+    {
+      "service": "Owner webhook",
+      "status": "MISSING",
+      "detail": "OWNER_WEBHOOK_URL"
+    },
+    {
+      "service": "DigitalOcean",
+      "status": "MISSING",
+      "detail": "DO_INFERENCE_KEY"
+    },
+    {
+      "service": "Owner access",
+      "status": "OK",
+      "detail": "Present (not externally verified)"
+    }
+  ],
+  "unmet": [
+    "Live spoken Gemma booking and live model comparison",
+    "ElevenLabs real voice latency and costs",
+    "Atlas provisioning, embeddings and Atlas Vector Search",
+    "Render deployment and deployed smoke URL",
+    "Self-hosted Gemma proof",
+    "First-user trial and final public submission"
+  ]
+}

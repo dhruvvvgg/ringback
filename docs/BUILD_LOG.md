@@ -1,0 +1,36 @@
+# Build log
+
+## Setup and domain
+- npm failed creating its default cache under the protected home directory. Added a writable npm cache, reran install successfully with lockfile integrity checks intact.
+- MongoMemoryServer failed with HTTP 403 for the vendor binary. Direct vendor fetch and installed-binary discovery confirmed no usable Mongo binary. Added an explicitly labeled SQLite adapter with real unique constraints; concurrency tests verify one winner among competing reservations.
+- SWC 1.16.18 refused materialization because the sandbox root is owned by nobody. A dedicated cache did not solve its ancestor ownership validation. Pinned compatible SWC 1.11.24 instead of weakening its verification. Temporal workflow bundling and integration tests pass.
+- Optional ONNX CUDA download failed resolving NuGet. Used the documented ONNXRUNTIME_NODE_INSTALL=skip flag for bundled CPU inference; no CUDA is needed. Embedding weights remain blocked, so retrieval labels itself keyword-only.
+- Mastra docs command from the brief timed out because the current package exposes a separate stdio entry point. Invoked the installed stdio.js with the MCP client, listed tools, and read current agent/tool documentation successfully.
+## Browser and privacy audit
+- A caller screen crashed after starting a conversation. The effect returned the browser's scrollIntoView return value; React later treated it as a cleanup function. Changed the effect to a block that returns nothing. The browser booking flow now reaches confirmation.
+- Axe found insufficient contrast in badges/sidebar text, a disabled voice button whose accessible name differed from its visible label, a non-focusable transcript scroller, and unnamed duplicate navigation landmarks. Darkened text and corrected labels, focus and landmark names; rerunning the complete screen audit.
+- The real Sentry-envelope canary test caught PII in Sentry 11's new default streaming trace lifecycle: beforeSendTransaction was ignored. Explicitly selected static trace lifecycle and retained a strict outbound whitelist. This was found using a captured envelope, not by assuming the scrub helper was sufficient.
+- Docker's npm install rejected the sandbox proxy certificate. Added an optional BuildKit CA secret mount for installation; TLS checks remain enabled and the CA is not retained in the image.
+## Deployment audit
+- The first single-container image completed a synthetic booking, then the enforced 512 MiB limit killed it. Root cause: npm/tsx wrapper processes plus default Temporal/worker memory overhead. Compiled the app/worker/supervisor, used the direct Node entrypoint, prebundled workflows, bounded the worker cache and tuned Go memory. The repeated capped-container smoke passed and remained running through the observation window; artifact: artifacts/deploy/container-memory.json. This is a short local test, not Render or production capacity evidence.
+- Repeated Docker builds exhausted the local filesystem while a test wrote its result. Removed this project's obsolete image and unused build cache, preserving source and artifacts. Reran the failed voice test and full verify successfully.
+- Final workflow review found reconciliation could restart completed workflow histories under the default reuse policy. Added REJECT_DUPLICATE and skipped terminal booking states; caller activity also clears pending lead eligibility and signals running lead workflows. Recovery activities retain a final database check before creating follow-up.
+
+## Final reproducibility audit
+- A fresh Git clone installed from the lockfile, ran setup and production builds, started the complete supervised topology and passed the synthetic booking/worker smoke without copied dependencies or local secrets. Evidence: artifacts/audit/fresh-clone.json.
+- Final browser checks include caller booking, owner dashboard, onboarding, keyboard focus, contrast, named landmarks, mobile capture and evidence view. The recorded browser test is preserved as docs/img/demo.webm; it is silent mock demo footage, not a live voice recording.
+- Rechecked MCP availability and embedding weight access in the final environment: no MCP servers were configured, and the weight host still returned a proxy 403. Missing live bindings remain documented external prerequisites.
+## Acceptance review completion
+- Added editable languages, holidays, buffers, tone, deposits, resources, FAQ and emergency rules to onboarding, including all weekday opening controls. Delimited inputs normalize on blur so typing a comma/newline does not erase the separator. Browser tests edit the extended form and confirm saved language values; axe runs on the expanded editor.
+- Added business-timezone after-hours share, escalation count and explicitly unmeasured/live-sampled LLM cost cards to the owner dashboard. Demo activity now seeds a labeled fictional day with varied calls, messages, urgency and a real synthetic booking. Browser tests verify the resulting call count and workflow-visible diary.
+- Caller memory now preserves service history, preferences and notes and supplies only the authenticated caller's memory to the intent run. Emergency wording requests a callback identifier when absent, without delaying urgent escalation.
+- A browser test initially used an exact label match for a textarea whose label text included its controlled content; matched the label prefix. An overlapping browser-run attempt conflicted on its fixture port and traces; the complete suite was rerun serially and passed.
+- The final plumbing-flow test found that an address-only reply did not update the pending reservation. Included address updates in the pending-detail branch, preserving the already-proposed slot. The new test supplies the address in a later turn, confirms the booking and verifies returning-caller service history; the full suite now includes this path.
+
+## Connector/deployment continuation — 18 October 2026 (IST)
+
+Rechecked all callable tool metadata and local MCP configuration. No Render, Atlas, ElevenLabs or DigitalOcean tools were exposed, no connector-search tool was available, and the local registry was empty. Checked process and local dotenv binding presence without outputting values; provider/management bindings were absent. Refreshed the secret/history/client-bundle scan successfully before pushing. Existing PR #1 receives the new per-step commits.
+
+Atlas provisioning and deployed Render smoke cannot run without access. Retried the existing in-process embedding function; it returned no vector, so keyword mode remains. Re-ran live verification: missing-key guard recorded a blocked outcome before any model request. ElevenLabs round trip is unrun, audio latency null. DigitalOcean inference does not apply; its README/post references were removed.
+
+Found that the cost artifact called 96 mock scenarios `measuredCalls`. Split evaluated scenarios from live measured samples and explicitly mark billing as unmeasured. Three targeted tests exercise mock token rejection, a live report lacking usage, and synthetic token extrapolation. Typecheck and lint passed. Previous end-to-end, real local MongoDB, Temporal, container and fresh-clone artifacts remain historical; no new live results were fabricated.
