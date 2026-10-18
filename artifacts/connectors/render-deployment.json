@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-18T04:53:11.394839+00:00",
+  "status": "blocked",
+  "reason": "No callable Render connector or Render management credential; Atlas URI also absent",
+  "plan": "free",
+  "blueprint": "render.yaml",
+  "serviceCreated": false,
+  "url": null,
+  "platformEnvVarsSet": false,
+  "healthz": "not-run-no-deployment",
+  "textCall": "not-run-no-deployment",
+  "booking": "not-run-no-deployment",
+  "workflowVisible": "not-run-no-deployment",
+  "adminToken": "Existing local token not exported; platform-generated token deferred until an actual service exists"
+}

@@ -22,6 +22,10 @@ The earlier final audit below remains historical evidence; its local services, t
 
 No Atlas tools or management/runtime credentials were exposed. M0 cluster creation, dedicated database user/password generation, access-list changes, Atlas application/concurrency testing, and vector index creation could not be executed. No password or access-list entry was created without a destination. The refreshed in-process embedding attempt returned no vector (zero dimensions); [embedding retry evidence](artifacts/connectors/embedding-retry.json). DigitalOcean embedding discovery is also blocked by absent tools/key. Retrieval remains keyword-only. The prior one-winner/40-attempt result is **local MongoDB**, not Atlas.
 
+### Step 3 — Render: blocked
+
+No Render connector or management credential was available. No service was created, no platform environment variables were set, and there is **no real Render URL**. The committed `render.yaml` still selects `plan: free` and platform-generated `ADMIN_TOKEN`. `/healthz`, a deployed text call, deployed booking and visible deployed workflow are unrun because no deployment exists. The local token was not exported. [Deployment attempt status](artifacts/connectors/render-deployment.json) keeps this separate from the earlier local container smoke.
+
 ## Outcome
 
 The local development/demo workflow is implemented and verified. The live spoken-booking criterion is **unmet** because provider keys were absent. Atlas/DO/Render management tools were not exposed, so no external deployment or data service was provisioned. This is a deploy-ready, honestly labeled mock/text demonstration, not a claim of production or live-model readiness.
