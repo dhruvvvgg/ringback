@@ -1,5 +1,10 @@
 {
+  "at": "2026-10-18T04:53:35.126639+00:00",
   "mode": "not-measured",
-  "reason": "LLM_API_KEY and ELEVENLABS_API_KEY absent. Mock adapter contract tests do not establish live speech latency.",
-  "liveVoiceCalls": 0
+  "reason": "ELEVENLABS_API_KEY absent; ElevenLabs connector tools not exposed. Mock adapter contract tests do not establish live speech latency.",
+  "liveVoiceCalls": 0,
+  "sttTtsRoundTrip": "not-run",
+  "ttsFirstAudioMs": null,
+  "activeProviderVoice": false,
+  "fallback": "text entry with optional labeled browser speech, not ElevenLabs audio"
 }
